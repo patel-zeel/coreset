@@ -1,0 +1,10 @@
+# Coresets
+
+## What are coresets?
+A very nicely written definition of coresets is the following,
+
+* Coresets are small, weighted summaries of large data sets such that solutions found on the summary itself are provably competitive with solutions found on the full data set.
+
+Coresets are extremely useful for models that do not scale well with data. If a model can not be optimized further on time-complexity, using coresets is natural option to cope up with training time. Theoretical guerantee is a unique property about coresets over other approximation techniques, which makes it robust for practical usage.
+
+In next chapter we shall see practical introduction to coresets for KMeans.

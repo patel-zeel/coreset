@@ -1,0 +1,8 @@
+preface
+coresets
+what-are-coresets
+coresets-for-kmeans-intuitive-theory
+problem-formulation
+uniform-sampling
+importance-sampling
+coresets-for-kmeans-pracical

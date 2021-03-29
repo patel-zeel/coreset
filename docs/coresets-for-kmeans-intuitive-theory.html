@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>IN792: Coresets</title>
-  <meta name="description" content="IN792: Coresets" />
+  <title>Coresets3 Coresets for KMeans (intuitive theory) | IN792: Coresets</title>
+  <meta name="description" content="Coresets3 Coresets for KMeans (intuitive theory) | IN792: Coresets" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="IN792: Coresets" />
+  <meta property="og:title" content="Coresets3 Coresets for KMeans (intuitive theory) | IN792: Coresets" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="IN792: Coresets" />
+  <meta name="twitter:title" content="Coresets3 Coresets for KMeans (intuitive theory) | IN792: Coresets" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="coresets.html"/>
+<link rel="prev" href="coresets.html"/>
+<link rel="next" href="coresets-for-kmeans-pracical.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -164,23 +164,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">IN792: Coresets</h1>
-<p class="author"><em>Zeel B Patel</em></p>
-<p class="date"><em>2021-03-29</em></p>
+<div id="coresets-for-kmeans-intuitive-theory" class="section level1" number="3">
+<h1><span class="header-section-number">Coresets3</span> Coresets for KMeans (intuitive theory)</h1>
+<div id="problem-formulation" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Problem formulation</h2>
+<p>In a KMeans clustering problem, we want to cluster the dataset <span class="math inline">\(X \in R^d\)</span> of cardinality <span class="math inline">\(N\)</span> in <span class="math inline">\(K\)</span> seperate clusters. If <span class="math inline">\(Q\)</span> is a set of cluster centers for KMeans in this problem, we can define the cost as following,</p>
+<p><span class="math display">\[
+cost(X, Q) = \sum\limits_{x\in X}\min\limits_{q\in Q}||x-q||^2_2
+\]</span></p>
+<p>If <span class="math inline">\(C\)</span> of cardinality <span class="math inline">\(N&#39;\)</span> is a weighted coreset constructed from dataset <span class="math inline">\(X\)</span>, <span class="math inline">\(N&#39;&lt;&lt;N\)</span> is our desired property. <span class="math inline">\(C\)</span> is a valid <span class="math inline">\(\varepsilon\)</span>-coreset of <span class="math inline">\(X\)</span> if the following property holds for any <span class="math inline">\(Q\)</span> with high probability (can be quantified),</p>
+<p><span class="math display">\[
+|cost(X, Q) - cost(C,Q)| \le \varepsilon cost(X,Q)
+\]</span></p>
+<p>There is an another consequence of the above theorem which is more useful in practice. If <span class="math inline">\(Q^*_X\)</span> is optimal cluster centers obtained by executing KMeans on full dataset <span class="math inline">\(X\)</span> and <span class="math inline">\(Q^*_C\)</span> is optimal cluster centers obtained by executing KMeans on coreset <span class="math inline">\(C\)</span>, the following property holds with high probability,</p>
+<p><span class="math display">\[
+cost(X,Q^*_X) \le cost(X, Q^*_C) \le \frac{1+\varepsilon}{1-\varepsilon}cost(X, Q^*_X)
+\]</span></p>
+<p>Note that, in practice, computing <span class="math inline">\(Q^*_X\)</span> is not feasible thus we are willing bear a higher cost upto <span class="math inline">\(\frac{1+\varepsilon}{1-\varepsilon}cost(X, Q^*_X)\)</span> at benefit of reduced computational time. This property ensures that cost on the coreset stays within the defined upper bound without actually need of computing <span class="math inline">\(Q^*_X\)</span> (which is obvious but just being explicit).</p>
+<p>Now, the question is how to construct the coreset <span class="math inline">\(C\)</span> such that above properties hold with <strong>high probability</strong> (yes, that is important. Nothing is deterministic in the probabilistic world). Let us test a naive way first.</p>
 </div>
-<div id="preface" class="section level1" number="1">
-<h1><span class="header-section-number">Coresets1</span> Preface</h1>
-<p>This is a report generated for work done in IN-792 project with <a href="https://iitgn.ac.in/faculty/cse/anirban">Prof. Anirban Dasgupta</a> in Semester-II of academic year 2020-2021.</p>
+<div id="uniform-sampling" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Uniform sampling</h2>
+<p><Will be written later></p>
+</div>
+<div id="importance-sampling" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Importance sampling</h2>
+<p><will be written later></p>
+<p>In the next chapter, we will actually implement the coresets for KMeans clustering step by step.</p>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="coresets.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="coresets.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="coresets-for-kmeans-pracical.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -211,7 +231,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/patel-zeel/coreset/edit/master/index.Rmd",
+"link": "https://github.com/patel-zeel/coreset/edit/master/Chap-2-KMeans.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -219,7 +239,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/patel-zeel/coreset/blob/master/index.Rmd",
+"link": "https://github.com/patel-zeel/coreset/blob/master/Chap-2-KMeans.Rmd",
 "text": null
 },
 "download": null,

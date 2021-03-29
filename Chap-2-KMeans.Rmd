@@ -1,0 +1,35 @@
+# Coresets for KMeans (intuitive theory)
+
+## Problem formulation
+
+In a KMeans clustering problem, we want to cluster the dataset $X \in R^d$ of cardinality $N$ in $K$ seperate clusters. If $Q$ is a set of cluster centers for KMeans in this problem, we can define the cost as following,
+
+$$
+cost(X, Q) = \sum\limits_{x\in X}\min\limits_{q\in Q}||x-q||^2_2
+$$
+
+If $C$ of cardinality $N'$ is a weighted coreset constructed from dataset $X$, $N'<<N$ is our desired property. $C$ is a valid $\varepsilon$-coreset of $X$ if the following property holds for any $Q$ with high probability (can be quantified),
+
+$$
+|cost(X, Q) - cost(C,Q)| \le \varepsilon cost(X,Q)
+$$
+
+There is an another consequence of the above theorem which is more useful in practice. If $Q^*_X$ is optimal cluster centers obtained by executing KMeans on full dataset $X$ and $Q^*_C$ is optimal cluster centers obtained by executing KMeans on coreset $C$, the following property holds with high probability,
+
+$$
+cost(X,Q^*_X) \le cost(X, Q^*_C) \le \frac{1+\varepsilon}{1-\varepsilon}cost(X, Q^*_X)
+$$
+
+Note that, in practice, computing $Q^*_X$ is not feasible thus we are willing bear a higher cost upto $\frac{1+\varepsilon}{1-\varepsilon}cost(X, Q^*_X)$ at benefit of reduced computational time. This property ensures that cost on the coreset stays within the defined upper bound without actually need of computing $Q^*_X$ (which is obvious but just being explicit).
+
+Now, the question is how to construct the coreset $C$ such that above properties hold with **high probability** (yes, that is important. Nothing is deterministic in the probabilistic world). Let us test a naive way first.
+
+## Uniform sampling
+
+<Will be written later>
+
+## Importance sampling
+
+<will be written later>
+
+In the next chapter, we will actually implement the coresets for KMeans clustering step by step.

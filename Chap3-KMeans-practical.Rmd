@@ -1,0 +1,10 @@
+# Coresets for KMeans (Pracical)
+
+Let us import some packages first,
+```{python}
+from sklearn.cluster import KMeans
+from sklearn.datasets import make_blobs
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy.spatial.distance import cdist, pdist
+```
