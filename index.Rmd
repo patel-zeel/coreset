@@ -6,6 +6,10 @@ bibliography:
   - general.bib
 biblio-style: apalike
 site: bookdown::bookdown_site
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
 ---
 
 # Preface

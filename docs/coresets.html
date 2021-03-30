@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Coresets2 Coresets | IN792: Coresets</title>
-  <meta name="description" content="Coresets2 Coresets | IN792: Coresets" />
+  <title>Coresets: 2 Coresets | IN792: Coresets</title>
+  <meta name="description" content="Coresets: 2 Coresets | IN792: Coresets" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Coresets2 Coresets | IN792: Coresets" />
+  <meta property="og:title" content="Coresets: 2 Coresets | IN792: Coresets" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Coresets2 Coresets | IN792: Coresets" />
+  <meta name="twitter:title" content="Coresets: 2 Coresets | IN792: Coresets" />
   
   
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Zeel B Patel" />
 
 
-<meta name="date" content="2021-03-29" />
+<meta name="date" content="2021-03-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -144,7 +144,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2" data-path="coresets-for-kmeans-intuitive-theory.html"><a href="coresets-for-kmeans-intuitive-theory.html#uniform-sampling"><i class="fa fa-check"></i><b>3.2</b> Uniform sampling</a></li>
 <li class="chapter" data-level="3.3" data-path="coresets-for-kmeans-intuitive-theory.html"><a href="coresets-for-kmeans-intuitive-theory.html#importance-sampling"><i class="fa fa-check"></i><b>3.3</b> Importance sampling</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="coresets-for-kmeans-pracical.html"><a href="coresets-for-kmeans-pracical.html"><i class="fa fa-check"></i><b>4</b> Coresets for KMeans (Pracical)</a></li>
+<li class="chapter" data-level="4" data-path="coresets-for-kmeans-practical.html"><a href="coresets-for-kmeans-practical.html"><i class="fa fa-check"></i><b>4</b> Coresets for KMeans (Practical)</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="coresets-for-kmeans-practical.html"><a href="coresets-for-kmeans-practical.html#pseudo-data-with-4-clusters"><i class="fa fa-check"></i><b>4.1</b> Pseudo-data with 4 clusters</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -165,10 +168,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="coresets" class="section level1" number="2">
-<h1><span class="header-section-number">Coresets2</span> Coresets</h1>
+<h1><span class="header-section-number">Coresets: 2</span> Coresets</h1>
 <div id="what-are-coresets" class="section level2" number="2.1">
 <h2><span class="header-section-number">2.1</span> What are coresets?</h2>
-<p>A very nicely written definition of coresets is the following,</p>
+<p>A well-written definition of coresets is the following by <span class="citation">Bachem, Lucic, and Krause (2017)</span>,</p>
 <ul>
 <li>Coresets are small, weighted summaries of large data sets such that solutions found on the summary itself are provably competitive with solutions found on the full data set.</li>
 </ul>

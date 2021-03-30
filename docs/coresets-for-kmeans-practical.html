@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Coresets: 3 Coresets for KMeans (intuitive theory) | IN792: Coresets</title>
-  <meta name="description" content="Coresets: 3 Coresets for KMeans (intuitive theory) | IN792: Coresets" />
+  <title>Coresets: 4 Coresets for KMeans (Practical) | IN792: Coresets</title>
+  <meta name="description" content="Coresets: 4 Coresets for KMeans (Practical) | IN792: Coresets" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Coresets: 3 Coresets for KMeans (intuitive theory) | IN792: Coresets" />
+  <meta property="og:title" content="Coresets: 4 Coresets for KMeans (Practical) | IN792: Coresets" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Coresets: 3 Coresets for KMeans (intuitive theory) | IN792: Coresets" />
+  <meta name="twitter:title" content="Coresets: 4 Coresets for KMeans (Practical) | IN792: Coresets" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="coresets.html"/>
-<link rel="next" href="coresets-for-kmeans-practical.html"/>
+<link rel="prev" href="coresets-for-kmeans-intuitive-theory.html"/>
+
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -167,34 +167,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="coresets-for-kmeans-intuitive-theory" class="section level1" number="3">
-<h1><span class="header-section-number">Coresets: 3</span> Coresets for KMeans (intuitive theory)</h1>
-<div id="problem-formulation" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> Problem formulation</h2>
-<p>In a KMeans clustering problem, we want to cluster the dataset <span class="math inline">\(X \in R^d\)</span> of cardinality <span class="math inline">\(N\)</span> in <span class="math inline">\(K\)</span> seperate clusters. If <span class="math inline">\(Q\)</span> is a set of cluster centers for KMeans in this problem, we can define the cost as following,</p>
-<p><span class="math display">\[
-cost(X, Q) = \sum\limits_{x\in X}\min\limits_{q\in Q}||x-q||^2_2
-\]</span></p>
-<p>If <span class="math inline">\(C\)</span> of cardinality <span class="math inline">\(N&#39;\)</span> is a weighted coreset constructed from dataset <span class="math inline">\(X\)</span>, <span class="math inline">\(N&#39;&lt;&lt;N\)</span> is our desired property. <span class="math inline">\(C\)</span> is a valid <span class="math inline">\(\varepsilon\)</span>-coreset of <span class="math inline">\(X\)</span> if the following property holds for any <span class="math inline">\(Q\)</span> with high probability (can be quantified),</p>
-<p><span class="math display">\[
-|cost(X, Q) - cost(C,Q)| \le \varepsilon cost(X,Q)
-\]</span></p>
-<p>There is an another consequence of the above theorem which is more useful in practice. If <span class="math inline">\(Q^*_X\)</span> is optimal cluster centers obtained by executing KMeans on full dataset <span class="math inline">\(X\)</span> and <span class="math inline">\(Q^*_C\)</span> is optimal cluster centers obtained by executing KMeans on coreset <span class="math inline">\(C\)</span>, the following property holds with high probability,</p>
-<p><span class="math display">\[
-cost(X,Q^*_X) \le cost(X, Q^*_C) \le \frac{1+\varepsilon}{1-\varepsilon}cost(X, Q^*_X)
-\]</span></p>
-<p>Note that, in practice, computing <span class="math inline">\(Q^*_X\)</span> is not feasible thus we are willing bear a higher cost upto <span class="math inline">\(\frac{1+\varepsilon}{1-\varepsilon}cost(X, Q^*_X)\)</span> at benefit of reduced computational time. This property ensures that cost on the coreset stays within the defined upper bound without actually need of computing <span class="math inline">\(Q^*_X\)</span> (which is obvious but just being explicit).</p>
-<p>Now, the question is how to construct the coreset <span class="math inline">\(C\)</span> such that above properties hold with <strong>high probability</strong> (yes, that is important. Nothing is deterministic in the probabilistic world). Let us test a naive way first.</p>
-</div>
-<div id="uniform-sampling" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> Uniform sampling</h2>
-<p><Will be written later></p>
-</div>
-<div id="importance-sampling" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> Importance sampling</h2>
-<p><will be written later></p>
-<p>In the next chapter, we will actually implement the coresets for KMeans clustering step by step.</p>
+<div id="coresets-for-kmeans-practical" class="section level1" number="4">
+<h1><span class="header-section-number">Coresets: 4</span> Coresets for KMeans (Practical)</h1>
+<p>Let us import some packages first,</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb1-1"><a href="coresets-for-kmeans-practical.html#cb1-1" aria-hidden="true"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans</span>
+<span id="cb1-2"><a href="coresets-for-kmeans-practical.html#cb1-2" aria-hidden="true"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> make_blobs</span>
+<span id="cb1-3"><a href="coresets-for-kmeans-practical.html#cb1-3" aria-hidden="true"></a><span class="im">from</span> scipy.spatial.distance <span class="im">import</span> cdist, pdist</span>
+<span id="cb1-4"><a href="coresets-for-kmeans-practical.html#cb1-4" aria-hidden="true"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-5"><a href="coresets-for-kmeans-practical.html#cb1-5" aria-hidden="true"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre></div>
+<div id="pseudo-data-with-4-clusters" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Pseudo-data with 4 clusters</h2>
+<p>Now, we generate a dataset with 4 clusters.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="coresets-for-kmeans-practical.html#cb2-1" aria-hidden="true"></a>c4X, c4y <span class="op">=</span> make_blobs(n_samples<span class="op">=</span><span class="dv">100</span>, centers<span class="op">=</span><span class="dv">4</span>, n_features<span class="op">=</span><span class="dv">2</span>, random_state<span class="op">=</span><span class="dv">0</span>, cluster_std<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb2-2"><a href="coresets-for-kmeans-practical.html#cb2-2" aria-hidden="true"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">3</span>,<span class="dv">2</span>))</span>
+<span id="cb2-3"><a href="coresets-for-kmeans-practical.html#cb2-3" aria-hidden="true"></a>plt.scatter(c4X[:,<span class="dv">0</span>], c4X[:,<span class="dv">1</span>], c<span class="op">=</span>c4y, s<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb2-4"><a href="coresets-for-kmeans-practical.html#cb2-4" aria-hidden="true"></a>plt.title(<span class="st">&#39;c4 pseudo-data&#39;</span>)<span class="op">;</span></span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-8-1.png" /><!-- --></p>
 
+<div id="refs" class="references hanging-indent">
+<div>
+<p>Bachem, Olivier, Mario Lucic, and Andreas Krause. 2017. “Practical Coreset Constructions for Machine Learning.” <a href="http://arxiv.org/abs/1703.06476">http://arxiv.org/abs/1703.06476</a>.</p>
+</div>
+</div>
 </div>
 </div>
             </section>
@@ -202,8 +196,8 @@ cost(X,Q^*_X) \le cost(X, Q^*_C) \le \frac{1+\varepsilon}{1-\varepsilon}cost(X, 
           </div>
         </div>
       </div>
-<a href="coresets.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="coresets-for-kmeans-practical.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="coresets-for-kmeans-intuitive-theory.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -234,7 +228,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/patel-zeel/coreset/edit/master/Chap-2-KMeans.Rmd",
+"link": "https://github.com/patel-zeel/coreset/edit/master/Chap3-KMeans-practical.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -242,7 +236,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/patel-zeel/coreset/blob/master/Chap-2-KMeans.Rmd",
+"link": "https://github.com/patel-zeel/coreset/blob/master/Chap3-KMeans-practical.Rmd",
 "text": null
 },
 "download": null,

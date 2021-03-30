@@ -1,10 +1,27 @@
-# Coresets for KMeans (Pracical)
+# Coresets for KMeans (Practical)
 
 Let us import some packages first,
-```{python}
+
+```{python include=FALSE}
 from sklearn.cluster import KMeans
 from sklearn.datasets import make_blobs
+from scipy.spatial.distance import cdist, pdist
 import matplotlib.pyplot as plt
 import numpy as np
+```
+```py
+from sklearn.cluster import KMeans
+from sklearn.datasets import make_blobs
 from scipy.spatial.distance import cdist, pdist
+import matplotlib.pyplot as plt
+import numpy as np
+```
+## Pseudo-data with 4 clusters
+
+Now, we generate a dataset with 4 clusters.
+```{python}
+c4X, c4y = make_blobs(n_samples=100, centers=4, n_features=2, random_state=0, cluster_std=0.7)
+plt.figure(figsize=(3,2))
+plt.scatter(c4X[:,0], c4X[:,1], c=c4y, s=10)
+plt.title('c4 pseudo-data');
 ```

@@ -1,7 +1,7 @@
 # Coresets
 
 ## What are coresets?
-A very nicely written definition of coresets is the following,
+A well-written definition of coresets is the following by @bachem2017practical,
 
 * Coresets are small, weighted summaries of large data sets such that solutions found on the summary itself are provably competitive with solutions found on the full data set.
 

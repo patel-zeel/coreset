@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Coresets4 Coresets for KMeans (Pracical) | IN792: Coresets</title>
-  <meta name="description" content="Coresets4 Coresets for KMeans (Pracical) | IN792: Coresets" />
+  <title>Coresets: 4 Coresets for KMeans (Pracical) | IN792: Coresets</title>
+  <meta name="description" content="Coresets: 4 Coresets for KMeans (Pracical) | IN792: Coresets" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Coresets4 Coresets for KMeans (Pracical) | IN792: Coresets" />
+  <meta property="og:title" content="Coresets: 4 Coresets for KMeans (Pracical) | IN792: Coresets" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Coresets4 Coresets for KMeans (Pracical) | IN792: Coresets" />
+  <meta name="twitter:title" content="Coresets: 4 Coresets for KMeans (Pracical) | IN792: Coresets" />
   
   
   
@@ -165,14 +165,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="coresets-for-kmeans-pracical" class="section level1" number="4">
-<h1><span class="header-section-number">Coresets4</span> Coresets for KMeans (Pracical)</h1>
+<h1><span class="header-section-number">Coresets: 4</span> Coresets for KMeans (Pracical)</h1>
 <p>Let us import some packages first,</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="coresets-for-kmeans-pracical.html#cb1-1" aria-hidden="true"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans</span>
 <span id="cb1-2"><a href="coresets-for-kmeans-pracical.html#cb1-2" aria-hidden="true"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> make_blobs</span>
 <span id="cb1-3"><a href="coresets-for-kmeans-pracical.html#cb1-3" aria-hidden="true"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-4"><a href="coresets-for-kmeans-pracical.html#cb1-4" aria-hidden="true"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-5"><a href="coresets-for-kmeans-pracical.html#cb1-5" aria-hidden="true"></a><span class="im">from</span> scipy.spatial.distance <span class="im">import</span> cdist, pdist</span></code></pre></div>
+<span id="cb1-5"><a href="coresets-for-kmeans-pracical.html#cb1-5" aria-hidden="true"></a><span class="im">from</span> scipy.spatial.distance <span class="im">import</span> cdist, pdist</span>
+<span id="cb1-6"><a href="coresets-for-kmeans-pracical.html#cb1-6" aria-hidden="true"></a>plt.plot([<span class="dv">1</span>,<span class="dv">2</span>],[<span class="dv">1</span>,<span class="dv">2</span>])</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-2-1.png" /><!-- --></p>
 
+<div id="refs" class="references hanging-indent">
+<div>
+<p>Bachem, Olivier, Mario Lucic, and Andreas Krause. 2017. “Practical Coreset Constructions for Machine Learning.” <a href="http://arxiv.org/abs/1703.06476">http://arxiv.org/abs/1703.06476</a>.</p>
+</div>
+</div>
 </div>
             </section>
 
