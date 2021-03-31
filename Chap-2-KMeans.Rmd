@@ -1,4 +1,4 @@
-# Coresets for KMeans (intuitive theory)
+# Coresets for KMeans (Theory)
 
 ## Problem formulation
 

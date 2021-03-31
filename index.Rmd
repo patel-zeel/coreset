@@ -5,11 +5,8 @@ date: "`r Sys.Date()`"
 bibliography: 
   - general.bib
 biblio-style: apalike
+link-citations: true
 site: bookdown::bookdown_site
-output:
-  html_document:
-    toc: true
-    toc_depth: 2
 ---
 
 # Preface

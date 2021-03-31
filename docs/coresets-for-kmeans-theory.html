@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Coresets: 3 Coresets for KMeans (intuitive theory) | IN792: Coresets</title>
-  <meta name="description" content="Coresets: 3 Coresets for KMeans (intuitive theory) | IN792: Coresets" />
+  <title>Coresets: 3 Coresets for KMeans (Theory) | IN792: Coresets</title>
+  <meta name="description" content="Coresets: 3 Coresets for KMeans (Theory) | IN792: Coresets" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Coresets: 3 Coresets for KMeans (intuitive theory) | IN792: Coresets" />
+  <meta property="og:title" content="Coresets: 3 Coresets for KMeans (Theory) | IN792: Coresets" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Coresets: 3 Coresets for KMeans (intuitive theory) | IN792: Coresets" />
+  <meta name="twitter:title" content="Coresets: 3 Coresets for KMeans (Theory) | IN792: Coresets" />
   
   
   
@@ -139,11 +139,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.1" data-path="coresets.html"><a href="coresets.html#what-are-coresets"><i class="fa fa-check"></i><b>2.1</b> What are coresets?</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="coresets-for-kmeans-intuitive-theory.html"><a href="coresets-for-kmeans-intuitive-theory.html"><i class="fa fa-check"></i><b>3</b> Coresets for KMeans (intuitive theory)</a>
+<li class="chapter" data-level="3" data-path="coresets-for-kmeans-theory.html"><a href="coresets-for-kmeans-theory.html"><i class="fa fa-check"></i><b>3</b> Coresets for KMeans (Theory)</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="coresets-for-kmeans-intuitive-theory.html"><a href="coresets-for-kmeans-intuitive-theory.html#problem-formulation"><i class="fa fa-check"></i><b>3.1</b> Problem formulation</a></li>
-<li class="chapter" data-level="3.2" data-path="coresets-for-kmeans-intuitive-theory.html"><a href="coresets-for-kmeans-intuitive-theory.html#uniform-sampling"><i class="fa fa-check"></i><b>3.2</b> Uniform sampling</a></li>
-<li class="chapter" data-level="3.3" data-path="coresets-for-kmeans-intuitive-theory.html"><a href="coresets-for-kmeans-intuitive-theory.html#importance-sampling"><i class="fa fa-check"></i><b>3.3</b> Importance sampling</a></li>
+<li class="chapter" data-level="3.1" data-path="coresets-for-kmeans-theory.html"><a href="coresets-for-kmeans-theory.html#problem-formulation"><i class="fa fa-check"></i><b>3.1</b> Problem formulation</a></li>
+<li class="chapter" data-level="3.2" data-path="coresets-for-kmeans-theory.html"><a href="coresets-for-kmeans-theory.html#uniform-sampling"><i class="fa fa-check"></i><b>3.2</b> Uniform sampling</a></li>
+<li class="chapter" data-level="3.3" data-path="coresets-for-kmeans-theory.html"><a href="coresets-for-kmeans-theory.html#importance-sampling"><i class="fa fa-check"></i><b>3.3</b> Importance sampling</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="coresets-for-kmeans-practical.html"><a href="coresets-for-kmeans-practical.html"><i class="fa fa-check"></i><b>4</b> Coresets for KMeans (Practical)</a>
 <ul>
@@ -169,8 +169,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="coresets-for-kmeans-intuitive-theory" class="section level1" number="3">
-<h1><span class="header-section-number">Coresets: 3</span> Coresets for KMeans (intuitive theory)</h1>
+<div id="coresets-for-kmeans-theory" class="section level1" number="3">
+<h1><span class="header-section-number">Coresets: 3</span> Coresets for KMeans (Theory)</h1>
 <div id="problem-formulation" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> Problem formulation</h2>
 <p>In a KMeans clustering problem, we want to cluster the dataset <span class="math inline">\(X \in R^d\)</span> of cardinality <span class="math inline">\(N\)</span> in <span class="math inline">\(K\)</span> seperate clusters. If <span class="math inline">\(Q\)</span> is a set of cluster centers for KMeans in this problem, we can define the cost as following,</p>

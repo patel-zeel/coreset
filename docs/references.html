@@ -24,14 +24,14 @@
 <meta name="author" content="Zeel B Patel" />
 
 
-<meta name="date" content="2021-03-29" />
+<meta name="date" content="2021-03-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
+<link rel="prev" href="coresets-for-kmeans-practical.html"/>
 
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -57,6 +57,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -133,7 +134,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Coresets</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Coresets</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="2" data-path="coresets.html"><a href="coresets.html"><i class="fa fa-check"></i><b>2</b> Coresets</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="coresets.html"><a href="coresets.html#what-are-coresets"><i class="fa fa-check"></i><b>2.1</b> What are coresets?</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="coresets-for-kmeans-theory.html"><a href="coresets-for-kmeans-theory.html"><i class="fa fa-check"></i><b>3</b> Coresets for KMeans (Theory)</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="coresets-for-kmeans-theory.html"><a href="coresets-for-kmeans-theory.html#problem-formulation"><i class="fa fa-check"></i><b>3.1</b> Problem formulation</a></li>
+<li class="chapter" data-level="3.2" data-path="coresets-for-kmeans-theory.html"><a href="coresets-for-kmeans-theory.html#uniform-sampling"><i class="fa fa-check"></i><b>3.2</b> Uniform sampling</a></li>
+<li class="chapter" data-level="3.3" data-path="coresets-for-kmeans-theory.html"><a href="coresets-for-kmeans-theory.html#importance-sampling"><i class="fa fa-check"></i><b>3.3</b> Importance sampling</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="coresets-for-kmeans-practical.html"><a href="coresets-for-kmeans-practical.html"><i class="fa fa-check"></i><b>4</b> Coresets for KMeans (Practical)</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="coresets-for-kmeans-practical.html"><a href="coresets-for-kmeans-practical.html#pseudo-data-with-4-clusters"><i class="fa fa-check"></i><b>4.1</b> Pseudo-data with 4 clusters</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -157,9 +172,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="references" class="section level1 unnumbered">
 <h1>References</h1>
 
-<div id="refs" class="references hanging-indent">
-<div>
-<p>R Core Team. 2016. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.</p>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-abras2005weighted" class="csl-entry">
+Abras, Guillermo N, and Virginia Laura Balları́n. 2005. <span>“A Weighted k-Means Algorithm Applied to Brain Tissue Classification.”</span> <em>Journal of Computer Science &amp; Technology</em> 5.
+</div>
+<div id="ref-bachem2017practical" class="csl-entry">
+Bachem, Olivier, Mario Lucic, and Andreas Krause. 2017. <span>“Practical Coreset Constructions for Machine Learning.”</span> <a href="http://arxiv.org/abs/1703.06476">http://arxiv.org/abs/1703.06476</a>.
 </div>
 </div>
 </div>
@@ -168,7 +186,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="coresets-for-kmeans-practical.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>
@@ -200,7 +218,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/patel-zeel/coreset/edit/master/index.Rmd",
+"link": "https://github.com/patel-zeel/coreset/edit/master/Chap3-KMeans-practical.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -208,7 +226,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/patel-zeel/coreset/blob/master/index.Rmd",
+"link": "https://github.com/patel-zeel/coreset/blob/master/Chap3-KMeans-practical.Rmd",
 "text": null
 },
 "download": null,
@@ -219,6 +237,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

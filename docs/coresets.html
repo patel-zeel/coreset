@@ -24,7 +24,7 @@
 <meta name="author" content="Zeel B Patel" />
 
 
-<meta name="date" content="2021-03-30" />
+<meta name="date" content="2021-03-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="index.html"/>
-<link rel="next" href="coresets-for-kmeans-intuitive-theory.html"/>
+<link rel="next" href="coresets-for-kmeans-theory.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -57,6 +57,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -138,16 +139,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.1" data-path="coresets.html"><a href="coresets.html#what-are-coresets"><i class="fa fa-check"></i><b>2.1</b> What are coresets?</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="coresets-for-kmeans-intuitive-theory.html"><a href="coresets-for-kmeans-intuitive-theory.html"><i class="fa fa-check"></i><b>3</b> Coresets for KMeans (intuitive theory)</a>
+<li class="chapter" data-level="3" data-path="coresets-for-kmeans-theory.html"><a href="coresets-for-kmeans-theory.html"><i class="fa fa-check"></i><b>3</b> Coresets for KMeans (Theory)</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="coresets-for-kmeans-intuitive-theory.html"><a href="coresets-for-kmeans-intuitive-theory.html#problem-formulation"><i class="fa fa-check"></i><b>3.1</b> Problem formulation</a></li>
-<li class="chapter" data-level="3.2" data-path="coresets-for-kmeans-intuitive-theory.html"><a href="coresets-for-kmeans-intuitive-theory.html#uniform-sampling"><i class="fa fa-check"></i><b>3.2</b> Uniform sampling</a></li>
-<li class="chapter" data-level="3.3" data-path="coresets-for-kmeans-intuitive-theory.html"><a href="coresets-for-kmeans-intuitive-theory.html#importance-sampling"><i class="fa fa-check"></i><b>3.3</b> Importance sampling</a></li>
+<li class="chapter" data-level="3.1" data-path="coresets-for-kmeans-theory.html"><a href="coresets-for-kmeans-theory.html#problem-formulation"><i class="fa fa-check"></i><b>3.1</b> Problem formulation</a></li>
+<li class="chapter" data-level="3.2" data-path="coresets-for-kmeans-theory.html"><a href="coresets-for-kmeans-theory.html#uniform-sampling"><i class="fa fa-check"></i><b>3.2</b> Uniform sampling</a></li>
+<li class="chapter" data-level="3.3" data-path="coresets-for-kmeans-theory.html"><a href="coresets-for-kmeans-theory.html#importance-sampling"><i class="fa fa-check"></i><b>3.3</b> Importance sampling</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="coresets-for-kmeans-practical.html"><a href="coresets-for-kmeans-practical.html"><i class="fa fa-check"></i><b>4</b> Coresets for KMeans (Practical)</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="coresets-for-kmeans-practical.html"><a href="coresets-for-kmeans-practical.html#pseudo-data-with-4-clusters"><i class="fa fa-check"></i><b>4.1</b> Pseudo-data with 4 clusters</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -171,11 +173,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Coresets: 2</span> Coresets</h1>
 <div id="what-are-coresets" class="section level2" number="2.1">
 <h2><span class="header-section-number">2.1</span> What are coresets?</h2>
-<p>A well-written definition of coresets is the following by <span class="citation">Bachem, Lucic, and Krause (2017)</span>,</p>
+<p>A well-written definition of coresets is the following by <span class="citation"><a href="references.html#ref-bachem2017practical" role="doc-biblioref">Bachem, Lucic, and Krause</a> (<a href="references.html#ref-bachem2017practical" role="doc-biblioref">2017</a>)</span>,</p>
 <ul>
 <li>Coresets are small, weighted summaries of large data sets such that solutions found on the summary itself are provably competitive with solutions found on the full data set.</li>
 </ul>
-<p>Coresets are extremely useful for models that do not scale well with data. If a model can not be optimized further on time-complexity, using coresets is natural option to cope up with training time. Theoretical guerantee is a unique property about coresets over other approximation techniques, which makes it robust for practical usage.</p>
+<p>More intuitively, a coreset is a small weighted sample of the larger data that can represent the original data with a good approximation on a particular model/algorithm.<br />
+Coresets are extremely useful for models that do not scale well with data. If a model can not be optimized further on time-complexity, using coresets is natural option to cope up with training time. Theoretical guerantee is a unique property about coresets over other approximation techniques, which makes it robust for practical usage.</p>
 <p>In next chapter we shall see practical introduction to coresets for KMeans.</p>
 
 </div>
@@ -186,7 +189,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="coresets-for-kmeans-intuitive-theory.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="coresets-for-kmeans-theory.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
