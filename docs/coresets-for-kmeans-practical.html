@@ -24,7 +24,7 @@
 <meta name="author" content="Zeel B Patel" />
 
 
-<meta name="date" content="2021-04-02" />
+<meta name="date" content="2021-04-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -154,6 +154,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="coresets-for-kmeans-practical.html"><a href="coresets-for-kmeans-practical.html"><i class="fa fa-check"></i><b>4</b> Coresets for KMeans (Practical)</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="coresets-for-kmeans-practical.html"><a href="coresets-for-kmeans-practical.html#pseudo-data-with-4-clusters"><i class="fa fa-check"></i><b>4.1</b> Pseudo-data with 4 clusters</a></li>
+<li class="chapter" data-level="4.2" data-path="coresets-for-kmeans-practical.html"><a href="coresets-for-kmeans-practical.html#pseudo-dataset-with-100-clusters-and-10000-data-points"><i class="fa fa-check"></i><b>4.2</b> Pseudo-dataset with 100 clusters and 10000 data-points</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -210,7 +211,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-7"><a href="coresets-for-kmeans-practical.html#cb2-7" aria-hidden="true" tabindex="-1"></a>plt.scatter(c4X[:,<span class="dv">0</span>], c4X[:,<span class="dv">1</span>], c<span class="op">=</span>c4y)<span class="op">;</span></span>
 <span id="cb2-8"><a href="coresets-for-kmeans-practical.html#cb2-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;$x_1$&#39;</span>)<span class="op">;</span>plt.ylabel(<span class="st">&#39;$x_2$&#39;</span>)<span class="op">;</span></span>
 <span id="cb2-9"><a href="coresets-for-kmeans-practical.html#cb2-9" aria-hidden="true" tabindex="-1"></a>plot_essentials()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
 <p>We run the KMeans algorithm on full dataset to calculate <span class="math inline">\(cost(X, Q^*_X)\)</span>. Note that, in practice, this is infeasible because of superlinear time-complexity, but, we perform this step to have a comparison between <span class="math inline">\(cost(X, Q^*_X)\)</span> and <span class="math inline">\(cost(X, Q^*_C)\)</span>.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="coresets-for-kmeans-practical.html#cb3-1" aria-hidden="true" tabindex="-1"></a>full_model <span class="op">=</span> KMeans(n_clusters<span class="op">=</span>K, random_state<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb3-2"><a href="coresets-for-kmeans-practical.html#cb3-2" aria-hidden="true" tabindex="-1"></a>full_model.fit(c4X)<span class="op">;</span></span>
@@ -223,7 +224,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb4-5"><a href="coresets-for-kmeans-practical.html#cb4-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;$x_1$&#39;</span>)<span class="op">;</span>plt.ylabel(<span class="st">&#39;$x_2$&#39;</span>)<span class="op">;</span></span>
 <span id="cb4-6"><a href="coresets-for-kmeans-practical.html#cb4-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&#39;Optimal cluster centers on the original dataset&#39;</span>)<span class="op">;</span></span>
 <span id="cb4-7"><a href="coresets-for-kmeans-practical.html#cb4-7" aria-hidden="true" tabindex="-1"></a>plot_essentials()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
 <p>Next step is running the <span class="math inline">\(D^2\)</span> sampling algorithm on the full dataset to get the approximate centers <span class="math inline">\(Q^*_B\)</span>. To ensure that <span class="math inline">\((\alpha, \beta)\)</span> criterion holds with probability <span class="math inline">\(0.9\)</span>, we need to run <span class="math inline">\(D^2\)</span> sampling <span class="math inline">\(\log_2\left(\frac{1}{1-0.9}\right) \approx 4\)</span> times and select the best clustering. The best clusturing is defined as minimum value of <span class="math inline">\(cost(X,Q^*_B)\)</span>.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="coresets-for-kmeans-practical.html#cb5-1" aria-hidden="true" tabindex="-1"></a>cost_QB <span class="op">=</span> np.inf</span>
 <span id="cb5-2"><a href="coresets-for-kmeans-practical.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> trial <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4</span>):</span>
@@ -252,7 +253,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb7-5"><a href="coresets-for-kmeans-practical.html#cb7-5" aria-hidden="true" tabindex="-1"></a>plt.scatter(Q_B[:,<span class="dv">0</span>], Q_B[:,<span class="dv">1</span>], s<span class="op">=</span><span class="dv">200</span>, marker<span class="op">=</span><span class="st">&#39;d&#39;</span>, c<span class="op">=</span><span class="st">&#39;red&#39;</span>, label<span class="op">=</span><span class="st">&#39;$Q^*_B$&#39;</span>)<span class="op">;</span></span>
 <span id="cb7-6"><a href="coresets-for-kmeans-practical.html#cb7-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;$x_1$&#39;</span>)<span class="op">;</span>plt.ylabel(<span class="st">&#39;$x_2$&#39;</span>)<span class="op">;</span></span>
 <span id="cb7-7"><a href="coresets-for-kmeans-practical.html#cb7-7" aria-hidden="true" tabindex="-1"></a>plot_essentials()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
 <p>Now, we will perform the importance sampling to select the coreset points. Before that, following are the essential variables need to be computed to calculate sensitivity and probability for the importance sampling.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="coresets-for-kmeans-practical.html#cb8-1" aria-hidden="true" tabindex="-1"></a>B_y <span class="op">=</span> cdist(c4X, Q_B).argmin(axis<span class="op">=</span><span class="dv">1</span>)<span class="op">;</span> <span class="co"># Cluster labels according to Q_B</span></span>
 <span id="cb8-2"><a href="coresets-for-kmeans-practical.html#cb8-2" aria-hidden="true" tabindex="-1"></a>cost_QB <span class="op">=</span> np.square(cdist(c4X, Q_B)).<span class="bu">min</span>(axis<span class="op">=</span><span class="dv">1</span>)<span class="op">;</span> <span class="co"># Cost(X, Q_B)</span></span>
@@ -274,7 +275,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb10-2"><a href="coresets-for-kmeans-practical.html#cb10-2" aria-hidden="true" tabindex="-1"></a>plt.colorbar(map_ax)<span class="op">;</span></span>
 <span id="cb10-3"><a href="coresets-for-kmeans-practical.html#cb10-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;$x_1$&#39;</span>)<span class="op">;</span>plt.ylabel(<span class="st">&#39;$x_2$&#39;</span>)<span class="op">;</span></span>
 <span id="cb10-4"><a href="coresets-for-kmeans-practical.html#cb10-4" aria-hidden="true" tabindex="-1"></a>plot_essentials()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
 <p>We have completed all the pre-requisite steps for importance sampling. Now, let us perform the importance sampling. Initially, we will set the coreset size to only 10% of the total data-points.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="coresets-for-kmeans-practical.html#cb11-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">0</span>)</span>
 <span id="cb11-2"><a href="coresets-for-kmeans-practical.html#cb11-2" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> <span class="bu">int</span>(<span class="fl">0.1</span><span class="op">*</span>N) <span class="co"># Number of points to draw (coreset size)</span></span>
@@ -296,7 +297,7 @@ After that, we can visually see the minimum number of samples for which the core
 <span id="cb12-11"><a href="coresets-for-kmeans-practical.html#cb12-11" aria-hidden="true" tabindex="-1"></a>plt.hlines(<span class="dv">1</span><span class="op">+</span><span class="dv">3</span><span class="op">*</span>epsilon, <span class="op">*</span>plt.xlim(), label<span class="op">=</span><span class="st">&#39;$1+3 </span><span class="ch">\\</span><span class="st">varepsilon $&#39;</span>, color<span class="op">=</span><span class="st">&#39;red&#39;</span>)<span class="op">;</span></span>
 <span id="cb12-12"><a href="coresets-for-kmeans-practical.html#cb12-12" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;Number of coreset points&#39;</span>)<span class="op">;</span>plt.ylabel(<span class="st">&#39;$</span><span class="ch">\\</span><span class="st">frac{cost(X, Q_C)}{cost(X, Q_X)}$&#39;</span>)<span class="op">;</span></span>
 <span id="cb12-13"><a href="coresets-for-kmeans-practical.html#cb12-13" aria-hidden="true" tabindex="-1"></a>plot_essentials()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
 <p>We see that coreset property holds at a substantially smaller number of points. However, number of coreset points do not depend on number of datapoints <span class="math inline">\(N\)</span>, but it depends on number of clusters <span class="math inline">\(K\)</span>, dimension of data <span class="math inline">\(d\)</span>, <span class="math inline">\(\varepsilon\)</span> and minimum probability <span class="math inline">\(\delta\)</span> for coreset. The upper bound defined by <span class="citation"><a href="references.html#ref-bachem2017practical" role="doc-biblioref">Bachem, Lucic, and Krause</a> (<a href="references.html#ref-bachem2017practical" role="doc-biblioref">2017</a>)</span> suggests drawing nearly 2000 points for our current settings, but we can see that, in practice, coreset property holds with much lesser number of coreset points. Theoretical bound is given as the following,</p>
 <p><span class="math display">\[
 \text{Number of coreset points } m = \Omega\left( \frac{dK^3\log(K)+K^2\log(\frac{1}{\delta})}{\varepsilon^2}\right) 
@@ -331,10 +332,29 @@ After that, we can visually see the minimum number of samples for which the core
 <span id="cb14-21"><a href="coresets-for-kmeans-practical.html#cb14-21" aria-hidden="true" tabindex="-1"></a>plt.scatter(Q_X[:,<span class="dv">0</span>], Q_X[:,<span class="dv">1</span>], c<span class="op">=</span><span class="st">&#39;k&#39;</span>, marker<span class="op">=</span><span class="st">&#39;&gt;&#39;</span>, s<span class="op">=</span><span class="dv">100</span>, label<span class="op">=</span><span class="st">&#39;$Q^*_X$&#39;</span>)<span class="op">;</span></span>
 <span id="cb14-22"><a href="coresets-for-kmeans-practical.html#cb14-22" aria-hidden="true" tabindex="-1"></a>plt.scatter(Q_C[:,<span class="dv">0</span>], Q_C[:,<span class="dv">1</span>], c<span class="op">=</span><span class="st">&#39;k&#39;</span>, marker<span class="op">=</span><span class="st">&#39;&lt;&#39;</span>, s<span class="op">=</span><span class="dv">100</span>, label<span class="op">=</span><span class="st">&#39;$Q^*_C$&#39;</span>)<span class="op">;</span></span>
 <span id="cb14-23"><a href="coresets-for-kmeans-practical.html#cb14-23" aria-hidden="true" tabindex="-1"></a>plot_essentials()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
 <p><span class="math inline">\(cost(X, Q^*_X)=\)</span> 116<br />
 <span class="math inline">\(cost(X, Q^*_C)=\)</span> 156<br />
 <span class="math inline">\(R=\frac{cost(X, Q^*_C)}{cost(X, Q^*_X)}=\)</span> 1.343 <span class="math inline">\(&lt; \frac{1+\varepsilon}{1-\varepsilon}=\)</span> 1.857</p>
+<p>We can see that <span class="math inline">\(Q^*_C\)</span> is able to approximate the <span class="math inline">\(Q^*_X\)</span> efficiently as per our requirement of <span class="math inline">\(\varepsilon\)</span>-coreset.</p>
+</div>
+<div id="pseudo-dataset-with-100-clusters-and-10000-data-points" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Pseudo-dataset with 100 clusters and 10000 data-points</h2>
+<p>Let us try the coreset construction on a bigger dataset. First we will generate a dataset with 100 clusters and 10000 points. I have hidden the code for better visuals and to avoid redundancy.</p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
+<p>Now, let us check the actual fit with vanilla KMeans algorithm,</p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
+<p>Now, we find approximate centers <span class="math inline">\(Q^*_B\)</span> with <span class="math inline">\(D^2\)</span> sampling,</p>
+<p><span class="math inline">\(\alpha=\)</span> 138.3 and experimental ratio is 1.8.</p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
+<p>Let us visualize the probability distribution over all data points.</p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
+<p>Now, we visualize comparison between <span class="math inline">\(cost(C,Q)\)</span> and <span class="math inline">\(cost(X,Q)\)</span> as we increase <span class="math inline">\(m\)</span>.</p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
+<p>We see that <span class="math inline">\(cost(C,Q)\)</span> starts satisfying coreset property well below 10% of the total dataset. Let us fix coreset size at 10% and check the effect on coreset property.</p>
+<p><span class="math inline">\(cost(X, Q^*_X)=\)</span> 1585<br />
+<span class="math inline">\(cost(X, Q^*_C)=\)</span> 1876<br />
+<span class="math inline">\(R=\frac{cost(X, Q^*_C)}{cost(X, Q^*_X)}=\)</span> 1.183 <span class="math inline">\(&lt; \frac{1+\varepsilon}{1-\varepsilon}=\)</span> 1.857</p>
 <p>We can see that <span class="math inline">\(Q^*_C\)</span> is able to approximate the <span class="math inline">\(Q^*_X\)</span> efficiently as per our requirement of <span class="math inline">\(\varepsilon\)</span>-coreset.</p>
 </div>
 </div>

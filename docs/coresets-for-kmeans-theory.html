@@ -24,7 +24,7 @@
 <meta name="author" content="Zeel B Patel" />
 
 
-<meta name="date" content="2021-04-02" />
+<meta name="date" content="2021-04-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -154,6 +154,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="coresets-for-kmeans-practical.html"><a href="coresets-for-kmeans-practical.html"><i class="fa fa-check"></i><b>4</b> Coresets for KMeans (Practical)</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="coresets-for-kmeans-practical.html"><a href="coresets-for-kmeans-practical.html#pseudo-data-with-4-clusters"><i class="fa fa-check"></i><b>4.1</b> Pseudo-data with 4 clusters</a></li>
+<li class="chapter" data-level="4.2" data-path="coresets-for-kmeans-practical.html"><a href="coresets-for-kmeans-practical.html#pseudo-dataset-with-100-clusters-and-10000-data-points"><i class="fa fa-check"></i><b>4.2</b> Pseudo-dataset with 100 clusters and 10000 data-points</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -225,7 +226,7 @@ Substituting <span class="math inline">\(k\sqrt{\frac{n}{m}} = \varepsilon \to k
 \delta = P\left(|cost(C, Q) - cost(X, Q)| \ge \varepsilon \cdot cost(X,Q)\right) \le \frac{n}{\varepsilon^2m}\\
 \]</span></p>
 <p>The above expression suggests that if we are interested in <span class="math inline">\(\varepsilon\)</span>-coreset with atleast (<span class="math inline">\(1-\delta\)</span>) probability, we need to discard all <span class="math inline">\(m \le \frac{n}{\varepsilon^2\delta}\)</span>. Thus we have <span class="math inline">\(m \ge \frac{n}{\varepsilon^2\delta}\)</span>. The same phenomenon is illustrated in the below plot,</p>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 <p>Looking at the numbers, to construct the coreset with atleast 70% probability for dataset of size <span class="math inline">\(n=100\)</span>, we need to sample atleast <span class="math inline">\(m=\frac{n}{\varepsilon^2\delta}=4000\)</span> points. This is clearly not useful. Also, note that <span class="math inline">\(m \propto n\)</span>, so, coreset size will increase as <span class="math inline">\(n\)</span> increases maintaining <span class="math inline">\(m&gt;&gt;n\)</span>.</p>
 <p>Thus, this method fails to construct a coreset. One may want to have a look at an intuitive example given in <span class="citation"><a href="references.html#ref-bachem2017practical" role="doc-biblioref">Bachem, Lucic, and Krause</a> (<a href="references.html#ref-bachem2017practical" role="doc-biblioref">2017</a>)</span>. We need to change our sampling strategy to construct better coresets. Let us move to importance sampling now.</p>
 </div>

@@ -223,4 +223,153 @@ $R=\frac{cost(X, Q^*_C)}{cost(X, Q^*_X)}=$ `r round(py$cost_QC/py$cost_QX, 3)` $
 
 We can see that $Q^*_C$ is able to approximate the $Q^*_X$ efficiently as per our requirement of $\varepsilon$-coreset. 
 
+
+## Pseudo-dataset with 100 clusters and 10000 data-points
+
+Let us try the coreset construction on a bigger dataset. First we will generate a dataset with 100 clusters and 10000 points. I have hidden the code for better visuals and to avoid redundancy.
+
+```{python echo=FALSE}
+N = 10000
+K = 100
+d = 2
+epsilon = 0.3
+c4X, c4y = make_blobs(n_samples=N, centers=K, n_features=d, random_state=0, cluster_std=0.3)
+
+plt.scatter(c4X[:,0], c4X[:,1], c=c4y, s=1);
+plt.xlabel('$x_1$');plt.ylabel('$x_2$');
+plot_essentials()
+```
+
+Now, let us check the actual fit with vanilla KMeans algorithm,
+
+```{python echo=FALSE}
+full_model = KMeans(n_clusters=K, random_state=0)
+full_model.fit(c4X);
+cost_QX = full_model.inertia_/N
+
+Q_X = full_model.cluster_centers_
+
+plt.scatter(c4X[:,0], c4X[:,1], c=c4y, s=1);
+plt.scatter(Q_X[:,0], Q_X[:,1], s=50, marker='*', label='$Q^*_X$', c='red');
+plt.xlabel('$x_1$');plt.ylabel('$x_2$');
+plt.title('Optimal cluster centers on the original dataset');
+plot_essentials()
+```
+
+Now, we find approximate centers $Q^*_B$ with $D^2$ sampling,
+
+```{python echo=FALSE}
+cost_QB = np.inf
+for trial in range(4):
+  np.random.seed(trial)
+  fst_idx = np.random.choice(N) # Choosing first center randomly
+  B = [] # Approximate cluster centers
+  B.append(c4X[fst_idx])
+  for choice in range(K-1): # Choice of remaining K-1 centers
+    proba = np.square(cdist(c4X, np.array(B))).min(axis=1)
+    norm_proba = proba/np.sum(proba)
+    idx = np.random.choice(N, p=norm_proba)
+    B.append(c4X[idx,:])
+  
+  tmp_cost = np.square(cdist(c4X, np.array(B)).min(axis=1)).sum()/N
+  if tmp_cost<cost_QB:
+    cost_QB = tmp_cost
+    B_star = B.copy()
+    
+alpha = 16*(np.log2(K) + 2)
+alpha_R = cost_QB/cost_QX;
+```
+
+$\alpha=$ `r round(py$alpha,2)` and experimental ratio is `r round(py$alpha_R,2)`.
+
+```{python echo=FALSE}
+Q_B = np.array(B_star)
+
+plt.scatter(c4X[:,0], c4X[:,1], c=c4y, alpha=0.5, s=1);
+plt.scatter(Q_X[:,0], Q_X[:,1], s=50, marker='*', c='k', label='$Q^*_X$');
+plt.scatter(Q_B[:,0], Q_B[:,1], s=50, marker='d', c='tab:orange', label='$Q^*_B$');
+plt.xlabel('$x_1$');plt.ylabel('$x_2$');
+plot_essentials()
+```
+
+Let us visualize the probability distribution over all data points.
+
+```{python echo=FALSE}
+B_y = cdist(c4X, Q_B).argmin(axis=1); # Cluster labels according to Q_B
+cost_QB = np.square(cdist(c4X, Q_B)).min(axis=1); # Cost(X, Q_B)
+mean_cost_QB = np.mean(cost_QB);
+cost_QB_cluster = [cost_QB[B_y==C].mean() for C in range(K)]; # Cost of each cluster
+cluster_n = pd.Series(B_y).sort_index().value_counts().values # Cardinality of each cluster
+S = 6*alpha + 4*K; # Total sensitivity
+
+
+
+# Sensitivity
+s_x = np.array([2*alpha*cost_QB[i]/mean_cost_QB  +\
+                4*alpha*cost_QB_cluster[B_y[i]]/mean_cost_QB +\
+                4*N/cluster_n[B_y[i]] for i in range(N)])
+# Probability
+q_x = s_x/S/N
+q_x = q_x/q_x.sum() # Adjusting for numerical precision to make sum(q)=1
+
+map_ax = plt.scatter(c4X[:,0], c4X[:,1], c=q_x, s=1);
+plt.colorbar(map_ax);
+plt.xlabel('$x_1$');plt.ylabel('$x_2$');
+plot_essentials()
+```
+
+Now, we visualize comparison between $cost(C,Q)$ and $cost(X,Q)$ as we increase $m$.
+
+```{python echo=FALSE}
+np.random.seed(0)
+C = int(0.1*N) # Number of points to draw (coreset size)
+C_idx = np.random.choice(N, size=C+K, p=q_x) # Coreset index
+c4C = c4X[C_idx] # Coreset points
+Cw = 1/q_x[C_idx] # Corresponding weights 
+
+cost_QC = [] # cost(X, Q_C)
+iter_x = list(range(K, C+K))[::50]
+for n_points in iter_x:
+  tmp_model = KMeans(n_clusters=K, random_state=0);
+  tmp_model = tmp_model.fit(c4C[:n_points], sample_weight=Cw[:n_points]);
+  Q_C = tmp_model.cluster_centers_
+  tmp_cost = np.square(cdist(c4X, Q_C)).min(axis=1).sum()/N
+  cost_QC.append(tmp_cost)
+
+plt.plot(iter_x, np.array(cost_QC)/cost_QX, 'o-', markersize=5);
+plt.hlines(1, *plt.xlim(), label='$1$');
+plt.hlines(1+3*epsilon, *plt.xlim(), label='$1+3 \\varepsilon $', color='red');
+plt.xlabel('Number of coreset points');plt.ylabel('$\\frac{cost(X, Q_C)}{cost(X, Q_X)}$');
+plt.title('cost comparison with 10\% coreset size');
+plot_essentials()
+```
+
+We see that $cost(C,Q)$ starts satisfying coreset property well below 10% of the total dataset. Let us fix coreset size at 10% and check the effect on coreset property.
+
+```{python echo=FALSE}
+np.random.seed(0)
+C = int(0.1*N) # Number of points to draw (coreset size)
+C_idx = np.random.choice(N, size=C+K, p=q_x) # Coreset index
+c4C = c4X[C_idx] # Coreset points
+Cw = 1/q_x[C_idx] # Corresponding weights 
+
+full_model = KMeans(n_clusters=K, random_state=0)
+full_model = full_model.fit(c4X)
+cost_QX = -full_model.score(c4X) # cost(X, Q_X) (score is opposite of cost) 
+Q_X = full_model.cluster_centers_
+X_labels = full_model.predict(c4X)
+
+coreset_model = KMeans(n_clusters=K, random_state=0)
+coreset_model = coreset_model.fit(c4C, sample_weight=Cw)
+cost_QC = -coreset_model.score(c4X) # cost(X, Q_C)
+Q_C = coreset_model.cluster_centers_
+C_labels = coreset_model.predict(c4X)
+```
+
+$cost(X, Q^*_X)=$ `r round(py$cost_QX)`   
+$cost(X, Q^*_C)=$ `r round(py$cost_QC)`    
+$R=\frac{cost(X, Q^*_C)}{cost(X, Q^*_X)}=$ `r round(py$cost_QC/py$cost_QX, 3)` $< \frac{1+\varepsilon}{1-\varepsilon}=$ `r round((1+py$epsilon)/(1-py$epsilon), 3)`
+
+We can see that $Q^*_C$ is able to approximate the $Q^*_X$ efficiently as per our requirement of $\varepsilon$-coreset. 
+
 `r if (knitr::is_html_output()) '# References {-}'`
