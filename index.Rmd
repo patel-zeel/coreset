@@ -12,3 +12,5 @@ site: bookdown::bookdown_site
 # Preface
 
 This is a report generated for work done in IN-792 project with [Prof. Anirban Dasgupta](https://iitgn.ac.in/faculty/cse/anirban) in Semester-II of academic year 2020-2021.
+
+For any Q&A, suggestions, error reporting, please go to our [GitHub discussions](https://github.com/patel-zeel/coreset/discussions).

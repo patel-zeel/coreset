@@ -209,11 +209,11 @@ mapper1 = lambda x: [colors1[i] for i in x]
 colors2 = ['tab:orange', 'tab:brown', 'tab:blue', 'm']
 mapper2 = lambda x: [colors2[i] for i in x]
 
-plt.scatter(c4X[:,0], c4X[:,1], c=mapper1(X_labels), marker='>', label='clusters of $Q_X$', s=50);
-plt.scatter(c4X[:,0], c4X[:,1], c=mapper2(C_labels), marker='<', label='clusters of $Q_C$', s=50);
+plt.scatter(c4X[:,0], c4X[:,1], c=mapper1(X_labels), marker='>', label='clusters of $Q^*_X$', s=50);
+plt.scatter(c4X[:,0], c4X[:,1], c=mapper2(C_labels), marker='<', label='clusters of $Q^*_C$', s=50);
 
-plt.scatter(Q_X[:,0], Q_X[:,1], c='k', marker='>', s=100, label='$Q_X$');
-plt.scatter(Q_C[:,0], Q_C[:,1], c='k', marker='<', s=100, label='$Q_C$');
+plt.scatter(Q_X[:,0], Q_X[:,1], c='k', marker='>', s=100, label='$Q^*_X$');
+plt.scatter(Q_C[:,0], Q_C[:,1], c='k', marker='<', s=100, label='$Q^*_C$');
 plot_essentials()
 ```
 

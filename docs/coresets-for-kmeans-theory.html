@@ -24,7 +24,7 @@
 <meta name="author" content="Zeel B Patel" />
 
 
-<meta name="date" content="2021-03-31" />
+<meta name="date" content="2021-04-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -143,7 +143,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="3.1" data-path="coresets-for-kmeans-theory.html"><a href="coresets-for-kmeans-theory.html#problem-formulation"><i class="fa fa-check"></i><b>3.1</b> Problem formulation</a></li>
 <li class="chapter" data-level="3.2" data-path="coresets-for-kmeans-theory.html"><a href="coresets-for-kmeans-theory.html#uniform-sampling"><i class="fa fa-check"></i><b>3.2</b> Uniform sampling</a></li>
-<li class="chapter" data-level="3.3" data-path="coresets-for-kmeans-theory.html"><a href="coresets-for-kmeans-theory.html#importance-sampling"><i class="fa fa-check"></i><b>3.3</b> Importance sampling</a></li>
+<li class="chapter" data-level="3.3" data-path="coresets-for-kmeans-theory.html"><a href="coresets-for-kmeans-theory.html#importance-sampling"><i class="fa fa-check"></i><b>3.3</b> Importance sampling</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="coresets-for-kmeans-theory.html"><a href="coresets-for-kmeans-theory.html#sensitivity"><i class="fa fa-check"></i><b>3.3.1</b> Sensitivity</a></li>
+<li class="chapter" data-level="3.3.2" data-path="coresets-for-kmeans-theory.html"><a href="coresets-for-kmeans-theory.html#rough-approximation"><i class="fa fa-check"></i><b>3.3.2</b> Rough approximation</a></li>
+<li class="chapter" data-level="3.3.3" data-path="coresets-for-kmeans-theory.html"><a href="coresets-for-kmeans-theory.html#bounding-sensitivity"><i class="fa fa-check"></i><b>3.3.3</b> Bounding sensitivity</a></li>
+<li class="chapter" data-level="3.3.4" data-path="coresets-for-kmeans-theory.html"><a href="coresets-for-kmeans-theory.html#algorithm-to-create-kmeans-coreset"><i class="fa fa-check"></i><b>3.3.4</b> Algorithm to create KMeans coreset</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="coresets-for-kmeans-practical.html"><a href="coresets-for-kmeans-practical.html"><i class="fa fa-check"></i><b>4</b> Coresets for KMeans (Practical)</a>
 <ul>
@@ -171,32 +177,170 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="coresets-for-kmeans-theory" class="section level1" number="3">
 <h1><span class="header-section-number">Coresets: 3</span> Coresets for KMeans (Theory)</h1>
+<p>Motive behind this chapter is to highlight the key ideas behind KMeans coreset construction and to give intuitive proofs for some of the ideas. For more details, please refer to <span class="citation"><a href="references.html#ref-bachem2017practical" role="doc-biblioref">Bachem, Lucic, and Krause</a> (<a href="references.html#ref-bachem2017practical" role="doc-biblioref">2017</a>)</span>.</p>
 <div id="problem-formulation" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> Problem formulation</h2>
-<p>In a KMeans clustering problem, we want to cluster the dataset <span class="math inline">\(X \in R^d\)</span> of cardinality <span class="math inline">\(N\)</span> in <span class="math inline">\(K\)</span> seperate clusters. If <span class="math inline">\(Q\)</span> is a set of cluster centers for KMeans in this problem, we can define the cost as following,</p>
+<p>In the KMeans clustering problem, we aim to cluster the dataset <span class="math inline">\(X \in R^d\)</span> of cardinality <span class="math inline">\(n\)</span> in <span class="math inline">\(K\)</span> seperate clusters. If <span class="math inline">\(Q\)</span> is a set of cluster centers for KMeans in this problem, we can define the cost as the following,</p>
 <p><span class="math display">\[
-cost(X, Q) = \sum\limits_{x\in X}\min\limits_{q\in Q}||x-q||^2_2
+cost(X, Q) = \frac{1}{n}\sum\limits_{x\in X}f_Q(x) = \frac{1}{n}\sum\limits_{x\in X}\min\limits_{q\in Q}||x-q||^2_2
 \]</span></p>
-<p>If <span class="math inline">\(C\)</span> of cardinality <span class="math inline">\(N&#39;\)</span> is a weighted coreset constructed from dataset <span class="math inline">\(X\)</span>, <span class="math inline">\(N&#39;&lt;&lt;N\)</span> is our desired property. <span class="math inline">\(C\)</span> is a valid <span class="math inline">\(\varepsilon\)</span>-coreset of <span class="math inline">\(X\)</span> if the following property holds for any <span class="math inline">\(Q\)</span> with high probability (can be quantified),</p>
+<p>If <span class="math inline">\(C\)</span> of cardinality <span class="math inline">\(n&#39;\)</span> is a weighted coreset constructed from dataset <span class="math inline">\(X\)</span>, <span class="math inline">\(n&#39;&lt;&lt;n\)</span> is our desired property. Note that <span class="math inline">\(c \in C\)</span> are i.i.d. samples. <span class="math inline">\(C\)</span> is a valid <span class="math inline">\(\varepsilon\)</span>-coreset of <span class="math inline">\(X\)</span> if the following property holds for any <span class="math inline">\(Q\)</span> with high probability <span class="math inline">\(\delta\)</span> (<span class="math inline">\(\delta\)</span> can be quantified),</p>
 <p><span class="math display">\[
 |cost(X, Q) - cost(C,Q)| \le \varepsilon cost(X,Q)
 \]</span></p>
-<p>There is an another consequence of the above theorem which is more useful in practice. If <span class="math inline">\(Q^*_X\)</span> is optimal cluster centers obtained by executing KMeans on full dataset <span class="math inline">\(X\)</span> and <span class="math inline">\(Q^*_C\)</span> is optimal cluster centers obtained by executing KMeans on coreset <span class="math inline">\(C\)</span>, the following property holds with high probability,</p>
+<p>There is a consequence result of the above theorem which is more useful in practice. If <span class="math inline">\(Q^*_X\)</span> is optimal cluster centers obtained by executing KMeans on full dataset <span class="math inline">\(X\)</span> and <span class="math inline">\(Q^*_C\)</span> is optimal cluster centers obtained by executing KMeans on coreset <span class="math inline">\(C\)</span>, the following property holds with high probability,</p>
 <p><span class="math display">\[
 cost(X,Q^*_X) \le cost(X, Q^*_C) \le \frac{1+\varepsilon}{1-\varepsilon}cost(X, Q^*_X)
 \]</span></p>
 <p>Note that, in practice, computing <span class="math inline">\(Q^*_X\)</span> is not feasible thus we are willing bear a higher cost upto <span class="math inline">\(\frac{1+\varepsilon}{1-\varepsilon}cost(X, Q^*_X)\)</span> at benefit of reduced computational time. This property ensures that cost on the coreset stays within the defined upper bound without actually need of computing <span class="math inline">\(Q^*_X\)</span> (which is obvious but just being explicit).</p>
-<p>Now, the question is how to construct the coreset <span class="math inline">\(C\)</span> such that above properties hold with <strong>high probability</strong> (yes, that is important. Nothing is deterministic in the probabilistic world). Let us test a naive way first.</p>
+<p>Now, the question is how to construct the coreset <span class="math inline">\(C\)</span> such that above properties hold with <strong>high probability</strong> (yes, nothing is deterministic in the probabilistic world). Let us try a naive method first.</p>
 </div>
 <div id="uniform-sampling" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> Uniform sampling</h2>
-<p><Will be written later></p>
+<p>An immediate idea for coreset construction is uniform random sampling. We will mathematically see if a coreset constructed by uniform random sampling is useful or not. First we need to verify if <span class="math inline">\(cost(C, Q)\)</span> is an unbiased estimator of <span class="math inline">\(cost(X, Q)\)</span>. Intuitively, we can say that, over multiple choices of coresets <span class="math inline">\(C\)</span>, we expect value of <span class="math inline">\(cost(C, Q)\)</span> to stay closer to <span class="math inline">\(cost(X, Q)\)</span> and if we take <span class="math inline">\(\mathbb{E}_C(cost(C,Q))\)</span> over a long run, it should converge to <span class="math inline">\(cost(X, Q)\)</span>. Now, let us prove the same as following,</p>
+<span class="math display">\[\begin{aligned}
+\mathbb{E}_C(cost(C, Q)) &amp;= \mathbb{E}_C\left(\frac{1}{m}\sum\limits_{c \in C}f_Q(c)\right)\\
+&amp;= \frac{1}{m}\sum\limits_{c \in C}\mathbb{E}(f_Q(c))\\
+&amp;= \frac{1}{m}\sum\limits_{c \in C}\sum\limits_{x \in X}\frac{1}{n}f_Q(x)\\
+&amp;= \frac{1}{m}\sum\limits_{c \in C}cost(X,Q)\\
+&amp;= cost(X, Q)
+\end{aligned}\]</span>
+<p>We saw that <span class="math inline">\(cost(C,Q)\)</span> converges to <span class="math inline">\(cost(X,Q)\)</span> in expectation. But, we need to minimize <span class="math inline">\(Var(cost(C,Q))\)</span> as well, so that <span class="math inline">\(cost(C,Q)\)</span> is as close as possible to <span class="math inline">\(cost(X,Q)\)</span>.</p>
+<span class="math display">\[\begin{aligned}
+Var(cost(C,Q)) &amp;= Var(\frac{1}{m}\sum\limits_{c \in C} f_Q(c))\\
+&amp;= \frac{1}{m^2}\sum\limits_{c \in C}Var(f_Q(c))\\
+&amp;\le \frac{1}{m^2}\sum\limits_{c \in C}\mathbb{E}(f_Q(c)^2)
+= \frac{1}{m^2}\sum\limits_{c \in C}\frac{1}{n}\sum\limits_{x \in X}f_Q(x)^2\\
+&amp;\le \frac{1}{nm^2}\sum\limits_{c \in C}\left(\sum\limits_{x \in X}f_Q(x)\right)^2\\ 
+&amp;= \frac{1}{nm^2}\sum\limits_{c \in C}\left(n\cdot cost(X,Q)\right)^2\\
+&amp;= \frac{n}{m^2}\sum\limits_{c \in C}cost(X,Q)^2\\
+&amp;= \frac{n}{m}cost(X,Q)^2
+\end{aligned}\]</span>
+<p>We can see that <span class="math inline">\(m \to \infty\)</span> then <span class="math inline">\(Var(cost(C,Q)) \to 0\)</span>. Let us get an estimate of <span class="math inline">\(m\)</span> using <a href="https://en.wikipedia.org/wiki/Chebyshev%27s_inequality">Chebyshev’s inequality</a>.</p>
+<p><span class="math display">\[
+P\left(|cost(C, Q) - cost(X, Q)| \ge k\sqrt{\frac{n}{m}}cost(X,Q)\right) \le \frac{1}{k^2}
+\]</span>
+Substituting <span class="math inline">\(k\sqrt{\frac{n}{m}} = \varepsilon \to k = \varepsilon\sqrt{\frac{m}{n}}\)</span>.</p>
+<p><span class="math display">\[
+\delta = P\left(|cost(C, Q) - cost(X, Q)| \ge \varepsilon \cdot cost(X,Q)\right) \le \frac{n}{\varepsilon^2m}\\
+\]</span></p>
+<p>The above expression suggests that if we are interested in <span class="math inline">\(\varepsilon\)</span>-coreset with atleast (<span class="math inline">\(1-\delta\)</span>) probability, we need to discard all <span class="math inline">\(m \le \frac{n}{\varepsilon^2\delta}\)</span>. Thus we have <span class="math inline">\(m \ge \frac{n}{\varepsilon^2\delta}\)</span>. The same phenomenon is illustrated in the below plot,</p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p>Looking at the numbers, to construct the coreset with atleast 70% probability for dataset of size <span class="math inline">\(n=100\)</span>, we need to sample atleast <span class="math inline">\(m=\frac{n}{\varepsilon^2\delta}=4000\)</span> points. This is clearly not useful. Also, note that <span class="math inline">\(m \propto n\)</span>, so, coreset size will increase as <span class="math inline">\(n\)</span> increases maintaining <span class="math inline">\(m&gt;&gt;n\)</span>.</p>
+<p>Thus, this method fails to construct a coreset. One may want to have a look at an intuitive example given in <span class="citation"><a href="references.html#ref-bachem2017practical" role="doc-biblioref">Bachem, Lucic, and Krause</a> (<a href="references.html#ref-bachem2017practical" role="doc-biblioref">2017</a>)</span>. We need to change our sampling strategy to construct better coresets. Let us move to importance sampling now.</p>
 </div>
 <div id="importance-sampling" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> Importance sampling</h2>
-<p><will be written later></p>
-<p>In the next chapter, we will actually implement the coresets for KMeans clustering step by step.</p>
+<p>Let us say we sample each point <span class="math inline">\(x\)</span> with probability <span class="math inline">\(q(x)\)</span>. In this process, we might not have <span class="math inline">\(cost(C,Q)\)</span> as an unbiased estimator of <span class="math inline">\(cost(X,Q)\)</span> anymore. Thus, we need to introduce weights <span class="math inline">\(\mu_C(c), c \in C\)</span>.</p>
+<p>We will use the weighted <span class="math inline">\(cost(C, Q)\)</span> as defined below,</p>
+<p><span class="math display">\[
+cost(C, Q) = \frac{1}{m}\sum\limits_{c \in C} \mu_C(c)f_Q(c)
+\]</span></p>
+<p>Let us find out a value of <span class="math inline">\(\mu_C(c)\)</span> such that <span class="math inline">\(\mathbb{E}_C(cost(C,Q))\)</span> converges to <span class="math inline">\(cost(X, Q)\)</span></p>
+<span class="math display">\[\begin{aligned}
+\mathbb{E}_C(cost(C,Q)) &amp;= \mathbb{E}_C\left(\frac{1}{m}\sum\limits_{c \in C} \mu_C(c)f_Q(c)\right)\\
+&amp;= \frac{1}{m}\sum\limits_{c \in C}\mathbb{E}(\mu_C(c)f_Q(c))\\
+&amp;= \frac{1}{m}\sum\limits_{c \in C}\sum\limits_{x \in X}q(x)\mu_C(x)f_Q(x)\\
+\text{Now, we should take }\mu_C(x) = \frac{1}{nq(x)}\\
+&amp;= \frac{1}{m}\sum\limits_{c \in C}\sum\limits_{x \in X}q(x)\frac{1}{nq(x)}f_Q(x)\\
+&amp;= \frac{1}{m}\sum\limits_{c \in C}\frac{1}{n}\sum\limits_{x \in X}f_Q(x)\\
+&amp;= \frac{1}{m}\sum\limits_{c \in C}cost(X, Q)\\
+&amp;= cost(X, Q)
+\end{aligned}\]</span>
+<p>Now, we shall calculate the <span class="math inline">\(Var(C(C,Q))\)</span> and find the conditions that minimize it.</p>
+<span class="math display">\[\begin{aligned}
+Var(cost(C,Q)) &amp;= Var\left(\frac{1}{m}\sum\limits_{c\in C}\mu_C(c)f_Q(c)\right)\\
+&amp;= \frac{1}{m^2}\sum\limits_{c\in C}Var\left(\mu_C(c)f_Q(c)\right)\\
+&amp;= \frac{1}{m^2}\sum\limits_{c\in C}\left(\mathbb{E}\left(\left(\mu_C(c)f_Q(c)\right)^2\right) - \left(\mathbb{E}\left(\mu_C(c)f_Q(c)\right)\right)^2\right)\\
+&amp;= \frac{1}{m^2}\sum\limits_{c\in C}\left(\sum\limits_{x\in X}q(x)\left(\mu_C(x)f_Q(x)\right)^2 - \left(\sum\limits_{x\in X}\left(q(x)\mu_C(x)f_Q(x)\right)\right)^2\right)\\
+&amp;= \frac{1}{m^2}\sum\limits_{c\in C}\left(\sum\limits_{x\in X}q(x)\left(\frac{1}{nq(x)}f_Q(x)\right)^2 - \left(\sum\limits_{x\in X}\left(q(x)\frac{1}{nq(x)}f_Q(x)\right)\right)^2\right)\\
+&amp;= \frac{1}{n^2m}\left(\sum\limits_{x\in X}\frac{(f_Q(x))^2}{q(x)} - \left(cost(X,Q)\right)^2\right)
+\end{aligned}\]</span>
+<p>If we choose <span class="math inline">\(q(x) = \frac{f_Q(x)}{\sum\limits_{x \in X}f_Q(x)}\)</span>, <span class="math inline">\(Var(cost(C,Q)) = 0\)</span>. Intuitively it is sensible, because we give more priority to the points that individually contribute more in the total cost (<span class="math inline">\(f_Q(x)\)</span> is high).</p>
+<p>We have done this calculation for a single set of clusters <span class="math inline">\(Q\)</span>, but we need to generelize this to any <span class="math inline">\(Q\)</span>. Note that currently <span class="math inline">\(q(x)\)</span> depends on <span class="math inline">\(Q\)</span> which should be avoided for generality.</p>
+<p>To generalize importance sampling further, we need a concept called sensitivity, which is intuitively proportinal to <span class="math inline">\(q(x)\)</span> but is more general and do not depend on any particular <span class="math inline">\(Q\)</span>.</p>
+<div id="sensitivity" class="section level3" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Sensitivity</h3>
+<p>Sensitivity <span class="math inline">\(\sigma(x)\)</span> is defined as the following for all <span class="math inline">\(Q, Q \in \mathcal{Q}\)</span>, where <span class="math inline">\(\mathcal{Q}\)</span> is the set of all possible cluster centers (really? how to find all possible cluster centers? we do not need to find them. We have other tricks to do that which is currently out of scope for this report. Please refer to <span class="citation"><a href="references.html#ref-bachem2017practical" role="doc-biblioref">Bachem, Lucic, and Krause</a> (<a href="references.html#ref-bachem2017practical" role="doc-biblioref">2017</a>)</span> later).</p>
+<p><span class="math display">\[
+\sigma(x) = \sup\limits_{Q \in \mathcal{Q}}\frac{f_Q(x)}{cost(X,Q)}
+\]</span></p>
+<p>We can see that optimal <span class="math inline">\(Q\)</span> might not be the same for all <span class="math inline">\(x\)</span> and thus calculating <span class="math inline">\(\sigma(x)\)</span> might be another problem. But, we introduce a general upper bound <span class="math inline">\(s(x)\)</span> on <span class="math inline">\(\sigma(x)\)</span>. We have average sensitivity <span class="math inline">\(S = \frac{1}{n}\sum\limits_{x \in X}s(x)\)</span>. Now, we can modify our sampling distribution <span class="math inline">\(q(x)\)</span> as following,</p>
+<p><span class="math display">\[
+q(x) = \frac{1}{n}\frac{s(x)}{S} = \frac{s(x)}{\sum\limits_{x \in X}s(x)}
+\]</span></p>
+<p>Now, we try to get an estimate of lower bound on <span class="math inline">\(m\)</span>. Consider the following function <span class="math inline">\(g_Q(x)\)</span>.</p>
+<p><span class="math display">\[
+g_Q(x) = \frac{f_Q(x)}{n\cdot cost(X,Q)}\frac{1}{Sq(x)}
+\]</span></p>
+<p>Using <a href="https://en.wikipedia.org/wiki/Hoeffding%27s_inequality">Hoeffding’s inequality</a>, we have the following formula,</p>
+<p><span class="math display">\[
+P\left(\left|\mathbb{E}(g_Q(x)) - \frac{1}{m}\sum\limits_{x \in X}g_Q(x)\right| &gt; \varepsilon&#39;\right) \le 2\exp\left(-2m\varepsilon&#39;^2\right)
+\]</span></p>
+<p>One can verify that <span class="math inline">\(|\mathbb{E}(g_Q(x)) = \frac{1}{S}\)</span> and <span class="math inline">\(\frac{1}{m}\sum\limits_{x \in X}g_Q(x) = \frac{cost(C,Q)}{Scost(X,Q)}\)</span>. Using the same result, we get,</p>
+<p><span class="math display">\[
+P(\left|cost(X,Q) - cost(X,Q)\right| &gt; \varepsilon&#39;Scost(X,Q)) \le 2\exp\left(-2m\varepsilon&#39;^2\right)
+\]</span></p>
+<p>Hence, we can say that if <span class="math inline">\(C\)</span> is <span class="math inline">\(\varepsilon\)</span>-coreset of <span class="math inline">\(X\)</span> with atleast (<span class="math inline">\(1-\delta\)</span>) probability, estimate of <span class="math inline">\(m\)</span> is the following,</p>
+<p><span class="math display">\[
+m \ge \frac{S^2}{2\varepsilon^2}\log_e\frac{2}{\delta}
+\]</span></p>
+<p>We can see that, <span class="math inline">\(m \propto S^2\)</span>, in case we consider <span class="math inline">\(s(x)=n\)</span> and so effectively <span class="math inline">\(S=n\)</span>, we have <span class="math inline">\(m \propto n^2\)</span> (which is worst than original dataset itself). But, we have other ways to create tighter bounds <span class="math inline">\(s(x)\)</span> to build useful coresets. Note that, tighter the bound <span class="math inline">\(s(x)&gt;\sigma(x)\)</span>, better coresets we get.</p>
+</div>
+<div id="rough-approximation" class="section level3" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Rough approximation</h3>
+<p>Using the rough approximation techniques, we can find a theoretically bounded approximation of <span class="math inline">\(cost(X, Q)\)</span> with much lesser computational power. One of the approach used here is known as <strong><span class="math inline">\((\alpha, \beta)\)</span> bi-criterion approximation</strong>.</p>
+<p><span class="math inline">\((\alpha, \beta)\)</span> approximation states that, for a set of cluster centers <span class="math inline">\(Q_B\)</span> of cardinality <span class="math inline">\(|\beta K|\)</span>, the following property holds,</p>
+<p><span class="math display">\[
+cost(X, Q_B) &lt; \alpha\;cost(X, Q^*_X)
+\]</span></p>
+<p><span class="citation"><a href="references.html#ref-KMeansplusplus" role="doc-biblioref">Arthur and Vassilvitskii</a> (<a href="references.html#ref-KMeansplusplus" role="doc-biblioref">2007</a>)</span> give an efficient algorithm that holds <span class="math inline">\((\alpha, \beta)\)</span> bi-criterian. Traditionally, the algorithm is known as <span class="math inline">\(D^2\)</span> sampling algorithm, which is also given below,</p>
+<hr />
+<p><strong>Algorithm 1</strong>: <span class="math inline">\(D^2\)</span> sampling</p>
+<hr />
+<p><strong>Require:</strong> dataset <span class="math inline">\(X\)</span>, number of clusters <span class="math inline">\(K\)</span>.</p>
+<ol style="list-style-type: decimal">
+<li>Sample <span class="math inline">\(x\)</span> from <span class="math inline">\(X\)</span> uniform randomly or preavailable weights. set <span class="math inline">\(Q_B=\{x\}\)</span></li>
+<li><strong>for</strong> i <span class="math inline">\(\to\)</span> <span class="math inline">\(2, 3, ..., K\)</span> <strong>do</strong>
+sample <span class="math inline">\(x\)</span> from <span class="math inline">\(X\)</span> with probability <span class="math inline">\(p(x) = \frac{d(x, Q_B)^2}{\sum\limits_{x&#39; \in X}d(x&#39;, Q_B)^2}\)</span> and add <span class="math inline">\(x\)</span> to <span class="math inline">\(Q_B\)</span>.</li>
+<li><strong>return</strong> <span class="math inline">\(Q_B\)</span></li>
+</ol>
+<hr />
+<p><span class="citation"><a href="references.html#ref-KMeansplusplus" role="doc-biblioref">Arthur and Vassilvitskii</a> (<a href="references.html#ref-KMeansplusplus" role="doc-biblioref">2007</a>)</span> also show that the following result holds with atleast <span class="math inline">\(\delta\)</span> probability, when <span class="math inline">\(Q^*_B\)</span> is best cluster centers selected by running the <span class="math inline">\(D^2\)</span> sampling algorithm <span class="math inline">\(\log_2\frac{1}{1-\delta}\)</span> times.</p>
+<p><span class="math display">\[
+cost(X, Q^*_B) \le 16(\log_2K+2)cost(X, Q^*_X)
+\]</span></p>
+</div>
+<div id="bounding-sensitivity" class="section level3" number="3.3.3">
+<h3><span class="header-section-number">3.3.3</span> Bounding sensitivity</h3>
+<p>Now, the final Lemma combines all the concepts we have seen thus far and gives a tighter bound on sensitivity <span class="math inline">\(s(x)\)</span>.</p>
+<p>For each point <span class="math inline">\(x \in X\)</span>, we define a set of points <span class="math inline">\(X_x\)</span> that share a common cluster center <span class="math inline">\(b_x \in Q^*_B\)</span>, then the sensitivity <span class="math inline">\(\sigma(x)\)</span> is bounded by,</p>
+<span class="math display">\[\begin{aligned}
+\bar{c}_B &amp;= \frac{1}{n}\sum\limits_{x \in X}d(x, b_x)\\
+s(x) &amp;= \frac{2 \alpha\;d(x, b_x)^2}{\bar{c}_B} + \frac{4\alpha\;\sum\limits_{x \in X_x}d(x, b_x)}{|X_x|\bar{c}_B} + \frac{4n}{|X_x|}\\
+S &amp;= 6\alpha + 4K
+\end{aligned}\]</span>
+<p>This result also holds for any <span class="math inline">\(Q \in \mathcal{Q}\)</span>. Please refer to <span class="citation"><a href="references.html#ref-bachem2017practical" role="doc-biblioref">Bachem, Lucic, and Krause</a> (<a href="references.html#ref-bachem2017practical" role="doc-biblioref">2017</a>)</span> for the proof and subtle details.</p>
+</div>
+<div id="algorithm-to-create-kmeans-coreset" class="section level3" number="3.3.4">
+<h3><span class="header-section-number">3.3.4</span> Algorithm to create KMeans coreset</h3>
+<p>Now, combining all the steps, algorithm to generate KMeans clustering can be given as the following,</p>
+<hr />
+<p><strong>Algorithm 2</strong>: Coreset construction for KMeans clustering</p>
+<hr />
+<p><strong>Require:</strong> dataset <span class="math inline">\(X\)</span>, number of clusters <span class="math inline">\(K\)</span>.</p>
+<ol style="list-style-type: decimal">
+<li>Run <span class="math inline">\(D^2\)</span> algorithm multiple times on the original dataset <span class="math inline">\(X\)</span> to get <span class="math inline">\(Q^*_B\)</span>.</li>
+<li>calculate sensitivity scores <span class="math inline">\(s(x)\)</span> and effectively <span class="math inline">\(S\)</span></li>
+<li>calculate probability distribution <span class="math inline">\(q(x) = \frac{s(x)}{nS}\)</span></li>
+<li>sample a set of points <span class="math inline">\(C\)</span> from <span class="math inline">\(X\)</span> using <span class="math inline">\(q(x)\)</span> til the coreset property is satisfied.</li>
+<li>Run Weighted KMeans algorithm on <span class="math inline">\(C\)</span> considering the weights <span class="math inline">\(\mu_C(x) = \frac{1}{q(x)}\)</span> (not <span class="math inline">\(\frac{1}{nq(x)}\)</span> because <span class="math inline">\(n\)</span> will be anyway considered in the average cost)</li>
+<li>Resultant cluster centers set <span class="math inline">\(Q^*_C\)</span> is an approximated set of cluster centers theoretically closer to <span class="math inline">\(Q^*_X\)</span>.</li>
+</ol>
+<hr />
+<p>In the next chapter, we will actually implement the importance sampling in coresets for KMeans clustering step by step.</p>
 
+</div>
 </div>
 </div>
             </section>

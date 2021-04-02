@@ -5,5 +5,9 @@ coresets-for-kmeans-theory
 problem-formulation
 uniform-sampling
 importance-sampling
+sensitivity
+rough-approximation
+bounding-sensitivity
+algorithm-to-create-kmeans-coreset
 coresets-for-kmeans-practical
 pseudo-data-with-4-clusters
