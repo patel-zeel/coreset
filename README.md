@@ -1,6 +1,6 @@
 # Bookdown book report
 
-An interactive report with intuitive theory and code is hosted here.
+An interactive report with intuitive theory and code is hosted here (work under process though KMeans algorithm is implemented fully). Please use [Discussions](https://github.com/patel-zeel/coreset/discussions) tab for communication. 
 
 **[https://patel-zeel.github.io/coreset/](https://patel-zeel.github.io/coreset/)**
 
