@@ -52,7 +52,7 @@ plt.xlabel('$x_1$');plt.ylabel('$x_2$');
 plot_essentials()
 ```
 
-We run the KMeans algorithm on full dataset to calculate $cost(X, Q^*_X)$. Note that, in practice, this is infeasible because of superlinear time-complexity, but, we perform this step to have a comparison between $cost(X, Q^*_X)$ and $cost(X, Q^*_C)$.
+We run the KMeans algorithm on the full dataset to calculate $cost(X, Q^*_X)$. Note that, in practice, this is infeasible because of superlinear time-complexity, but we perform this step to have a comparison between $cost(X, Q^*_X)$ and $cost(X, Q^*_C)$.
 
 ```{python}
 full_model = KMeans(n_clusters=K, random_state=0)
@@ -71,7 +71,7 @@ plt.title('Optimal cluster centers on the original dataset');
 plot_essentials()
 ```
 
-Next step is running the $D^2$ sampling algorithm on the full dataset to get the approximate centers $Q^*_B$. To ensure that $(\alpha, \beta)$ criterion holds with probability $0.9$, we need to run $D^2$ sampling $\log_2\left(\frac{1}{1-0.9}\right) \approx 4$ times and select the best clustering. The best clusturing is defined as minimum value of $cost(X,Q^*_B)$.
+The next step is running the $D^2$ sampling algorithm on the full dataset to get the approximate centers $Q^*_B$. To ensure that $(\alpha, \beta)$ criterion holds with probability $0.9$, we need to run $D^2$ sampling $\log_2\left(\frac{1}{1-0.9}\right) \approx 4$ times and select the best clustering (least cost).
 
 ```{python}
 cost_QB = np.inf
@@ -111,7 +111,7 @@ plt.xlabel('$x_1$');plt.ylabel('$x_2$');
 plot_essentials()
 ```
 
-Now, we will perform the importance sampling to select the coreset points. Before that, following are the essential variables need to be computed to calculate sensitivity and probability for the importance sampling.
+Now, we will perform the importance sampling to select the coreset points. The following are the essential variables that we need to compute to calculate sensitivity and probability for the importance sampling.
 
 ```{python}
 B_y = cdist(c4X, Q_B).argmin(axis=1); # Cluster labels according to Q_B
@@ -155,7 +155,7 @@ Cw = 1/q_x[C_idx] # Corresponding weights
 ```
 
 Now, we can run the Weighted KMeans algorithm @abras2005weighted to get unbiased cluster centers $Q^*_C$.
-After that, we can visually see the minimum number of samples for which the coreset property holds (when $Q^*_C$ becomes a good approximation for $Q^*_X$ according to definition of coresets).
+After that, we can visually see the minimum number of samples for which the coreset property holds (when $Q^*_C$ becomes a good approximation for $Q^*_X$ according to the definition of coresets).
 
 ```{python}
 cost_QC = [] # cost(X, Q_C)
@@ -173,13 +173,13 @@ plt.xlabel('Number of coreset points');plt.ylabel('$\\frac{cost(X, Q_C)}{cost(X,
 plot_essentials()
 ```
 
-We see that coreset property holds at a substantially smaller number of points. However, number of coreset points do not depend on number of datapoints $N$, but it depends on number of clusters $K$, dimension of data $d$, $\varepsilon$ and minimum probability $\delta$ for coreset. The upper bound defined by @bachem2017practical suggests drawing nearly 2000 points for our current settings, but we can see that, in practice, coreset property holds with much lesser number of coreset points. Theoretical bound is given as the following,
+We see that the coreset property holds at a substantially smaller number of points. However, the number of coreset points does not depend on the number of data-points $N$, but it depends on the number of clusters $K$, dimension of data $d$, $\varepsilon$ and minimum probability $\delta$ for coreset. The upper bound defined by @bachem2017practical suggests drawing nearly 2000 points for our current settings, but we can see that, in practice, coreset property holds with a much lesser number of coreset points. Theoretical bound is given as the following,
 
 $$
 \text{Number of coreset points } m = \Omega\left( \frac{dK^3\log(K)+K^2\log(\frac{1}{\delta})}{\varepsilon^2}\right) 
 $$
 
-We will draw a coreset with size 20% of the original dataset and fix it as the coreset for further analysis.
+We will draw a coreset with a 20% size of the original dataset and fix it as the coreset for further analysis.
 
 ```{python}
 np.random.seed(0)
@@ -221,12 +221,12 @@ $cost(X, Q^*_X)=$ `r round(py$cost_QX)`
 $cost(X, Q^*_C)=$ `r round(py$cost_QC)`    
 $R=\frac{cost(X, Q^*_C)}{cost(X, Q^*_X)}=$ `r round(py$cost_QC/py$cost_QX, 3)` $< \frac{1+\varepsilon}{1-\varepsilon}=$ `r round((1+py$epsilon)/(1-py$epsilon), 3)`
 
-We can see that $Q^*_C$ is able to approximate the $Q^*_X$ efficiently as per our requirement of $\varepsilon$-coreset. 
+We can see that $Q^*_C$ can approximate the $Q^*_X$ efficiently as per our requirement of $\varepsilon$-coreset. 
 
 
 ## Pseudo-dataset with 100 clusters and 10000 data-points
 
-Let us try the coreset construction on a bigger dataset. First we will generate a dataset with 100 clusters and 10000 points. I have hidden the code for better visuals and to avoid redundancy.
+Let us try the coreset construction on a more extensive dataset. First, we will generate a dataset with 100 clusters and 10000 points. I have hidden the code for better visuals and to avoid redundancy.
 
 ```{python echo=FALSE}
 N = 10000
@@ -344,7 +344,7 @@ plt.title('cost comparison with 10\% coreset size');
 plot_essentials()
 ```
 
-We see that $cost(C,Q)$ starts satisfying coreset property well below 10% of the total dataset. Let us fix coreset size at 10% and check the effect on coreset property.
+We see that $cost(C, Q)$ starts satisfying coreset property well below 10% of the total dataset. Let us fix the coreset size at 10% of the entire dataset and check the effect on the coreset property.
 
 ```{python echo=FALSE}
 np.random.seed(0)
@@ -370,6 +370,6 @@ $cost(X, Q^*_X)=$ `r round(py$cost_QX)`
 $cost(X, Q^*_C)=$ `r round(py$cost_QC)`    
 $R=\frac{cost(X, Q^*_C)}{cost(X, Q^*_X)}=$ `r round(py$cost_QC/py$cost_QX, 3)` $< \frac{1+\varepsilon}{1-\varepsilon}=$ `r round((1+py$epsilon)/(1-py$epsilon), 3)`
 
-We can see that $Q^*_C$ is able to approximate the $Q^*_X$ efficiently as per our requirement of $\varepsilon$-coreset. 
+We can see that $Q^*_C$ can approximate the $Q^*_X$ efficiently as per our requirement of $\varepsilon$-coreset. 
 
 `r if (knitr::is_html_output()) '# References {-}'`

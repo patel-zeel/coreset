@@ -1,6 +1,6 @@
 # Coresets for KMeans (Theory)
 
-Motive behind this chapter is to highlight the key ideas behind KMeans coreset construction and to give intuitive proofs for some of the ideas. For more details, please refer to @bachem2017practical.
+This chapter's motive is to highlight the key ideas behind KMeans coreset construction and give intuitive proofs for some of the ideas. For more details, please refer to @bachem2017practical.
 
 ## Problem formulation
 
@@ -39,19 +39,19 @@ $$
 |cost(X, Q) - cost(C,Q)| \le \varepsilon cost(X,Q)
 $$
 
-There is a consequence result of the above theorem which is more useful in practice. If $Q^*_X$ is optimal cluster centers obtained by executing KMeans on full dataset $X$ and $Q^*_C$ is optimal cluster centers obtained by executing KMeans on coreset $C$, the following property holds with high probability,
+There is a derived result of the above theorem, which is more useful in practice. If $Q^*_X$ is optimal cluster centers obtained by executing KMeans on full dataset $X$ and $Q^*_C$ is optimal cluster centers obtained by executing KMeans on coreset $C$, the following property holds with high probability,
 
 $$
 cost(X,Q^*_X) \le cost(X, Q^*_C) \le \frac{1+\varepsilon}{1-\varepsilon}cost(X, Q^*_X)
 $$
 
-Note that, in practice, computing $Q^*_X$ is not feasible thus we are willing bear a higher cost upto $\frac{1+\varepsilon}{1-\varepsilon}cost(X, Q^*_X)$ at benefit of reduced computational time. This property ensures that cost on the coreset stays within the defined upper bound without actually need of computing $Q^*_X$ (which is obvious but just being explicit).
+Note that, in practice, computing $Q^*_X$ is not feasible. Thus we are willing to bear a higher cost up to $\frac{1+\varepsilon}{1-\varepsilon}cost(X, Q^*_X)$ at the benefit of reduced computational time. This property ensures that cost on the coreset stays within the defined upper bound without actually computing $Q^*_X$ (which is obvious but just being explicit).
 
-Now, the question is how to construct the coreset $C$ such that above properties hold with **high probability** (yes, nothing is deterministic in the probabilistic world). Let us try a naive method first.
+We need to find a method to construct the coreset $C$ such that the above properties hold with **high probability** (yes, nothing is deterministic in the probabilistic world). Let us try a naive method first.
 
 ## Uniform sampling
 
-An immediate idea for coreset construction is uniform random sampling. We will mathematically see if a coreset constructed by uniform random sampling is useful or not. First we need to verify if $cost(C, Q)$ is an unbiased estimator of $cost(X, Q)$. Intuitively, we can say that, over multiple choices of coresets $C$, we expect value of $cost(C, Q)$ to stay closer to $cost(X, Q)$ and if we take $\mathbb{E}_C(cost(C,Q))$ over a long run, it should converge to $cost(X, Q)$. Now, let us prove the same as following,
+The first idea that comes to mind for coreset construction is uniform random sampling. We will mathematically see if a coreset constructed by uniform random sampling is useful or not. First we need to verify if $cost(C, Q)$ is an unbiased estimator of $cost(X, Q)$. Intuitively, we can say that, over multiple choices of coresets $C$, we expect value of $cost(C, Q)$ to stay closer to $cost(X, Q)$ and if we take $\mathbb{E}_C(cost(C,Q))$ over a long run, it should converge to $cost(X, Q)$. Now, let us prove the same as following,
 
 \begin{aligned}
 \mathbb{E}_C(cost(C, Q)) &= \mathbb{E}_C\left(\frac{1}{m}\sum\limits_{c \in C}f_Q(c)\right)\\
@@ -102,7 +102,7 @@ plt.bar(delta, m, 0.05);
 plt.vlines(delta[2], *plt.ylim(), color='r', label='$\delta_{threshold}, \delta<\delta_{threshold}$');
 #plt.text(0.6, 6500, );
 #plt.text(0.6, 2500, );
-plt.fill_between(delta[:3], m[2], m[2]+plt.ylim()[1], alpha=0.4, label='$m \ge \\frac{n}{\\varepsilon^2\delta}$ (accepted)');
+plt.fill_between([0,delta[2]], m[2], m[2]+plt.ylim()[1], alpha=0.4, label='$m \ge \\frac{n}{\\varepsilon^2\delta}$ (accepted)');
 plt.fill_between(delta[2:], m[2]-plt.ylim()[0], 0, alpha=0.4, label='$m \le \\frac{n}{\\varepsilon^2\delta}$ (rejected)');
 plt.hlines(m[2], *plt.xlim(), label='$m = \\frac{n}{\\varepsilon^2\delta}$', color='g');
 plt.xlabel('$\delta$ (1 - probability of coresets)');
@@ -118,7 +118,7 @@ plt.close();
 
 Looking at the numbers, to construct the coreset with atleast 70% probability for dataset of size $n=100$, we need to sample atleast $m=\frac{n}{\varepsilon^2\delta}=4000$ points. This is clearly not useful. Also, note that $m \propto n$, so, coreset size will increase as $n$ increases maintaining $m>>n$. 
 
-Thus, this method fails to construct a coreset. One may want to have a look at an intuitive example given in @bachem2017practical. We need to change our sampling strategy to construct better coresets. Let us move to importance sampling now.
+Thus, this method fails to construct a coreset. One may want to have a look at an intuitive example given in @bachem2017practical. We need to change our sampling strategy to build better coresets. Let us move to importance sampling now.
 
 
 ## Importance sampling
@@ -144,7 +144,7 @@ Let us find out a value of $\mu_C(c)$ such that $\mathbb{E}_C(cost(C,Q))$ conver
 &= cost(X, Q)
 \end{aligned}
 
-Now, we shall calculate the $Var(C(C,Q))$ and find the conditions that minimize it.
+Now, we shall calculate the $Var(C(C, Q))$ and find the conditions that minimize it.
 
 \begin{aligned}
 Var(cost(C,Q)) &= Var\left(\frac{1}{m}\sum\limits_{c\in C}\mu_C(c)f_Q(c)\right)\\
@@ -157,13 +157,13 @@ Var(cost(C,Q)) &= Var\left(\frac{1}{m}\sum\limits_{c\in C}\mu_C(c)f_Q(c)\right)\
 
 If we choose $q(x) = \frac{f_Q(x)}{\sum\limits_{x \in X}f_Q(x)}$, $Var(cost(C,Q)) = 0$. Intuitively it is sensible, because we give more priority to the points that individually contribute more in the total cost ($f_Q(x)$ is high). 
 
-We have done this calculation for a single set of clusters $Q$, but we need to generelize this to any $Q$. Note that currently $q(x)$ depends on $Q$ which should be avoided for generality.
+We have done this calculation for a single set of clusters $Q$, but we need to generalize this to any $Q$. Note that currently, $q(x)$ depends on $Q$, which should be avoided for generality.
 
-To generalize importance sampling further, we need a concept called sensitivity, which is intuitively proportinal to $q(x)$ but is more general and do not depend on any particular $Q$.
+To generalize importance sampling further, we need a concept called sensitivity, which is intuitively proportional to $q(x)$ but is more general and does not depend on any particular $Q$.
 
 ### Sensitivity
 
-Sensitivity $\sigma(x)$ is defined as the following for all $Q, Q \in \mathcal{Q}$, where $\mathcal{Q}$ is the set of all possible cluster centers (really? how to find all possible cluster centers? we do not need to find them. We have other tricks to do that which is currently out of scope for this report. Please refer to @bachem2017practical later). 
+Sensitivity $\sigma(x)$ is defined as the following for all $Q, Q \in \mathcal{Q}$, where $\mathcal{Q}$ is the set of all possible cluster centers (really? How do we find all possible cluster centers? We do not need to find them. We have other tricks to do that which is currently out of scope for this report. Please refer to @bachem2017practical later). 
  
 $$
 \sigma(x) = \sup\limits_{Q \in \mathcal{Q}}\frac{f_Q(x)}{cost(X,Q)}
@@ -175,7 +175,7 @@ $$
 q(x) = \frac{1}{n}\frac{s(x)}{S} = \frac{s(x)}{\sum\limits_{x \in X}s(x)}
 $$
 
-Now, we try to get an estimate of lower bound on $m$. Consider the following function $g_Q(x)$.
+Now, we try to get an estimate of a lower bound on $m$. Consider the following function $g_Q(x)$.
 
 $$
 g_Q(x) = \frac{f_Q(x)}{n\cdot cost(X,Q)}\frac{1}{Sq(x)}
@@ -203,7 +203,7 @@ We can see that, $m \propto S^2$, in case we consider $s(x)=n$ and so effectivel
 
 ### Rough approximation
 
-Using the rough approximation techniques, we can find a theoretically bounded approximation of $cost(X, Q)$ with much lesser computational power. One of the approach used here is known as **$(\alpha, \beta)$ bi-criterion approximation**. 
+Using the rough approximation techniques, we can find a theoretically bounded approximation of $cost(X, Q)$ with much lesser computational power. One of the approaches used here is **$(\alpha, \beta)$ bi-criterion approximation**. 
 
 $(\alpha, \beta)$ approximation states that, for a set of cluster centers $Q_B$ of cardinality $|\beta K|$, the following property holds,
 
@@ -211,7 +211,7 @@ $$
 cost(X, Q_B) < \alpha\;cost(X, Q^*_X)
 $$
 
-@KMeansplusplus give an efficient algorithm that holds $(\alpha, \beta)$ bi-criterian. Traditionally, the algorithm is known as $D^2$ sampling algorithm, which is also given below,
+@KMeansplusplus give an efficient algorithm that holds $(\alpha, \beta)$ bi-criterion. Traditionally, the algorithm is known as the $D^2$ sampling algorithm, which is also given below,
 
 ******
 **Algorithm 1**:  $D^2$ sampling
@@ -226,7 +226,7 @@ $$
 
 ******
 
-@KMeansplusplus also show that the following result holds with atleast $\delta$ probability, when $Q^*_B$ is best cluster centers selected by running the $D^2$ sampling algorithm $\log_2\frac{1}{1-\delta}$ times.
+@KMeansplusplus also shows that the following result holds with at least $\delta$ probability when $Q^*_B$ is best cluster centers selected by running the $D^2$ sampling algorithm $\log_2\frac{1}{1-\delta}$ times.
 
 $$
 cost(X, Q^*_B) \le 16(\log_2K+2)cost(X, Q^*_X)
@@ -250,7 +250,7 @@ This result also holds for any $Q \in \mathcal{Q}$. Please refer to @bachem2017p
 
 ### Algorithm to create KMeans coreset
 
-Now, combining all the steps, algorithm to generate KMeans clustering can be given as the following,
+Now, combining all the steps, the algorithm to generate KMeans clustering can be given as the following,
 
 ******
 **Algorithm 2**:  Coreset construction for KMeans clustering
@@ -261,10 +261,10 @@ Now, combining all the steps, algorithm to generate KMeans clustering can be giv
 1. Run $D^2$ algorithm multiple times on the original dataset $X$ to get $Q^*_B$.
 2. calculate sensitivity scores $s(x)$ and effectively $S$
 3. calculate probability distribution $q(x) = \frac{s(x)}{nS}$
-4. sample a set of points $C$ from $X$ using $q(x)$ til the coreset property is satisfied.
+4. sample a set of points $C$ from $X$ using $q(x)$ until the coreset property is satisfied.
 5. Run Weighted KMeans algorithm on $C$ considering the weights $\mu_C(x) = \frac{1}{q(x)}$ (not $\frac{1}{nq(x)}$ because $n$ will be anyway considered in the average cost)
 6. Resultant cluster centers set $Q^*_C$ is an approximated set of cluster centers theoretically closer to $Q^*_X$.
 
 ******
 
-In the next chapter, we will actually implement the importance sampling in coresets for KMeans clustering step by step.
+In the next chapter, we will implement the importance sampling in coresets for KMeans clustering step by step.
