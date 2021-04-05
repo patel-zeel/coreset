@@ -159,14 +159,23 @@ After that, we can visually see the minimum number of samples for which the core
 
 ```{python}
 cost_QC = [] # cost(X, Q_C)
+cost_QC_biased = []
 for n_points in range(K, C+K):
+  # Unbiased estimate
   tmp_model = KMeans(n_clusters=K, random_state=0);
   tmp_model = tmp_model.fit(c4C[:n_points], sample_weight=Cw[:n_points]);
   Q_C = tmp_model.cluster_centers_
   tmp_cost = np.square(cdist(c4X, Q_C)).min(axis=1).sum()/N
   cost_QC.append(tmp_cost)
-
-plt.plot(range(K, C+K), np.array(cost_QC)/cost_QX, 'o-', markersize=5);
+  # Biased estimate
+  tmp_model_biased = KMeans(n_clusters=K, random_state=0);
+  tmp_model_biased = tmp_model_biased.fit(c4C[:n_points]);
+  Q_C_biased = tmp_model_biased.cluster_centers_
+  tmp_cost_biased = np.square(cdist(c4X, Q_C_biased)).min(axis=1).sum()/N
+  cost_QC_biased.append(tmp_cost_biased)
+  
+plt.plot(range(K, C+K), np.array(cost_QC)/cost_QX, 'o-', markersize=5, label='unbiased ratio');
+plt.plot(range(K, C+K), np.array(cost_QC_biased)/cost_QX, 'o-', markersize=5, label='biased ratio');
 plt.hlines(1, *plt.xlim(), label='$1$');
 plt.hlines(1+3*epsilon, *plt.xlim(), label='$1+3 \\varepsilon $', color='red');
 plt.xlabel('Number of coreset points');plt.ylabel('$\\frac{cost(X, Q_C)}{cost(X, Q_X)}$');
@@ -328,6 +337,7 @@ c4C = c4X[C_idx] # Coreset points
 Cw = 1/q_x[C_idx] # Corresponding weights 
 
 cost_QC = [] # cost(X, Q_C)
+cost_QC_biased = []
 iter_x = list(range(K, C+K))[::50]
 for n_points in iter_x:
   tmp_model = KMeans(n_clusters=K, random_state=0);
@@ -335,8 +345,14 @@ for n_points in iter_x:
   Q_C = tmp_model.cluster_centers_
   tmp_cost = np.square(cdist(c4X, Q_C)).min(axis=1).sum()/N
   cost_QC.append(tmp_cost)
+  tmp_model = KMeans(n_clusters=K, random_state=0);
+  tmp_model = tmp_model.fit(c4C[:n_points],);
+  Q_C_biased = tmp_model.cluster_centers_
+  tmp_cost = np.square(cdist(c4X, Q_C_biased)).min(axis=1).sum()/N
+  cost_QC_biased.append(tmp_cost)
 
-plt.plot(iter_x, np.array(cost_QC)/cost_QX, 'o-', markersize=5);
+plt.plot(iter_x, np.array(cost_QC)/cost_QX, 'o-', markersize=5, label='unbiased ratio');
+plt.plot(iter_x, np.array(cost_QC_biased)/cost_QX, 'o-', markersize=5, label='biased ratio');
 plt.hlines(1, *plt.xlim(), label='$1$');
 plt.hlines(1+3*epsilon, *plt.xlim(), label='$1+3 \\varepsilon $', color='red');
 plt.xlabel('Number of coreset points');plt.ylabel('$\\frac{cost(X, Q_C)}{cost(X, Q_X)}$');
