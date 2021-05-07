@@ -1,4 +1,4 @@
-# Coresets for KMeans (Practical)
+# Coresets for KMeans (Practical) {#KMP}
 
 In this practical, we will try to create an $\varepsilon$-coreset ($\varepsilon=0.3$) for KMeans clustering.
 
@@ -386,6 +386,4 @@ $cost(X, Q^*_X)=$ `r round(py$cost_QX)`
 $cost(X, Q^*_C)=$ `r round(py$cost_QC)`    
 $R=\frac{cost(X, Q^*_C)}{cost(X, Q^*_X)}=$ `r round(py$cost_QC/py$cost_QX, 3)` $< \frac{1+\varepsilon}{1-\varepsilon}=$ `r round((1+py$epsilon)/(1-py$epsilon), 3)`
 
-We can see that $Q^*_C$ can approximate the $Q^*_X$ efficiently as per our requirement of $\varepsilon$-coreset. 
-
-`r if (knitr::is_html_output()) '# References {-}'`
+We can see that $Q^*_C$ can approximate the $Q^*_X$ efficiently as per our requirement of $\varepsilon$-coreset.

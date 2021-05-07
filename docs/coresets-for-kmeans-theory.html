@@ -24,7 +24,7 @@
 <meta name="author" content="Zeel B Patel" />
 
 
-<meta name="date" content="2021-04-05" />
+<meta name="date" content="2021-05-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="coresets.html"/>
-<link rel="next" href="coresets-for-kmeans-practical.html"/>
+<link rel="next" href="KMP.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -151,12 +151,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3.4" data-path="coresets-for-kmeans-theory.html"><a href="coresets-for-kmeans-theory.html#algorithm-to-create-kmeans-coreset"><i class="fa fa-check"></i><b>3.3.4</b> Algorithm to create KMeans coreset</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="coresets-for-kmeans-practical.html"><a href="coresets-for-kmeans-practical.html"><i class="fa fa-check"></i><b>4</b> Coresets for KMeans (Practical)</a>
+<li class="chapter" data-level="4" data-path="KMP.html"><a href="KMP.html"><i class="fa fa-check"></i><b>4</b> Coresets for KMeans (Practical)</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="coresets-for-kmeans-practical.html"><a href="coresets-for-kmeans-practical.html#pseudo-data-with-4-clusters"><i class="fa fa-check"></i><b>4.1</b> Pseudo-data with 4 clusters</a></li>
-<li class="chapter" data-level="4.2" data-path="coresets-for-kmeans-practical.html"><a href="coresets-for-kmeans-practical.html#pseudo-dataset-with-100-clusters-and-10000-data-points"><i class="fa fa-check"></i><b>4.2</b> Pseudo-dataset with 100 clusters and 10000 data-points</a></li>
+<li class="chapter" data-level="4.1" data-path="KMP.html"><a href="KMP.html#pseudo-data-with-4-clusters"><i class="fa fa-check"></i><b>4.1</b> Pseudo-data with 4 clusters</a></li>
+<li class="chapter" data-level="4.2" data-path="KMP.html"><a href="KMP.html#pseudo-dataset-with-100-clusters-and-10000-data-points"><i class="fa fa-check"></i><b>4.2</b> Pseudo-dataset with 100 clusters and 10000 data-points</a></li>
 </ul></li>
+<li class="chapter" data-level="5" data-path="coresets-for-linear-regression.html"><a href="coresets-for-linear-regression.html"><i class="fa fa-check"></i><b>5</b> Coresets for Linear Regression</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="6" data-path="Dsqr.html"><a href="Dsqr.html"><i class="fa fa-check"></i><b>6</b> Appendix 1: D<span class="math inline">\(^2\)</span> Sampling</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -178,7 +180,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="coresets-for-kmeans-theory" class="section level1" number="3">
 <h1><span class="header-section-number">Coresets: 3</span> Coresets for KMeans (Theory)</h1>
-<p>This chapter’s motive is to highlight the key ideas behind KMeans coreset construction and give intuitive proofs for some of the ideas. For more details, please refer to <span class="citation"><a href="references.html#ref-bachem2017practical" role="doc-biblioref">Bachem, Lucic, and Krause</a> (<a href="references.html#ref-bachem2017practical" role="doc-biblioref">2017</a>)</span>.</p>
+<p>This chapter’s motive is to highlight the key ideas behind KMeans coreset construction and give intuitive proofs for some of the ideas. For more details, please refer to <span class="citation"><a href="Dsqr.html#ref-bachem2017practical" role="doc-biblioref">Bachem, Lucic, and Krause</a> (<a href="Dsqr.html#ref-bachem2017practical" role="doc-biblioref">2017</a>)</span>.</p>
 <div id="problem-formulation" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> Problem formulation</h2>
 <p>In the KMeans clustering problem, we aim to cluster the dataset <span class="math inline">\(X \in R^d\)</span> of cardinality <span class="math inline">\(n\)</span> in <span class="math inline">\(K\)</span> seperate clusters. If <span class="math inline">\(Q\)</span> is a set of cluster centers for KMeans in this problem, we can define the cost as the following,</p>
@@ -226,9 +228,9 @@ Substituting <span class="math inline">\(k\sqrt{\frac{n}{m}} = \varepsilon \to k
 \delta = P\left(|cost(C, Q) - cost(X, Q)| \ge \varepsilon \cdot cost(X,Q)\right) \le \frac{n}{\varepsilon^2m}\\
 \]</span></p>
 <p>The above expression suggests that if we are interested in <span class="math inline">\(\varepsilon\)</span>-coreset with atleast (<span class="math inline">\(1-\delta\)</span>) probability, we need to discard all <span class="math inline">\(m \le \frac{n}{\varepsilon^2\delta}\)</span>. Thus we have <span class="math inline">\(m \ge \frac{n}{\varepsilon^2\delta}\)</span>. The same phenomenon is illustrated in the below plot,</p>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>Looking at the numbers, to construct the coreset with atleast 70% probability for dataset of size <span class="math inline">\(n=100\)</span>, we need to sample atleast <span class="math inline">\(m=\frac{n}{\varepsilon^2\delta}=4000\)</span> points. This is clearly not useful. Also, note that <span class="math inline">\(m \propto n\)</span>, so, coreset size will increase as <span class="math inline">\(n\)</span> increases maintaining <span class="math inline">\(m&gt;&gt;n\)</span>.</p>
-<p>Thus, this method fails to construct a coreset. One may want to have a look at an intuitive example given in <span class="citation"><a href="references.html#ref-bachem2017practical" role="doc-biblioref">Bachem, Lucic, and Krause</a> (<a href="references.html#ref-bachem2017practical" role="doc-biblioref">2017</a>)</span>. We need to change our sampling strategy to build better coresets. Let us move to importance sampling now.</p>
+<p>Thus, this method fails to construct a coreset. One may want to have a look at an intuitive example given in <span class="citation"><a href="Dsqr.html#ref-bachem2017practical" role="doc-biblioref">Bachem, Lucic, and Krause</a> (<a href="Dsqr.html#ref-bachem2017practical" role="doc-biblioref">2017</a>)</span>. We need to change our sampling strategy to build better coresets. Let us move to importance sampling now.</p>
 </div>
 <div id="importance-sampling" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> Importance sampling</h2>
@@ -262,7 +264,7 @@ Var(cost(C,Q)) &amp;= Var\left(\frac{1}{m}\sum\limits_{c\in C}\mu_C(c)f_Q(c)\rig
 <p>To generalize importance sampling further, we need a concept called sensitivity, which is intuitively proportional to <span class="math inline">\(q(x)\)</span> but is more general and does not depend on any particular <span class="math inline">\(Q\)</span>.</p>
 <div id="sensitivity" class="section level3" number="3.3.1">
 <h3><span class="header-section-number">3.3.1</span> Sensitivity</h3>
-<p>Sensitivity <span class="math inline">\(\sigma(x)\)</span> is defined as the following for all <span class="math inline">\(Q, Q \in \mathcal{Q}\)</span>, where <span class="math inline">\(\mathcal{Q}\)</span> is the set of all possible cluster centers (really? How do we find all possible cluster centers? We do not need to find them. We have other tricks to do that which is currently out of scope for this report. Please refer to <span class="citation"><a href="references.html#ref-bachem2017practical" role="doc-biblioref">Bachem, Lucic, and Krause</a> (<a href="references.html#ref-bachem2017practical" role="doc-biblioref">2017</a>)</span> later).</p>
+<p>Sensitivity <span class="math inline">\(\sigma(x)\)</span> is defined as the following for all <span class="math inline">\(Q, Q \in \mathcal{Q}\)</span>, where <span class="math inline">\(\mathcal{Q}\)</span> is the set of all possible cluster centers (really? How do we find all possible cluster centers? We do not need to find them. We have other tricks to do that which is currently out of scope for this report. Please refer to <span class="citation"><a href="Dsqr.html#ref-bachem2017practical" role="doc-biblioref">Bachem, Lucic, and Krause</a> (<a href="Dsqr.html#ref-bachem2017practical" role="doc-biblioref">2017</a>)</span> later).</p>
 <p><span class="math display">\[
 \sigma(x) = \sup\limits_{Q \in \mathcal{Q}}\frac{f_Q(x)}{cost(X,Q)}
 \]</span></p>
@@ -295,19 +297,8 @@ m \ge \frac{S^2}{2\varepsilon^2}\log_e\frac{2}{\delta}
 <p><span class="math display">\[
 cost(X, Q_B) &lt; \alpha\;cost(X, Q^*_X)
 \]</span></p>
-<p><span class="citation"><a href="references.html#ref-KMeansplusplus" role="doc-biblioref">Arthur and Vassilvitskii</a> (<a href="references.html#ref-KMeansplusplus" role="doc-biblioref">2007</a>)</span> give an efficient algorithm that holds <span class="math inline">\((\alpha, \beta)\)</span> bi-criterion. Traditionally, the algorithm is known as the <span class="math inline">\(D^2\)</span> sampling algorithm, which is also given below,</p>
-<hr />
-<p><strong>Algorithm 1</strong>: <span class="math inline">\(D^2\)</span> sampling</p>
-<hr />
-<p><strong>Require:</strong> dataset <span class="math inline">\(X\)</span>, number of clusters <span class="math inline">\(K\)</span>.</p>
-<ol style="list-style-type: decimal">
-<li>Sample <span class="math inline">\(x\)</span> from <span class="math inline">\(X\)</span> uniform randomly or preavailable weights. set <span class="math inline">\(Q_B=\{x\}\)</span></li>
-<li><strong>for</strong> i <span class="math inline">\(\to\)</span> <span class="math inline">\(2, 3, ..., K\)</span> <strong>do</strong>
-sample <span class="math inline">\(x\)</span> from <span class="math inline">\(X\)</span> with probability <span class="math inline">\(p(x) = \frac{d(x, Q_B)^2}{\sum\limits_{x&#39; \in X}d(x&#39;, Q_B)^2}\)</span> and add <span class="math inline">\(x\)</span> to <span class="math inline">\(Q_B\)</span>.</li>
-<li><strong>return</strong> <span class="math inline">\(Q_B\)</span></li>
-</ol>
-<hr />
-<p><span class="citation"><a href="references.html#ref-KMeansplusplus" role="doc-biblioref">Arthur and Vassilvitskii</a> (<a href="references.html#ref-KMeansplusplus" role="doc-biblioref">2007</a>)</span> also shows that the following result holds with at least <span class="math inline">\(\delta\)</span> probability when <span class="math inline">\(Q^*_B\)</span> is best cluster centers selected by running the <span class="math inline">\(D^2\)</span> sampling algorithm <span class="math inline">\(\log_2\frac{1}{1-\delta}\)</span> times.</p>
+<p><span class="citation"><a href="Dsqr.html#ref-KMeansplusplus" role="doc-biblioref">Arthur and Vassilvitskii</a> (<a href="Dsqr.html#ref-KMeansplusplus" role="doc-biblioref">2007</a>)</span> propose an efficient algorithm that holds <span class="math inline">\((\alpha, \beta)\)</span> bi-criterion. Traditionally, the algorithm is known as the <span class="math inline">\(D^2\)</span> sampling algorithm, which is given in Section <a href="Dsqr.html#Dsqr">6</a>,</p>
+<p><span class="citation"><a href="Dsqr.html#ref-KMeansplusplus" role="doc-biblioref">Arthur and Vassilvitskii</a> (<a href="Dsqr.html#ref-KMeansplusplus" role="doc-biblioref">2007</a>)</span> also shows that the following result holds with at least <span class="math inline">\(\delta\)</span> probability when <span class="math inline">\(Q^*_B\)</span> is best cluster centers selected by running the <span class="math inline">\(D^2\)</span> sampling algorithm <span class="math inline">\(\log_2\frac{1}{1-\delta}\)</span> times.</p>
 <p><span class="math display">\[
 cost(X, Q^*_B) \le 16(\log_2K+2)cost(X, Q^*_X)
 \]</span></p>
@@ -321,7 +312,7 @@ cost(X, Q^*_B) \le 16(\log_2K+2)cost(X, Q^*_X)
 s(x) &amp;= \frac{2 \alpha\;d(x, b_x)^2}{\bar{c}_B} + \frac{4\alpha\;\sum\limits_{x \in X_x}d(x, b_x)}{|X_x|\bar{c}_B} + \frac{4n}{|X_x|}\\
 S &amp;= 6\alpha + 4K
 \end{aligned}\]</span>
-<p>This result also holds for any <span class="math inline">\(Q \in \mathcal{Q}\)</span>. Please refer to <span class="citation"><a href="references.html#ref-bachem2017practical" role="doc-biblioref">Bachem, Lucic, and Krause</a> (<a href="references.html#ref-bachem2017practical" role="doc-biblioref">2017</a>)</span> for the proof and subtle details.</p>
+<p>This result also holds for any <span class="math inline">\(Q \in \mathcal{Q}\)</span>. Please refer to <span class="citation"><a href="Dsqr.html#ref-bachem2017practical" role="doc-biblioref">Bachem, Lucic, and Krause</a> (<a href="Dsqr.html#ref-bachem2017practical" role="doc-biblioref">2017</a>)</span> for the proof and subtle details.</p>
 </div>
 <div id="algorithm-to-create-kmeans-coreset" class="section level3" number="3.3.4">
 <h3><span class="header-section-number">3.3.4</span> Algorithm to create KMeans coreset</h3>
@@ -350,7 +341,7 @@ S &amp;= 6\alpha + 4K
         </div>
       </div>
 <a href="coresets.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="coresets-for-kmeans-practical.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="KMP.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

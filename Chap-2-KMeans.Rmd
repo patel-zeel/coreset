@@ -211,20 +211,7 @@ $$
 cost(X, Q_B) < \alpha\;cost(X, Q^*_X)
 $$
 
-@KMeansplusplus give an efficient algorithm that holds $(\alpha, \beta)$ bi-criterion. Traditionally, the algorithm is known as the $D^2$ sampling algorithm, which is also given below,
-
-******
-**Algorithm 1**:  $D^2$ sampling
-
-******
-**Require:** dataset $X$, number of clusters $K$.
-
-1.  Sample $x$ from $X$ uniform randomly or preavailable weights. set $Q_B=\{x\}$
-2.  **for** i $\to$ $2, 3, ..., K$ **do**
-      sample $x$ from $X$ with probability $p(x) = \frac{d(x, Q_B)^2}{\sum\limits_{x' \in X}d(x', Q_B)^2}$ and add $x$ to $Q_B$.
-3. **return** $Q_B$
-
-******
+@KMeansplusplus propose an efficient algorithm that holds $(\alpha, \beta)$ bi-criterion. Traditionally, the algorithm is known as the $D^2$ sampling algorithm, which is given in Section \@ref(Dsqr),
 
 @KMeansplusplus also shows that the following result holds with at least $\delta$ probability when $Q^*_B$ is best cluster centers selected by running the $D^2$ sampling algorithm $\log_2\frac{1}{1-\delta}$ times.
 

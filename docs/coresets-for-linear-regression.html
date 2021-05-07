@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>References | IN792: Coresets</title>
-  <meta name="description" content="References | IN792: Coresets" />
+  <title>Coresets: 5 Coresets for Linear Regression | IN792: Coresets</title>
+  <meta name="description" content="Coresets: 5 Coresets for Linear Regression | IN792: Coresets" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="References | IN792: Coresets" />
+  <meta property="og:title" content="Coresets: 5 Coresets for Linear Regression | IN792: Coresets" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="References | IN792: Coresets" />
+  <meta name="twitter:title" content="Coresets: 5 Coresets for Linear Regression | IN792: Coresets" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="coresets-for-linear-regression.html"/>
-<link rel="next" href="Dsqr.html"/>
+<link rel="prev" href="KMP.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -178,17 +178,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1 unnumbered">
-<h1>References</h1>
-
+<div id="coresets-for-linear-regression" class="section level1" number="5">
+<h1><span class="header-section-number">Coresets: 5</span> Coresets for Linear Regression</h1>
+<p>We will see one of the methods to select coreset points for linear regression. We calculate “Ridge leverage scores” to create a sampling distribution for coreset selection. The process to calculate sampling distribution <span class="math inline">\(p(X)\)</span> is as the following.</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(X_* = \begin{bmatrix}X \\ \lambda I_d\end{bmatrix}\)</span></li>
+<li><span class="math inline">\(U \Sigma V^T = X_*\)</span></li>
+<li><span class="math inline">\(\mathbf{p}(X) = ||U(0:n, :)||_2^2\)</span></li>
+</ol>
+<p>Now, let us implement this in a python function.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="coresets-for-linear-regression.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_proba(x, lmd):</span>
+<span id="cb15-2"><a href="coresets-for-linear-regression.html#cb15-2" aria-hidden="true" tabindex="-1"></a>    x_list <span class="op">=</span> [np.ones(x.shape[<span class="dv">0</span>]), x.ravel()]</span>
+<span id="cb15-3"><a href="coresets-for-linear-regression.html#cb15-3" aria-hidden="true" tabindex="-1"></a>    x_extra <span class="op">=</span> np.vstack(x_list).T</span>
+<span id="cb15-4"><a href="coresets-for-linear-regression.html#cb15-4" aria-hidden="true" tabindex="-1"></a>    A <span class="op">=</span> np.vstack([x_extra, np.eye(x_extra.shape[<span class="dv">1</span>])<span class="op">*</span>np.sqrt(lmd)])</span>
+<span id="cb15-5"><a href="coresets-for-linear-regression.html#cb15-5" aria-hidden="true" tabindex="-1"></a>    U, S, V <span class="op">=</span> np.linalg.svd(A, full_matrices<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb15-6"><a href="coresets-for-linear-regression.html#cb15-6" aria-hidden="true" tabindex="-1"></a>    U1 <span class="op">=</span> U[:x.shape[<span class="dv">0</span>], :]</span>
+<span id="cb15-7"><a href="coresets-for-linear-regression.html#cb15-7" aria-hidden="true" tabindex="-1"></a>    proba <span class="op">=</span> np.square(U1).<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)<span class="op">/</span>np.square(U1).<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>).<span class="bu">sum</span>()</span>
+<span id="cb15-8"><a href="coresets-for-linear-regression.html#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> proba</span></code></pre></div>
+<p>We will sample the coresets for</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="coresets-for-linear-regression.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="Dsqr.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="KMP.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
