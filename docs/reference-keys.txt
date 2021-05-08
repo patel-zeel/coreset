@@ -1,7 +1,7 @@
 preface
 coresets
 what-are-coresets
-coresets-for-kmeans-theory
+KM
 problem-formulation
 uniform-sampling
 importance-sampling
@@ -13,4 +13,11 @@ KMP
 pseudo-data-with-4-clusters
 pseudo-dataset-with-100-clusters-and-10000-data-points
 coresets-for-linear-regression
+coresets-for-linear-regression-order1
+coresets-for-linear-regression-order5
+checking-uncertainty-in-the-fit
+questions
 Dsqr
+future-directions
+acknowledgement
+references

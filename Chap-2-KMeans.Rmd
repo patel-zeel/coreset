@@ -1,4 +1,4 @@
-# Coresets for KMeans (Theory)
+# Coresets for KMeans (Theory) {#KM}
 
 This chapter's motive is to highlight the key ideas behind KMeans coreset construction and give intuitive proofs for some of the ideas. For more details, please refer to @bachem2017practical.
 

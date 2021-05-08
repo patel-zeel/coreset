@@ -24,7 +24,7 @@
 <meta name="author" content="Zeel B Patel" />
 
 
-<meta name="date" content="2021-05-06" />
+<meta name="date" content="2021-05-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="KMP.html"/>
-<link rel="next" href="references.html"/>
+<link rel="next" href="Dsqr.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -139,16 +139,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.1" data-path="coresets.html"><a href="coresets.html#what-are-coresets"><i class="fa fa-check"></i><b>2.1</b> What are coresets?</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="coresets-for-kmeans-theory.html"><a href="coresets-for-kmeans-theory.html"><i class="fa fa-check"></i><b>3</b> Coresets for KMeans (Theory)</a>
+<li class="chapter" data-level="3" data-path="KM.html"><a href="KM.html"><i class="fa fa-check"></i><b>3</b> Coresets for KMeans (Theory)</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="coresets-for-kmeans-theory.html"><a href="coresets-for-kmeans-theory.html#problem-formulation"><i class="fa fa-check"></i><b>3.1</b> Problem formulation</a></li>
-<li class="chapter" data-level="3.2" data-path="coresets-for-kmeans-theory.html"><a href="coresets-for-kmeans-theory.html#uniform-sampling"><i class="fa fa-check"></i><b>3.2</b> Uniform sampling</a></li>
-<li class="chapter" data-level="3.3" data-path="coresets-for-kmeans-theory.html"><a href="coresets-for-kmeans-theory.html#importance-sampling"><i class="fa fa-check"></i><b>3.3</b> Importance sampling</a>
+<li class="chapter" data-level="3.1" data-path="KM.html"><a href="KM.html#problem-formulation"><i class="fa fa-check"></i><b>3.1</b> Problem formulation</a></li>
+<li class="chapter" data-level="3.2" data-path="KM.html"><a href="KM.html#uniform-sampling"><i class="fa fa-check"></i><b>3.2</b> Uniform sampling</a></li>
+<li class="chapter" data-level="3.3" data-path="KM.html"><a href="KM.html#importance-sampling"><i class="fa fa-check"></i><b>3.3</b> Importance sampling</a>
 <ul>
-<li class="chapter" data-level="3.3.1" data-path="coresets-for-kmeans-theory.html"><a href="coresets-for-kmeans-theory.html#sensitivity"><i class="fa fa-check"></i><b>3.3.1</b> Sensitivity</a></li>
-<li class="chapter" data-level="3.3.2" data-path="coresets-for-kmeans-theory.html"><a href="coresets-for-kmeans-theory.html#rough-approximation"><i class="fa fa-check"></i><b>3.3.2</b> Rough approximation</a></li>
-<li class="chapter" data-level="3.3.3" data-path="coresets-for-kmeans-theory.html"><a href="coresets-for-kmeans-theory.html#bounding-sensitivity"><i class="fa fa-check"></i><b>3.3.3</b> Bounding sensitivity</a></li>
-<li class="chapter" data-level="3.3.4" data-path="coresets-for-kmeans-theory.html"><a href="coresets-for-kmeans-theory.html#algorithm-to-create-kmeans-coreset"><i class="fa fa-check"></i><b>3.3.4</b> Algorithm to create KMeans coreset</a></li>
+<li class="chapter" data-level="3.3.1" data-path="KM.html"><a href="KM.html#sensitivity"><i class="fa fa-check"></i><b>3.3.1</b> Sensitivity</a></li>
+<li class="chapter" data-level="3.3.2" data-path="KM.html"><a href="KM.html#rough-approximation"><i class="fa fa-check"></i><b>3.3.2</b> Rough approximation</a></li>
+<li class="chapter" data-level="3.3.3" data-path="KM.html"><a href="KM.html#bounding-sensitivity"><i class="fa fa-check"></i><b>3.3.3</b> Bounding sensitivity</a></li>
+<li class="chapter" data-level="3.3.4" data-path="KM.html"><a href="KM.html#algorithm-to-create-kmeans-coreset"><i class="fa fa-check"></i><b>3.3.4</b> Algorithm to create KMeans coreset</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="KMP.html"><a href="KMP.html"><i class="fa fa-check"></i><b>4</b> Coresets for KMeans (Practical)</a>
@@ -156,9 +156,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.1" data-path="KMP.html"><a href="KMP.html#pseudo-data-with-4-clusters"><i class="fa fa-check"></i><b>4.1</b> Pseudo-data with 4 clusters</a></li>
 <li class="chapter" data-level="4.2" data-path="KMP.html"><a href="KMP.html#pseudo-dataset-with-100-clusters-and-10000-data-points"><i class="fa fa-check"></i><b>4.2</b> Pseudo-dataset with 100 clusters and 10000 data-points</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="coresets-for-linear-regression.html"><a href="coresets-for-linear-regression.html"><i class="fa fa-check"></i><b>5</b> Coresets for Linear Regression</a></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="5" data-path="coresets-for-linear-regression.html"><a href="coresets-for-linear-regression.html"><i class="fa fa-check"></i><b>5</b> Coresets for Linear Regression</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="coresets-for-linear-regression.html"><a href="coresets-for-linear-regression.html#coresets-for-linear-regression-order1"><i class="fa fa-check"></i><b>5.1</b> Coresets for linear regression (order=1)</a></li>
+<li class="chapter" data-level="5.2" data-path="coresets-for-linear-regression.html"><a href="coresets-for-linear-regression.html#coresets-for-linear-regression-order5"><i class="fa fa-check"></i><b>5.2</b> Coresets for linear regression (order=5)</a></li>
+<li class="chapter" data-level="5.3" data-path="coresets-for-linear-regression.html"><a href="coresets-for-linear-regression.html#checking-uncertainty-in-the-fit"><i class="fa fa-check"></i><b>5.3</b> Checking uncertainty in the fit</a></li>
+<li class="chapter" data-level="5.4" data-path="coresets-for-linear-regression.html"><a href="coresets-for-linear-regression.html#questions"><i class="fa fa-check"></i><b>5.4</b> Questions</a></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="Dsqr.html"><a href="Dsqr.html"><i class="fa fa-check"></i><b>6</b> Appendix 1: D<span class="math inline">\(^2\)</span> Sampling</a></li>
+<li class="chapter" data-level="7" data-path="future-directions.html"><a href="future-directions.html"><i class="fa fa-check"></i><b>7</b> Future Directions</a></li>
+<li class="chapter" data-level="8" data-path="acknowledgement.html"><a href="acknowledgement.html"><i class="fa fa-check"></i><b>8</b> Acknowledgement</a></li>
+<li class="chapter" data-level="9" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>9</b> References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -187,15 +195,312 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><span class="math inline">\(\mathbf{p}(X) = ||U(0:n, :)||_2^2\)</span></li>
 </ol>
 <p>Now, let us implement this in a python function.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="coresets-for-linear-regression.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_proba(x, lmd):</span>
-<span id="cb15-2"><a href="coresets-for-linear-regression.html#cb15-2" aria-hidden="true" tabindex="-1"></a>    x_list <span class="op">=</span> [np.ones(x.shape[<span class="dv">0</span>]), x.ravel()]</span>
-<span id="cb15-3"><a href="coresets-for-linear-regression.html#cb15-3" aria-hidden="true" tabindex="-1"></a>    x_extra <span class="op">=</span> np.vstack(x_list).T</span>
-<span id="cb15-4"><a href="coresets-for-linear-regression.html#cb15-4" aria-hidden="true" tabindex="-1"></a>    A <span class="op">=</span> np.vstack([x_extra, np.eye(x_extra.shape[<span class="dv">1</span>])<span class="op">*</span>np.sqrt(lmd)])</span>
-<span id="cb15-5"><a href="coresets-for-linear-regression.html#cb15-5" aria-hidden="true" tabindex="-1"></a>    U, S, V <span class="op">=</span> np.linalg.svd(A, full_matrices<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb15-6"><a href="coresets-for-linear-regression.html#cb15-6" aria-hidden="true" tabindex="-1"></a>    U1 <span class="op">=</span> U[:x.shape[<span class="dv">0</span>], :]</span>
-<span id="cb15-7"><a href="coresets-for-linear-regression.html#cb15-7" aria-hidden="true" tabindex="-1"></a>    proba <span class="op">=</span> np.square(U1).<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)<span class="op">/</span>np.square(U1).<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>).<span class="bu">sum</span>()</span>
-<span id="cb15-8"><a href="coresets-for-linear-regression.html#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> proba</span></code></pre></div>
-<p>We will sample the coresets for</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="coresets-for-linear-regression.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> Ridge</span>
+<span id="cb16-2"><a href="coresets-for-linear-regression.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb16-3"><a href="coresets-for-linear-regression.html#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb16-4"><a href="coresets-for-linear-regression.html#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb16-5"><a href="coresets-for-linear-regression.html#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> rc</span>
+<span id="cb16-6"><a href="coresets-for-linear-regression.html#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<span id="cb16-7"><a href="coresets-for-linear-regression.html#cb16-7" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">&#39;ignore&#39;</span>)</span>
+<span id="cb16-8"><a href="coresets-for-linear-regression.html#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="coresets-for-linear-regression.html#cb16-9" aria-hidden="true" tabindex="-1"></a>rc(<span class="st">&#39;font&#39;</span>, size<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb16-10"><a href="coresets-for-linear-regression.html#cb16-10" aria-hidden="true" tabindex="-1"></a>rc(<span class="st">&#39;text&#39;</span>, usetex<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb16-11"><a href="coresets-for-linear-regression.html#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_essentials(): <span class="co"># essential code for every plot</span></span>
+<span id="cb16-12"><a href="coresets-for-linear-regression.html#cb16-12" aria-hidden="true" tabindex="-1"></a>  hand, labs <span class="op">=</span> plt.gca().get_legend_handles_labels()</span>
+<span id="cb16-13"><a href="coresets-for-linear-regression.html#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="bu">len</span>(hand)<span class="op">&gt;</span><span class="dv">0</span>:</span>
+<span id="cb16-14"><a href="coresets-for-linear-regression.html#cb16-14" aria-hidden="true" tabindex="-1"></a>    plt.legend(hand, labs)<span class="op">;</span></span>
+<span id="cb16-15"><a href="coresets-for-linear-regression.html#cb16-15" aria-hidden="true" tabindex="-1"></a>  plt.tight_layout()<span class="op">;</span></span>
+<span id="cb16-16"><a href="coresets-for-linear-regression.html#cb16-16" aria-hidden="true" tabindex="-1"></a>  plt.show()</span>
+<span id="cb16-17"><a href="coresets-for-linear-regression.html#cb16-17" aria-hidden="true" tabindex="-1"></a>  plt.close()</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="coresets-for-linear-regression.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_proba(x, lmd):</span>
+<span id="cb17-2"><a href="coresets-for-linear-regression.html#cb17-2" aria-hidden="true" tabindex="-1"></a>    x_list <span class="op">=</span> [np.ones(x.shape[<span class="dv">0</span>]), x.ravel()]</span>
+<span id="cb17-3"><a href="coresets-for-linear-regression.html#cb17-3" aria-hidden="true" tabindex="-1"></a>    x_extra <span class="op">=</span> np.vstack(x_list).T</span>
+<span id="cb17-4"><a href="coresets-for-linear-regression.html#cb17-4" aria-hidden="true" tabindex="-1"></a>    A <span class="op">=</span> np.vstack([x_extra, np.eye(x_extra.shape[<span class="dv">1</span>])<span class="op">*</span>np.sqrt(lmd)])</span>
+<span id="cb17-5"><a href="coresets-for-linear-regression.html#cb17-5" aria-hidden="true" tabindex="-1"></a>    U, S, V <span class="op">=</span> np.linalg.svd(A, full_matrices<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb17-6"><a href="coresets-for-linear-regression.html#cb17-6" aria-hidden="true" tabindex="-1"></a>    U1 <span class="op">=</span> U[:x.shape[<span class="dv">0</span>], :]</span>
+<span id="cb17-7"><a href="coresets-for-linear-regression.html#cb17-7" aria-hidden="true" tabindex="-1"></a>    proba <span class="op">=</span> np.square(U1).<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)<span class="op">/</span>np.square(U1).<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>).<span class="bu">sum</span>()</span>
+<span id="cb17-8"><a href="coresets-for-linear-regression.html#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> proba</span></code></pre></div>
+<p>We will sample the coresets for Scikit-learn diabetes dataset.</p>
+<div id="coresets-for-linear-regression-order1" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Coresets for linear regression (order=1)</h2>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="coresets-for-linear-regression.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_diabetes</span>
+<span id="cb18-2"><a href="coresets-for-linear-regression.html#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="coresets-for-linear-regression.html#cb18-3" aria-hidden="true" tabindex="-1"></a>X, y <span class="op">=</span> load_diabetes(return_X_y<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb18-4"><a href="coresets-for-linear-regression.html#cb18-4" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> X[:, np.newaxis, <span class="dv">2</span>]</span>
+<span id="cb18-5"><a href="coresets-for-linear-regression.html#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="coresets-for-linear-regression.html#cb18-6" aria-hidden="true" tabindex="-1"></a>X_train, y_train <span class="op">=</span> X[:<span class="op">-</span><span class="dv">20</span>], y[:<span class="op">-</span><span class="dv">20</span>]</span>
+<span id="cb18-7"><a href="coresets-for-linear-regression.html#cb18-7" aria-hidden="true" tabindex="-1"></a>X_test, y_test <span class="op">=</span> X[<span class="op">-</span><span class="dv">20</span>:], y[<span class="op">-</span><span class="dv">20</span>:]</span>
+<span id="cb18-8"><a href="coresets-for-linear-regression.html#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="coresets-for-linear-regression.html#cb18-9" aria-hidden="true" tabindex="-1"></a>plt.scatter(X_train, y_train, label<span class="op">=</span><span class="st">&#39;Train&#39;</span>)<span class="op">;</span></span>
+<span id="cb18-10"><a href="coresets-for-linear-regression.html#cb18-10" aria-hidden="true" tabindex="-1"></a>plt.scatter(X_test, y_test, label<span class="op">=</span><span class="st">&#39;Test&#39;</span>)<span class="op">;</span></span>
+<span id="cb18-11"><a href="coresets-for-linear-regression.html#cb18-11" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;X&#39;</span>)<span class="op">;</span> plt.ylabel(<span class="st">&#39;Y&#39;</span>)<span class="op">;</span></span>
+<span id="cb18-12"><a href="coresets-for-linear-regression.html#cb18-12" aria-hidden="true" tabindex="-1"></a>plot_essentials()<span class="op">;</span></span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+<p>Now, let us visualize sampling probabilities of the train dataset.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="coresets-for-linear-regression.html#cb19-1" aria-hidden="true" tabindex="-1"></a>lmd <span class="op">=</span> <span class="fl">0.0001</span></span>
+<span id="cb19-2"><a href="coresets-for-linear-regression.html#cb19-2" aria-hidden="true" tabindex="-1"></a>X_proba <span class="op">=</span> get_proba(X_train, lmd)<span class="op">;</span></span>
+<span id="cb19-3"><a href="coresets-for-linear-regression.html#cb19-3" aria-hidden="true" tabindex="-1"></a>plt.scatter(X_train, y_train, c<span class="op">=</span>X_proba, label<span class="op">=</span><span class="st">&#39;&#39;</span>)<span class="op">;</span></span>
+<span id="cb19-4"><a href="coresets-for-linear-regression.html#cb19-4" aria-hidden="true" tabindex="-1"></a>plt.colorbar()<span class="op">;</span></span>
+<span id="cb19-5"><a href="coresets-for-linear-regression.html#cb19-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&#39;Sampling probability distribution over training data&#39;</span>)<span class="op">;</span></span>
+<span id="cb19-6"><a href="coresets-for-linear-regression.html#cb19-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;X&#39;</span>)<span class="op">;</span> plt.ylabel(<span class="st">&#39;Y&#39;</span>)<span class="op">;</span></span>
+<span id="cb19-7"><a href="coresets-for-linear-regression.html#cb19-7" aria-hidden="true" tabindex="-1"></a>plot_essentials()<span class="op">;</span></span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<p>Sampling 10% of the training data as a coreset.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="coresets-for-linear-regression.html#cb20-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">0</span>)</span>
+<span id="cb20-2"><a href="coresets-for-linear-regression.html#cb20-2" aria-hidden="true" tabindex="-1"></a>N_core <span class="op">=</span> <span class="bu">len</span>(X_train)<span class="op">//</span><span class="dv">10</span></span>
+<span id="cb20-3"><a href="coresets-for-linear-regression.html#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="coresets-for-linear-regression.html#cb20-4" aria-hidden="true" tabindex="-1"></a>core_idx <span class="op">=</span> np.random.choice(<span class="bu">len</span>(X_train), size<span class="op">=</span>N_core, replace<span class="op">=</span><span class="va">True</span>, p<span class="op">=</span>X_proba)</span>
+<span id="cb20-5"><a href="coresets-for-linear-regression.html#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="coresets-for-linear-regression.html#cb20-6" aria-hidden="true" tabindex="-1"></a>X_core <span class="op">=</span> X_train[core_idx]</span>
+<span id="cb20-7"><a href="coresets-for-linear-regression.html#cb20-7" aria-hidden="true" tabindex="-1"></a>y_core <span class="op">=</span> y_train[core_idx]</span></code></pre></div>
+<p>Checking fit on original dataset and on coreset.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="coresets-for-linear-regression.html#cb21-1" aria-hidden="true" tabindex="-1"></a>FullModel <span class="op">=</span> Ridge(alpha<span class="op">=</span>lmd).fit(X_train, y_train)</span>
+<span id="cb21-2"><a href="coresets-for-linear-regression.html#cb21-2" aria-hidden="true" tabindex="-1"></a>CoreModel <span class="op">=</span> Ridge(alpha<span class="op">=</span>lmd).fit(X_core, y_core)</span>
+<span id="cb21-3"><a href="coresets-for-linear-regression.html#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="coresets-for-linear-regression.html#cb21-4" aria-hidden="true" tabindex="-1"></a>plt.scatter(X_train, y_train, label<span class="op">=</span><span class="st">&#39;Train data&#39;</span>)<span class="op">;</span></span>
+<span id="cb21-5"><a href="coresets-for-linear-regression.html#cb21-5" aria-hidden="true" tabindex="-1"></a>plt.scatter(X_core, y_core, label<span class="op">=</span><span class="st">&#39;Coreset&#39;</span>)<span class="op">;</span></span>
+<span id="cb21-6"><a href="coresets-for-linear-regression.html#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="coresets-for-linear-regression.html#cb21-7" aria-hidden="true" tabindex="-1"></a>y_pred_full <span class="op">=</span> FullModel.predict(X_train)<span class="op">;</span></span>
+<span id="cb21-8"><a href="coresets-for-linear-regression.html#cb21-8" aria-hidden="true" tabindex="-1"></a>y_pred_core <span class="op">=</span> CoreModel.predict(X_train)<span class="op">;</span></span>
+<span id="cb21-9"><a href="coresets-for-linear-regression.html#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-10"><a href="coresets-for-linear-regression.html#cb21-10" aria-hidden="true" tabindex="-1"></a>plt.plot(X_train, y_pred_full, label<span class="op">=</span><span class="st">&#39;Fit on train&#39;</span>)<span class="op">;</span></span>
+<span id="cb21-11"><a href="coresets-for-linear-regression.html#cb21-11" aria-hidden="true" tabindex="-1"></a>plt.plot(X_train, y_pred_core, label<span class="op">=</span><span class="st">&#39;Fit on coreset&#39;</span>)<span class="op">;</span></span>
+<span id="cb21-12"><a href="coresets-for-linear-regression.html#cb21-12" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;X&#39;</span>)<span class="op">;</span> plt.ylabel(<span class="st">&#39;Y&#39;</span>)<span class="op">;</span></span>
+<span id="cb21-13"><a href="coresets-for-linear-regression.html#cb21-13" aria-hidden="true" tabindex="-1"></a>plot_essentials()<span class="op">;</span></span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<p>Let us do cost comparison to verify if this is an <span class="math inline">\(\varepsilon\)</span>-coreset. We take <span class="math inline">\(\varepsilon=0.3\)</span>.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="coresets-for-linear-regression.html#cb22-1" aria-hidden="true" tabindex="-1"></a>eps <span class="op">=</span> <span class="fl">0.3</span><span class="op">;</span></span>
+<span id="cb22-2"><a href="coresets-for-linear-regression.html#cb22-2" aria-hidden="true" tabindex="-1"></a>FullModelCost <span class="op">=</span> np.square(FullModel.predict(X_train) <span class="op">-</span> y_train).<span class="bu">sum</span>()<span class="op">/</span><span class="bu">len</span>(X_train)<span class="op">;</span></span>
+<span id="cb22-3"><a href="coresets-for-linear-regression.html#cb22-3" aria-hidden="true" tabindex="-1"></a>CoreModelCost <span class="op">=</span> np.square(CoreModel.predict(X_train) <span class="op">-</span> y_train).<span class="bu">sum</span>()<span class="op">/</span><span class="bu">len</span>(X_train)<span class="op">;</span></span></code></pre></div>
+<p><span class="math display">\[
+\frac{cost(X,Q^*_C)}{cost(X,Q^*_X)} \le \frac{1+\varepsilon}{1-\varepsilon}
+\]</span></p>
+<p>We have above relationship 1.02 <span class="math inline">\(\le\)</span> 1.86, thus we found a valid <span class="math inline">\(\varepsilon\)</span>-coreset here.</p>
+</div>
+<div id="coresets-for-linear-regression-order5" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Coresets for linear regression (order=5)</h2>
+<p>Let us generate random data using order 5 polynomial kernel.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="coresets-for-linear-regression.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> GPy</span>
+<span id="cb23-2"><a href="coresets-for-linear-regression.html#cb23-2" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">123</span>)</span>
+<span id="cb23-3"><a href="coresets-for-linear-regression.html#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="coresets-for-linear-regression.html#cb23-4" aria-hidden="true" tabindex="-1"></a>kernel <span class="op">=</span> GPy.kern.Poly(<span class="dv">1</span>, order<span class="op">=</span><span class="dv">5</span>, bias<span class="op">=</span><span class="dv">1</span>, scale<span class="op">=</span><span class="dv">1</span>, variance<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb23-5"><a href="coresets-for-linear-regression.html#cb23-5" aria-hidden="true" tabindex="-1"></a>sigma_n <span class="op">=</span> <span class="fl">1.1</span></span>
+<span id="cb23-6"><a href="coresets-for-linear-regression.html#cb23-6" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb23-7"><a href="coresets-for-linear-regression.html#cb23-7" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.random.normal(<span class="dv">0</span>,<span class="dv">1</span>,N).reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb23-8"><a href="coresets-for-linear-regression.html#cb23-8" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> X.shape[<span class="dv">0</span>]</span>
+<span id="cb23-9"><a href="coresets-for-linear-regression.html#cb23-9" aria-hidden="true" tabindex="-1"></a>cov_matrix <span class="op">=</span> kernel.K(X, X)</span>
+<span id="cb23-10"><a href="coresets-for-linear-regression.html#cb23-10" aria-hidden="true" tabindex="-1"></a>cov_matrix <span class="op">+=</span> np.eye(N)<span class="op">*</span>sigma_n<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb23-11"><a href="coresets-for-linear-regression.html#cb23-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-12"><a href="coresets-for-linear-regression.html#cb23-12" aria-hidden="true" tabindex="-1"></a>y_poly <span class="op">=</span> np.random.multivariate_normal(np.zeros(N), cov_matrix).reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb23-13"><a href="coresets-for-linear-regression.html#cb23-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-14"><a href="coresets-for-linear-regression.html#cb23-14" aria-hidden="true" tabindex="-1"></a>plt.scatter(X, y_poly,s<span class="op">=</span><span class="dv">5</span>)<span class="op">;</span></span>
+<span id="cb23-15"><a href="coresets-for-linear-regression.html#cb23-15" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;X&#39;</span>)<span class="op">;</span>plt.ylabel(<span class="st">&#39;y&#39;</span>)<span class="op">;</span></span>
+<span id="cb23-16"><a href="coresets-for-linear-regression.html#cb23-16" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="dv">10</span>,<span class="dv">30</span>)<span class="op">;</span></span>
+<span id="cb23-17"><a href="coresets-for-linear-regression.html#cb23-17" aria-hidden="true" tabindex="-1"></a>plot_essentials()<span class="op">;</span></span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+<p>Sampling uniform samples and coreset samples.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="coresets-for-linear-regression.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_proba(x, lmd, order<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb24-2"><a href="coresets-for-linear-regression.html#cb24-2" aria-hidden="true" tabindex="-1"></a>    x_list <span class="op">=</span> [np.ones(x.shape[<span class="dv">0</span>])]</span>
+<span id="cb24-3"><a href="coresets-for-linear-regression.html#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,order<span class="op">+</span><span class="dv">1</span>):</span>
+<span id="cb24-4"><a href="coresets-for-linear-regression.html#cb24-4" aria-hidden="true" tabindex="-1"></a>        x_list.append(x.ravel()<span class="op">**</span>i)</span>
+<span id="cb24-5"><a href="coresets-for-linear-regression.html#cb24-5" aria-hidden="true" tabindex="-1"></a>    x_extra <span class="op">=</span> np.vstack(x_list).T</span>
+<span id="cb24-6"><a href="coresets-for-linear-regression.html#cb24-6" aria-hidden="true" tabindex="-1"></a>    A <span class="op">=</span> np.vstack([x_extra, np.eye(x_extra.shape[<span class="dv">1</span>])<span class="op">*</span>np.sqrt(lmd)])</span>
+<span id="cb24-7"><a href="coresets-for-linear-regression.html#cb24-7" aria-hidden="true" tabindex="-1"></a>    U, S, V <span class="op">=</span> np.linalg.svd(A, full_matrices<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb24-8"><a href="coresets-for-linear-regression.html#cb24-8" aria-hidden="true" tabindex="-1"></a>    U1 <span class="op">=</span> U[:x.shape[<span class="dv">0</span>], :]</span>
+<span id="cb24-9"><a href="coresets-for-linear-regression.html#cb24-9" aria-hidden="true" tabindex="-1"></a>    proba <span class="op">=</span> np.square(U1).<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)<span class="op">/</span>np.square(U1).<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>).<span class="bu">sum</span>()</span>
+<span id="cb24-10"><a href="coresets-for-linear-regression.html#cb24-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> proba</span>
+<span id="cb24-11"><a href="coresets-for-linear-regression.html#cb24-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-12"><a href="coresets-for-linear-regression.html#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_coreset(x, y, n, lmd, order, seed):</span>
+<span id="cb24-13"><a href="coresets-for-linear-regression.html#cb24-13" aria-hidden="true" tabindex="-1"></a>    np.random.seed(seed)</span>
+<span id="cb24-14"><a href="coresets-for-linear-regression.html#cb24-14" aria-hidden="true" tabindex="-1"></a>    proba <span class="op">=</span> get_proba(x, lmd, order)</span>
+<span id="cb24-15"><a href="coresets-for-linear-regression.html#cb24-15" aria-hidden="true" tabindex="-1"></a>    idx <span class="op">=</span> np.random.choice(x.shape[<span class="dv">0</span>], size<span class="op">=</span>n, p<span class="op">=</span>proba)</span>
+<span id="cb24-16"><a href="coresets-for-linear-regression.html#cb24-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> idx</span>
+<span id="cb24-17"><a href="coresets-for-linear-regression.html#cb24-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-18"><a href="coresets-for-linear-regression.html#cb24-18" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_uniform(x, y, n, seed):</span>
+<span id="cb24-19"><a href="coresets-for-linear-regression.html#cb24-19" aria-hidden="true" tabindex="-1"></a>    np.random.seed(seed)</span>
+<span id="cb24-20"><a href="coresets-for-linear-regression.html#cb24-20" aria-hidden="true" tabindex="-1"></a>    proba <span class="op">=</span> np.ones(x.shape[<span class="dv">0</span>])<span class="op">/</span>x.shape[<span class="dv">0</span>]</span>
+<span id="cb24-21"><a href="coresets-for-linear-regression.html#cb24-21" aria-hidden="true" tabindex="-1"></a>    idx <span class="op">=</span> np.random.choice(x.shape[<span class="dv">0</span>], size<span class="op">=</span>n, p<span class="op">=</span>proba)</span>
+<span id="cb24-22"><a href="coresets-for-linear-regression.html#cb24-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> idx</span>
+<span id="cb24-23"><a href="coresets-for-linear-regression.html#cb24-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-24"><a href="coresets-for-linear-regression.html#cb24-24" aria-hidden="true" tabindex="-1"></a>lmd <span class="op">=</span> (sigma_n<span class="op">/</span>(kernel.variance)<span class="op">**</span><span class="fl">0.5</span>)<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb24-25"><a href="coresets-for-linear-regression.html#cb24-25" aria-hidden="true" tabindex="-1"></a>n_sample <span class="op">=</span> <span class="bu">len</span>(y_poly)<span class="op">//</span><span class="dv">10</span></span>
+<span id="cb24-26"><a href="coresets-for-linear-regression.html#cb24-26" aria-hidden="true" tabindex="-1"></a>order <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb24-27"><a href="coresets-for-linear-regression.html#cb24-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-28"><a href="coresets-for-linear-regression.html#cb24-28" aria-hidden="true" tabindex="-1"></a>core_idx <span class="op">=</span> get_coreset(X, y_poly, n_sample, lmd, order, seed<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb24-29"><a href="coresets-for-linear-regression.html#cb24-29" aria-hidden="true" tabindex="-1"></a>X_core, y_core <span class="op">=</span> X[core_idx], y_poly[core_idx]</span>
+<span id="cb24-30"><a href="coresets-for-linear-regression.html#cb24-30" aria-hidden="true" tabindex="-1"></a>uni_idx <span class="op">=</span> get_uniform(X, y_poly, n_sample, seed<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb24-31"><a href="coresets-for-linear-regression.html#cb24-31" aria-hidden="true" tabindex="-1"></a>X_uni, y_uni <span class="op">=</span> X[uni_idx], y_poly[uni_idx]</span></code></pre></div>
+<p>Checking the fit using the same kernel (without optimizing the hyperparamaters because we have kept them constants for analysis).</p>
+<p>Fitting on the uniform samples.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="coresets-for-linear-regression.html#cb25-1" aria-hidden="true" tabindex="-1"></a>uniGP <span class="op">=</span> GPy.models.GPRegression(X_uni, y_uni, kernel)</span>
+<span id="cb25-2"><a href="coresets-for-linear-regression.html#cb25-2" aria-hidden="true" tabindex="-1"></a>uniGP.likelihood.variance <span class="op">=</span> sigma_n<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb25-3"><a href="coresets-for-linear-regression.html#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="coresets-for-linear-regression.html#cb25-4" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()<span class="op">;</span></span>
+<span id="cb25-5"><a href="coresets-for-linear-regression.html#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="coresets-for-linear-regression.html#cb25-6" aria-hidden="true" tabindex="-1"></a>ax.scatter(X, y_poly, c<span class="op">=</span><span class="st">&#39;r&#39;</span>, label<span class="op">=</span><span class="st">&#39;full data&#39;</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)<span class="op">;</span></span>
+<span id="cb25-7"><a href="coresets-for-linear-regression.html#cb25-7" aria-hidden="true" tabindex="-1"></a>uniGP.plot(ax<span class="op">=</span>ax)<span class="op">;</span></span>
+<span id="cb25-8"><a href="coresets-for-linear-regression.html#cb25-8" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="op">-</span><span class="dv">10</span>,<span class="dv">30</span>)<span class="op">;</span></span>
+<span id="cb25-9"><a href="coresets-for-linear-regression.html#cb25-9" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">&#39;Fit on uniform samples&#39;</span>)<span class="op">;</span></span>
+<span id="cb25-10"><a href="coresets-for-linear-regression.html#cb25-10" aria-hidden="true" tabindex="-1"></a>plot_essentials()<span class="op">;</span></span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+<p>Fitting on the coreset samples.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="coresets-for-linear-regression.html#cb26-1" aria-hidden="true" tabindex="-1"></a>coreGP <span class="op">=</span> GPy.models.GPRegression(X_core, y_core, kernel)</span>
+<span id="cb26-2"><a href="coresets-for-linear-regression.html#cb26-2" aria-hidden="true" tabindex="-1"></a>coreGP.likelihood.variance <span class="op">=</span> sigma_n<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb26-3"><a href="coresets-for-linear-regression.html#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="coresets-for-linear-regression.html#cb26-4" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()<span class="op">;</span></span>
+<span id="cb26-5"><a href="coresets-for-linear-regression.html#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-6"><a href="coresets-for-linear-regression.html#cb26-6" aria-hidden="true" tabindex="-1"></a>ax.scatter(X, y_poly, c<span class="op">=</span><span class="st">&#39;r&#39;</span>, label<span class="op">=</span><span class="st">&#39;full data&#39;</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)<span class="op">;</span></span>
+<span id="cb26-7"><a href="coresets-for-linear-regression.html#cb26-7" aria-hidden="true" tabindex="-1"></a>coreGP.plot(ax<span class="op">=</span>ax)<span class="op">;</span></span>
+<span id="cb26-8"><a href="coresets-for-linear-regression.html#cb26-8" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="op">-</span><span class="dv">10</span>,<span class="dv">30</span>)<span class="op">;</span></span>
+<span id="cb26-9"><a href="coresets-for-linear-regression.html#cb26-9" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">&#39;Fit on coreset samples&#39;</span>)<span class="op">;</span></span>
+<span id="cb26-10"><a href="coresets-for-linear-regression.html#cb26-10" aria-hidden="true" tabindex="-1"></a>plot_essentials()<span class="op">;</span></span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
+</div>
+<div id="checking-uncertainty-in-the-fit" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> Checking uncertainty in the fit</h2>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="coresets-for-linear-regression.html#cb27-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">0</span>)<span class="op">;</span></span>
+<span id="cb27-2"><a href="coresets-for-linear-regression.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># X_new = X.copy()</span></span>
+<span id="cb27-3"><a href="coresets-for-linear-regression.html#cb27-3" aria-hidden="true" tabindex="-1"></a>X_new <span class="op">=</span> np.sort(np.random.normal(<span class="dv">2</span>,<span class="dv">2</span>,N<span class="op">*</span><span class="dv">3</span>)).reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb27-4"><a href="coresets-for-linear-regression.html#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="coresets-for-linear-regression.html#cb27-5" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="dv">20</span><span class="op">;</span></span>
+<span id="cb27-6"><a href="coresets-for-linear-regression.html#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="coresets-for-linear-regression.html#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Full data </span></span>
+<span id="cb27-8"><a href="coresets-for-linear-regression.html#cb27-8" aria-hidden="true" tabindex="-1"></a>train_X, train_y <span class="op">=</span> X.copy(), y_poly.copy()</span>
+<span id="cb27-9"><a href="coresets-for-linear-regression.html#cb27-9" aria-hidden="true" tabindex="-1"></a>tmpGP <span class="op">=</span> GPy.models.GPRegression(train_X, train_y, kernel)</span>
+<span id="cb27-10"><a href="coresets-for-linear-regression.html#cb27-10" aria-hidden="true" tabindex="-1"></a>tmpGP.likelihood.variance <span class="op">=</span> sigma_n<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb27-11"><a href="coresets-for-linear-regression.html#cb27-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb27-12"><a href="coresets-for-linear-regression.html#cb27-12" aria-hidden="true" tabindex="-1"></a>_, var <span class="op">=</span> tmpGP.predict(X_new)</span>
+<span id="cb27-13"><a href="coresets-for-linear-regression.html#cb27-13" aria-hidden="true" tabindex="-1"></a>std2 <span class="op">=</span> np.sqrt(var)<span class="op">*</span><span class="dv">2</span></span>
+<span id="cb27-14"><a href="coresets-for-linear-regression.html#cb27-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-15"><a href="coresets-for-linear-regression.html#cb27-15" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> plt.plot(X_new, std2, color<span class="op">=</span><span class="st">&#39;k&#39;</span>, label<span class="op">=</span><span class="st">&#39;full data&#39;</span>)<span class="op">;</span></span>
+<span id="cb27-16"><a href="coresets-for-linear-regression.html#cb27-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-17"><a href="coresets-for-linear-regression.html#cb27-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Uniform samples</span></span>
+<span id="cb27-18"><a href="coresets-for-linear-regression.html#cb27-18" aria-hidden="true" tabindex="-1"></a>train_X, train_y <span class="op">=</span> X[uni_idx], y_poly[uni_idx]</span>
+<span id="cb27-19"><a href="coresets-for-linear-regression.html#cb27-19" aria-hidden="true" tabindex="-1"></a>tmpGP <span class="op">=</span> GPy.models.GPRegression(train_X, train_y, kernel)</span>
+<span id="cb27-20"><a href="coresets-for-linear-regression.html#cb27-20" aria-hidden="true" tabindex="-1"></a>tmpGP.likelihood.variance <span class="op">=</span> sigma_n<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb27-21"><a href="coresets-for-linear-regression.html#cb27-21" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb27-22"><a href="coresets-for-linear-regression.html#cb27-22" aria-hidden="true" tabindex="-1"></a>_, var <span class="op">=</span> tmpGP.predict(X_new)</span>
+<span id="cb27-23"><a href="coresets-for-linear-regression.html#cb27-23" aria-hidden="true" tabindex="-1"></a>std2 <span class="op">=</span> np.sqrt(var)<span class="op">*</span><span class="dv">2</span></span>
+<span id="cb27-24"><a href="coresets-for-linear-regression.html#cb27-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-25"><a href="coresets-for-linear-regression.html#cb27-25" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> plt.plot(X_new, std2, color<span class="op">=</span><span class="st">&#39;r&#39;</span>, label<span class="op">=</span><span class="st">&#39;uniform&#39;</span>)<span class="op">;</span></span>
+<span id="cb27-26"><a href="coresets-for-linear-regression.html#cb27-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-27"><a href="coresets-for-linear-regression.html#cb27-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Coreset samples</span></span>
+<span id="cb27-28"><a href="coresets-for-linear-regression.html#cb27-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-29"><a href="coresets-for-linear-regression.html#cb27-29" aria-hidden="true" tabindex="-1"></a>train_X, train_y <span class="op">=</span> X[core_idx], y_poly[core_idx]</span>
+<span id="cb27-30"><a href="coresets-for-linear-regression.html#cb27-30" aria-hidden="true" tabindex="-1"></a>tmpGP <span class="op">=</span> GPy.models.GPRegression(train_X, train_y, kernel)</span>
+<span id="cb27-31"><a href="coresets-for-linear-regression.html#cb27-31" aria-hidden="true" tabindex="-1"></a>tmpGP.likelihood.variance <span class="op">=</span> sigma_n<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb27-32"><a href="coresets-for-linear-regression.html#cb27-32" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb27-33"><a href="coresets-for-linear-regression.html#cb27-33" aria-hidden="true" tabindex="-1"></a>_, var <span class="op">=</span> tmpGP.predict(X_new)</span>
+<span id="cb27-34"><a href="coresets-for-linear-regression.html#cb27-34" aria-hidden="true" tabindex="-1"></a>std2 <span class="op">=</span> np.sqrt(var)<span class="op">*</span><span class="dv">2</span></span>
+<span id="cb27-35"><a href="coresets-for-linear-regression.html#cb27-35" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> plt.plot(X_new, std2, color<span class="op">=</span><span class="st">&#39;g&#39;</span>, label<span class="op">=</span><span class="st">&#39;coreset&#39;</span>)<span class="op">;</span></span>
+<span id="cb27-36"><a href="coresets-for-linear-regression.html#cb27-36" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">0</span>,<span class="dv">7</span>)<span class="op">;</span></span>
+<span id="cb27-37"><a href="coresets-for-linear-regression.html#cb27-37" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&quot;X&quot;</span>)<span class="op">;</span>plt.ylabel(<span class="st">&quot;Uncertainty&quot;</span>)<span class="op">;</span></span>
+<span id="cb27-38"><a href="coresets-for-linear-regression.html#cb27-38" aria-hidden="true" tabindex="-1"></a>plot_essentials()<span class="op">;</span></span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
+<p>We can see that uncertainty for the model fitted on coreset is closely matching with the model fitted on full dataset. Uncertainty is high for uniform sampling in the end regions because we have low density of input <span class="math inline">\(X\)</span> in that region and thus points in those region are less likely to be included in the uniform samples.
+## Comparing uncertainty with best coreset and uncertainty sampling (active learning)</p>
+<p>Sampling from an active learning technique called uncertainty sampling.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="coresets-for-linear-regression.html#cb28-1" aria-hidden="true" tabindex="-1"></a>all_idx <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(N))</span>
+<span id="cb28-2"><a href="coresets-for-linear-regression.html#cb28-2" aria-hidden="true" tabindex="-1"></a>train_idx <span class="op">=</span> [<span class="dv">0</span>]</span>
+<span id="cb28-3"><a href="coresets-for-linear-regression.html#cb28-3" aria-hidden="true" tabindex="-1"></a>pool_idx <span class="op">=</span> all_idx.copy()</span>
+<span id="cb28-4"><a href="coresets-for-linear-regression.html#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> train_idx:</span>
+<span id="cb28-5"><a href="coresets-for-linear-regression.html#cb28-5" aria-hidden="true" tabindex="-1"></a>    pool_idx.remove(i)</span>
+<span id="cb28-6"><a href="coresets-for-linear-regression.html#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="coresets-for-linear-regression.html#cb28-7" aria-hidden="true" tabindex="-1"></a>sidx <span class="op">=</span> np.argsort(X.ravel())</span>
+<span id="cb28-8"><a href="coresets-for-linear-regression.html#cb28-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb28-9"><a href="coresets-for-linear-regression.html#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update():</span>
+<span id="cb28-10"><a href="coresets-for-linear-regression.html#cb28-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Computation</span></span>
+<span id="cb28-11"><a href="coresets-for-linear-regression.html#cb28-11" aria-hidden="true" tabindex="-1"></a>    train_X, train_y <span class="op">=</span> X[train_idx], y_poly[train_idx]</span>
+<span id="cb28-12"><a href="coresets-for-linear-regression.html#cb28-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb28-13"><a href="coresets-for-linear-regression.html#cb28-13" aria-hidden="true" tabindex="-1"></a>    tmpGP <span class="op">=</span> GPy.models.GPRegression(train_X, train_y, kernel)</span>
+<span id="cb28-14"><a href="coresets-for-linear-regression.html#cb28-14" aria-hidden="true" tabindex="-1"></a>    tmpGP.likelihood.variance <span class="op">=</span> sigma_n<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb28-15"><a href="coresets-for-linear-regression.html#cb28-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb28-16"><a href="coresets-for-linear-regression.html#cb28-16" aria-hidden="true" tabindex="-1"></a>    _, var <span class="op">=</span> tmpGP.predict(X[pool_idx])</span>
+<span id="cb28-17"><a href="coresets-for-linear-regression.html#cb28-17" aria-hidden="true" tabindex="-1"></a>    meanall, varall <span class="op">=</span> tmpGP.predict(X)</span>
+<span id="cb28-18"><a href="coresets-for-linear-regression.html#cb28-18" aria-hidden="true" tabindex="-1"></a>    std2all <span class="op">=</span> np.sqrt(varall)<span class="op">*</span><span class="dv">2</span></span>
+<span id="cb28-19"><a href="coresets-for-linear-regression.html#cb28-19" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb28-20"><a href="coresets-for-linear-regression.html#cb28-20" aria-hidden="true" tabindex="-1"></a>    next_idx <span class="op">=</span> pool_idx[np.argmax(var)]</span>
+<span id="cb28-21"><a href="coresets-for-linear-regression.html#cb28-21" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb28-22"><a href="coresets-for-linear-regression.html#cb28-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Updating</span></span>
+<span id="cb28-23"><a href="coresets-for-linear-regression.html#cb28-23" aria-hidden="true" tabindex="-1"></a>    train_idx.append(next_idx)</span>
+<span id="cb28-24"><a href="coresets-for-linear-regression.html#cb28-24" aria-hidden="true" tabindex="-1"></a>    pool_idx.remove(next_idx)</span>
+<span id="cb28-25"><a href="coresets-for-linear-regression.html#cb28-25" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb28-26"><a href="coresets-for-linear-regression.html#cb28-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">15</span>):</span>
+<span id="cb28-27"><a href="coresets-for-linear-regression.html#cb28-27" aria-hidden="true" tabindex="-1"></a>    update()</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="coresets-for-linear-regression.html#cb29-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">0</span>)<span class="op">;</span></span>
+<span id="cb29-2"><a href="coresets-for-linear-regression.html#cb29-2" aria-hidden="true" tabindex="-1"></a>X_new <span class="op">=</span> np.sort(np.random.normal(<span class="dv">2</span>,<span class="dv">2</span>,N<span class="op">*</span><span class="dv">3</span>)).reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb29-3"><a href="coresets-for-linear-regression.html#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="coresets-for-linear-regression.html#cb29-4" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb29-5"><a href="coresets-for-linear-regression.html#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-6"><a href="coresets-for-linear-regression.html#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Full data </span></span>
+<span id="cb29-7"><a href="coresets-for-linear-regression.html#cb29-7" aria-hidden="true" tabindex="-1"></a>train_X, train_y <span class="op">=</span> X.copy(), y_poly.copy()</span>
+<span id="cb29-8"><a href="coresets-for-linear-regression.html#cb29-8" aria-hidden="true" tabindex="-1"></a>tmpGP <span class="op">=</span> GPy.models.GPRegression(train_X, train_y, kernel)</span>
+<span id="cb29-9"><a href="coresets-for-linear-regression.html#cb29-9" aria-hidden="true" tabindex="-1"></a>tmpGP.likelihood.variance <span class="op">=</span> sigma_n<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb29-10"><a href="coresets-for-linear-regression.html#cb29-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb29-11"><a href="coresets-for-linear-regression.html#cb29-11" aria-hidden="true" tabindex="-1"></a>_, var <span class="op">=</span> tmpGP.predict(X_new)</span>
+<span id="cb29-12"><a href="coresets-for-linear-regression.html#cb29-12" aria-hidden="true" tabindex="-1"></a>std2 <span class="op">=</span> np.sqrt(var)<span class="op">*</span><span class="dv">2</span></span>
+<span id="cb29-13"><a href="coresets-for-linear-regression.html#cb29-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-14"><a href="coresets-for-linear-regression.html#cb29-14" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> plt.plot(X_new, std2, color<span class="op">=</span><span class="st">&#39;k&#39;</span>, label<span class="op">=</span><span class="st">&#39;full data&#39;</span>)<span class="op">;</span></span>
+<span id="cb29-15"><a href="coresets-for-linear-regression.html#cb29-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-16"><a href="coresets-for-linear-regression.html#cb29-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Uniform samples</span></span>
+<span id="cb29-17"><a href="coresets-for-linear-regression.html#cb29-17" aria-hidden="true" tabindex="-1"></a>train_X, train_y <span class="op">=</span> X[uni_idx], y_poly[uni_idx]</span>
+<span id="cb29-18"><a href="coresets-for-linear-regression.html#cb29-18" aria-hidden="true" tabindex="-1"></a>tmpGP <span class="op">=</span> GPy.models.GPRegression(train_X, train_y, kernel)</span>
+<span id="cb29-19"><a href="coresets-for-linear-regression.html#cb29-19" aria-hidden="true" tabindex="-1"></a>tmpGP.likelihood.variance <span class="op">=</span> sigma_n<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb29-20"><a href="coresets-for-linear-regression.html#cb29-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb29-21"><a href="coresets-for-linear-regression.html#cb29-21" aria-hidden="true" tabindex="-1"></a>_, var <span class="op">=</span> tmpGP.predict(X_new)</span>
+<span id="cb29-22"><a href="coresets-for-linear-regression.html#cb29-22" aria-hidden="true" tabindex="-1"></a>std2 <span class="op">=</span> np.sqrt(var)<span class="op">*</span><span class="dv">2</span></span>
+<span id="cb29-23"><a href="coresets-for-linear-regression.html#cb29-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-24"><a href="coresets-for-linear-regression.html#cb29-24" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> plt.plot(X_new, std2, color<span class="op">=</span><span class="st">&#39;r&#39;</span>, label<span class="op">=</span><span class="st">&#39;uniform&#39;</span>)<span class="op">;</span></span>
+<span id="cb29-25"><a href="coresets-for-linear-regression.html#cb29-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-26"><a href="coresets-for-linear-regression.html#cb29-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Coreset samples</span></span>
+<span id="cb29-27"><a href="coresets-for-linear-regression.html#cb29-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-28"><a href="coresets-for-linear-regression.html#cb29-28" aria-hidden="true" tabindex="-1"></a>train_X, train_y <span class="op">=</span> X[core_idx], y_poly[core_idx]</span>
+<span id="cb29-29"><a href="coresets-for-linear-regression.html#cb29-29" aria-hidden="true" tabindex="-1"></a>tmpGP <span class="op">=</span> GPy.models.GPRegression(train_X, train_y, kernel)</span>
+<span id="cb29-30"><a href="coresets-for-linear-regression.html#cb29-30" aria-hidden="true" tabindex="-1"></a>tmpGP.likelihood.variance <span class="op">=</span> sigma_n<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb29-31"><a href="coresets-for-linear-regression.html#cb29-31" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb29-32"><a href="coresets-for-linear-regression.html#cb29-32" aria-hidden="true" tabindex="-1"></a>_, var <span class="op">=</span> tmpGP.predict(X_new)</span>
+<span id="cb29-33"><a href="coresets-for-linear-regression.html#cb29-33" aria-hidden="true" tabindex="-1"></a>std2 <span class="op">=</span> np.sqrt(var)<span class="op">*</span><span class="dv">2</span></span>
+<span id="cb29-34"><a href="coresets-for-linear-regression.html#cb29-34" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> plt.plot(X_new, std2, color<span class="op">=</span><span class="st">&#39;g&#39;</span>, label<span class="op">=</span><span class="st">&#39;coreset&#39;</span>)<span class="op">;</span></span>
+<span id="cb29-35"><a href="coresets-for-linear-regression.html#cb29-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-36"><a href="coresets-for-linear-regression.html#cb29-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Best core</span></span>
+<span id="cb29-37"><a href="coresets-for-linear-regression.html#cb29-37" aria-hidden="true" tabindex="-1"></a>best_core <span class="op">=</span> np.argsort(get_proba(X, lmd, order<span class="op">=</span><span class="dv">5</span>))[::<span class="op">-</span><span class="dv">1</span>][:n_sample]</span>
+<span id="cb29-38"><a href="coresets-for-linear-regression.html#cb29-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-39"><a href="coresets-for-linear-regression.html#cb29-39" aria-hidden="true" tabindex="-1"></a>train_X, train_y <span class="op">=</span> X[best_core], y_poly[best_core]</span>
+<span id="cb29-40"><a href="coresets-for-linear-regression.html#cb29-40" aria-hidden="true" tabindex="-1"></a>tmpGP <span class="op">=</span> GPy.models.GPRegression(train_X, train_y, kernel)</span>
+<span id="cb29-41"><a href="coresets-for-linear-regression.html#cb29-41" aria-hidden="true" tabindex="-1"></a>tmpGP.likelihood.variance <span class="op">=</span> sigma_n<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb29-42"><a href="coresets-for-linear-regression.html#cb29-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-43"><a href="coresets-for-linear-regression.html#cb29-43" aria-hidden="true" tabindex="-1"></a>_, var <span class="op">=</span> tmpGP.predict(X_new)</span>
+<span id="cb29-44"><a href="coresets-for-linear-regression.html#cb29-44" aria-hidden="true" tabindex="-1"></a>std2 <span class="op">=</span> np.sqrt(var)<span class="op">*</span><span class="dv">2</span></span>
+<span id="cb29-45"><a href="coresets-for-linear-regression.html#cb29-45" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> plt.plot(X_new, std2, color<span class="op">=</span><span class="st">&#39;b&#39;</span>, label<span class="op">=</span><span class="st">&#39;best coreset (???)&#39;</span>)</span>
+<span id="cb29-46"><a href="coresets-for-linear-regression.html#cb29-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-47"><a href="coresets-for-linear-regression.html#cb29-47" aria-hidden="true" tabindex="-1"></a><span class="co"># Active learning samples</span></span>
+<span id="cb29-48"><a href="coresets-for-linear-regression.html#cb29-48" aria-hidden="true" tabindex="-1"></a>train_X, train_y <span class="op">=</span> X[train_idx], y_poly[train_idx]</span>
+<span id="cb29-49"><a href="coresets-for-linear-regression.html#cb29-49" aria-hidden="true" tabindex="-1"></a>tmpGP <span class="op">=</span> GPy.models.GPRegression(train_X, train_y, kernel)</span>
+<span id="cb29-50"><a href="coresets-for-linear-regression.html#cb29-50" aria-hidden="true" tabindex="-1"></a>tmpGP.likelihood.variance <span class="op">=</span> sigma_n<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb29-51"><a href="coresets-for-linear-regression.html#cb29-51" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb29-52"><a href="coresets-for-linear-regression.html#cb29-52" aria-hidden="true" tabindex="-1"></a>_, var <span class="op">=</span> tmpGP.predict(X_new)</span>
+<span id="cb29-53"><a href="coresets-for-linear-regression.html#cb29-53" aria-hidden="true" tabindex="-1"></a>std2 <span class="op">=</span> np.sqrt(var)<span class="op">*</span><span class="dv">2</span></span>
+<span id="cb29-54"><a href="coresets-for-linear-regression.html#cb29-54" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> plt.plot(X_new, std2, color<span class="op">=</span><span class="st">&#39;y&#39;</span>, label<span class="op">=</span><span class="st">&#39;Uncert. Sampling&#39;</span>)</span>
+<span id="cb29-55"><a href="coresets-for-linear-regression.html#cb29-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-56"><a href="coresets-for-linear-regression.html#cb29-56" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">0</span>,<span class="dv">5</span>)<span class="op">;</span></span>
+<span id="cb29-57"><a href="coresets-for-linear-regression.html#cb29-57" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&quot;X&quot;</span>)<span class="op">;</span>plt.ylabel(<span class="st">&quot;Uncertainty&quot;</span>)<span class="op">;</span></span>
+<span id="cb29-58"><a href="coresets-for-linear-regression.html#cb29-58" aria-hidden="true" tabindex="-1"></a>plot_essentials()<span class="op">;</span></span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-38-1.png" width="672" />
+Interpretation of the above plot is as the following,</p>
+<ul>
+<li>Models trained on full dataset, a coreset and dataset generated by uncertainty sampling have more or less similar uncertainty.</li>
+<li>Model fitted on <span class="math inline">\(n&#39;\)</span> points that have highest probability in coreset sampling distribution have higher uncertanty in central region. This is because we have higher density of datapoints in the central region and all points with high probability lie on both ends. This suggests that, it is not a good strategy to choose highly probable points as coresets. We must sample the points properly with a sampling technique according to the sampling distribution.</li>
+<li>We see that uncertainty sampling results in best uncertainty here that is closest to oracle (full data fit). This raises following questions for the future research.</li>
+</ul>
+</div>
+<div id="questions" class="section level2" number="5.4">
+<h2><span class="header-section-number">5.4</span> Questions</h2>
+<ol style="list-style-type: decimal">
+<li><p>What can we say about uncertainty in the fit while fitting the model on the coreset points?</p></li>
+<li><p>We saw that uncertainty sampling can sample the points that help in reducing uncertainty the most so can we say they can produce better coresets?</p></li>
+</ol>
+
+</div>
 </div>
             </section>
 
@@ -203,7 +508,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="KMP.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="Dsqr.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

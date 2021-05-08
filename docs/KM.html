@@ -139,16 +139,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.1" data-path="coresets.html"><a href="coresets.html#what-are-coresets"><i class="fa fa-check"></i><b>2.1</b> What are coresets?</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="coresets-for-kmeans-theory.html"><a href="coresets-for-kmeans-theory.html"><i class="fa fa-check"></i><b>3</b> Coresets for KMeans (Theory)</a>
+<li class="chapter" data-level="3" data-path="KM.html"><a href="KM.html"><i class="fa fa-check"></i><b>3</b> Coresets for KMeans (Theory)</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="coresets-for-kmeans-theory.html"><a href="coresets-for-kmeans-theory.html#problem-formulation"><i class="fa fa-check"></i><b>3.1</b> Problem formulation</a></li>
-<li class="chapter" data-level="3.2" data-path="coresets-for-kmeans-theory.html"><a href="coresets-for-kmeans-theory.html#uniform-sampling"><i class="fa fa-check"></i><b>3.2</b> Uniform sampling</a></li>
-<li class="chapter" data-level="3.3" data-path="coresets-for-kmeans-theory.html"><a href="coresets-for-kmeans-theory.html#importance-sampling"><i class="fa fa-check"></i><b>3.3</b> Importance sampling</a>
+<li class="chapter" data-level="3.1" data-path="KM.html"><a href="KM.html#problem-formulation"><i class="fa fa-check"></i><b>3.1</b> Problem formulation</a></li>
+<li class="chapter" data-level="3.2" data-path="KM.html"><a href="KM.html#uniform-sampling"><i class="fa fa-check"></i><b>3.2</b> Uniform sampling</a></li>
+<li class="chapter" data-level="3.3" data-path="KM.html"><a href="KM.html#importance-sampling"><i class="fa fa-check"></i><b>3.3</b> Importance sampling</a>
 <ul>
-<li class="chapter" data-level="3.3.1" data-path="coresets-for-kmeans-theory.html"><a href="coresets-for-kmeans-theory.html#sensitivity"><i class="fa fa-check"></i><b>3.3.1</b> Sensitivity</a></li>
-<li class="chapter" data-level="3.3.2" data-path="coresets-for-kmeans-theory.html"><a href="coresets-for-kmeans-theory.html#rough-approximation"><i class="fa fa-check"></i><b>3.3.2</b> Rough approximation</a></li>
-<li class="chapter" data-level="3.3.3" data-path="coresets-for-kmeans-theory.html"><a href="coresets-for-kmeans-theory.html#bounding-sensitivity"><i class="fa fa-check"></i><b>3.3.3</b> Bounding sensitivity</a></li>
-<li class="chapter" data-level="3.3.4" data-path="coresets-for-kmeans-theory.html"><a href="coresets-for-kmeans-theory.html#algorithm-to-create-kmeans-coreset"><i class="fa fa-check"></i><b>3.3.4</b> Algorithm to create KMeans coreset</a></li>
+<li class="chapter" data-level="3.3.1" data-path="KM.html"><a href="KM.html#sensitivity"><i class="fa fa-check"></i><b>3.3.1</b> Sensitivity</a></li>
+<li class="chapter" data-level="3.3.2" data-path="KM.html"><a href="KM.html#rough-approximation"><i class="fa fa-check"></i><b>3.3.2</b> Rough approximation</a></li>
+<li class="chapter" data-level="3.3.3" data-path="KM.html"><a href="KM.html#bounding-sensitivity"><i class="fa fa-check"></i><b>3.3.3</b> Bounding sensitivity</a></li>
+<li class="chapter" data-level="3.3.4" data-path="KM.html"><a href="KM.html#algorithm-to-create-kmeans-coreset"><i class="fa fa-check"></i><b>3.3.4</b> Algorithm to create KMeans coreset</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="KMP.html"><a href="KMP.html"><i class="fa fa-check"></i><b>4</b> Coresets for KMeans (Practical)</a>
@@ -186,7 +186,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="coresets-for-kmeans-theory" class="section level1" number="3">
+<div id="KM" class="section level1" number="3">
 <h1><span class="header-section-number">Coresets: 3</span> Coresets for KMeans (Theory)</h1>
 <p>This chapter’s motive is to highlight the key ideas behind KMeans coreset construction and give intuitive proofs for some of the ideas. For more details, please refer to <span class="citation"><a href="references.html#ref-bachem2017practical" role="doc-biblioref">Bachem, Lucic, and Krause</a> (<a href="references.html#ref-bachem2017practical" role="doc-biblioref">2017</a>)</span>.</p>
 <div id="problem-formulation" class="section level2" number="3.1">

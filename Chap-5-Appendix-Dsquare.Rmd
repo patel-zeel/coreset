@@ -10,7 +10,7 @@ shw <- function(){
 }
 ```
 
-The following algorithm is known as D$^2$ sampling. It was proposed by @KMeansplusplus to improve the initialization of KMeans algorithm. We also leverage the same algorithm in coreset construction of KMeans algorithm (Section \@ref(KM)-\@ref(KMP).
+The following algorithm is known as D$^2$ sampling. It was proposed by @KMeansplusplus to improve the initialization of KMeans algorithm. We also leverage the same algorithm in coreset construction of KMeans algorithm (Section \@ref(KM)-\@ref(KMP)).
 
 ******
 **Algorithm 1**:  $D^2$ sampling
@@ -93,4 +93,4 @@ rc('animation', html='html5')
 anim.save('Dsqr.gif', fps=2)
 ```
 
-![GIF](https://raw.githubusercontent.com/patel-zeel/coreset/master/Dsqr.gif)
+![](https://raw.githubusercontent.com/patel-zeel/coreset/master/Dsqr.gif)
