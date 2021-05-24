@@ -24,7 +24,7 @@
 <meta name="author" content="Zeel B Patel" />
 
 
-<meta name="date" content="2021-05-08" />
+<meta name="date" content="2021-05-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -163,10 +163,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3" data-path="coresets-for-linear-regression.html"><a href="coresets-for-linear-regression.html#checking-uncertainty-in-the-fit"><i class="fa fa-check"></i><b>5.3</b> Checking uncertainty in the fit</a></li>
 <li class="chapter" data-level="5.4" data-path="coresets-for-linear-regression.html"><a href="coresets-for-linear-regression.html#questions"><i class="fa fa-check"></i><b>5.4</b> Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="Dsqr.html"><a href="Dsqr.html"><i class="fa fa-check"></i><b>6</b> Appendix 1: D<span class="math inline">\(^2\)</span> Sampling</a></li>
-<li class="chapter" data-level="7" data-path="future-directions.html"><a href="future-directions.html"><i class="fa fa-check"></i><b>7</b> Future Directions</a></li>
-<li class="chapter" data-level="8" data-path="acknowledgement.html"><a href="acknowledgement.html"><i class="fa fa-check"></i><b>8</b> Acknowledgement</a></li>
-<li class="chapter" data-level="9" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>9</b> References</a></li>
+<li class="chapter" data-level="6" data-path="coresets-for-gaussian-processes-gps.html"><a href="coresets-for-gaussian-processes-gps.html"><i class="fa fa-check"></i><b>6</b> Coresets for Gaussian processes (GPs)</a></li>
+<li class="chapter" data-level="7" data-path="Dsqr.html"><a href="Dsqr.html"><i class="fa fa-check"></i><b>7</b> Appendix 1: D<span class="math inline">\(^2\)</span> Sampling</a></li>
+<li class="chapter" data-level="8" data-path="future-directions.html"><a href="future-directions.html"><i class="fa fa-check"></i><b>8</b> Future Directions</a></li>
+<li class="chapter" data-level="9" data-path="acknowledgement.html"><a href="acknowledgement.html"><i class="fa fa-check"></i><b>9</b> Acknowledgement</a></li>
+<li class="chapter" data-level="10" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>10</b> References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -236,7 +237,6 @@ Substituting <span class="math inline">\(k\sqrt{\frac{n}{m}} = \varepsilon \to k
 \delta = P\left(|cost(C, Q) - cost(X, Q)| \ge \varepsilon \cdot cost(X,Q)\right) \le \frac{n}{\varepsilon^2m}\\
 \]</span></p>
 <p>The above expression suggests that if we are interested in <span class="math inline">\(\varepsilon\)</span>-coreset with atleast (<span class="math inline">\(1-\delta\)</span>) probability, we need to discard all <span class="math inline">\(m \le \frac{n}{\varepsilon^2\delta}\)</span>. Thus we have <span class="math inline">\(m \ge \frac{n}{\varepsilon^2\delta}\)</span>. The same phenomenon is illustrated in the below plot,</p>
-<pre><code>## Text(0.5, 1.0, &#39;$n = 100$, $\\varepsilon=0.3$&#39;)</code></pre>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>Looking at the numbers, to construct the coreset with atleast 70% probability for dataset of size <span class="math inline">\(n=100\)</span>, we need to sample atleast <span class="math inline">\(m=\frac{n}{\varepsilon^2\delta}=4000\)</span> points. This is clearly not useful. Also, note that <span class="math inline">\(m \propto n\)</span>, so, coreset size will increase as <span class="math inline">\(n\)</span> increases maintaining <span class="math inline">\(m&gt;&gt;n\)</span>.</p>
 <p>Thus, this method fails to construct a coreset. One may want to have a look at an intuitive example given in <span class="citation"><a href="references.html#ref-bachem2017practical" role="doc-biblioref">Bachem, Lucic, and Krause</a> (<a href="references.html#ref-bachem2017practical" role="doc-biblioref">2017</a>)</span>. We need to change our sampling strategy to build better coresets. Let us move to importance sampling now.</p>
@@ -306,7 +306,7 @@ m \ge \frac{S^2}{2\varepsilon^2}\log_e\frac{2}{\delta}
 <p><span class="math display">\[
 cost(X, Q_B) &lt; \alpha\;cost(X, Q^*_X)
 \]</span></p>
-<p><span class="citation"><a href="references.html#ref-KMeansplusplus" role="doc-biblioref">Arthur and Vassilvitskii</a> (<a href="references.html#ref-KMeansplusplus" role="doc-biblioref">2007</a>)</span> propose an efficient algorithm that holds <span class="math inline">\((\alpha, \beta)\)</span> bi-criterion. Traditionally, the algorithm is known as the <span class="math inline">\(D^2\)</span> sampling algorithm, which is given in Section <a href="Dsqr.html#Dsqr">6</a>,</p>
+<p><span class="citation"><a href="references.html#ref-KMeansplusplus" role="doc-biblioref">Arthur and Vassilvitskii</a> (<a href="references.html#ref-KMeansplusplus" role="doc-biblioref">2007</a>)</span> propose an efficient algorithm that holds <span class="math inline">\((\alpha, \beta)\)</span> bi-criterion. Traditionally, the algorithm is known as the <span class="math inline">\(D^2\)</span> sampling algorithm, which is given in Section <a href="Dsqr.html#Dsqr">7</a>,</p>
 <p><span class="citation"><a href="references.html#ref-KMeansplusplus" role="doc-biblioref">Arthur and Vassilvitskii</a> (<a href="references.html#ref-KMeansplusplus" role="doc-biblioref">2007</a>)</span> also shows that the following result holds with at least <span class="math inline">\(\delta\)</span> probability when <span class="math inline">\(Q^*_B\)</span> is best cluster centers selected by running the <span class="math inline">\(D^2\)</span> sampling algorithm <span class="math inline">\(\log_2\frac{1}{1-\delta}\)</span> times.</p>
 <p><span class="math display">\[
 cost(X, Q^*_B) \le 16(\log_2K+2)cost(X, Q^*_X)

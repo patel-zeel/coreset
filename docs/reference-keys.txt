@@ -17,6 +17,7 @@ coresets-for-linear-regression-order1
 coresets-for-linear-regression-order5
 checking-uncertainty-in-the-fit
 questions
+coresets-for-gaussian-processes-gps
 Dsqr
 future-directions
 acknowledgement

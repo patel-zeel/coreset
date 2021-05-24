@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>IN792: Coresets</title>
-  <meta name="description" content="IN792: Coresets" />
+  <title>Coresets: 6 Coresets for Gaussian processes (GPs) | IN792: Coresets</title>
+  <meta name="description" content="Coresets: 6 Coresets for Gaussian processes (GPs) | IN792: Coresets" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="IN792: Coresets" />
+  <meta property="og:title" content="Coresets: 6 Coresets for Gaussian processes (GPs) | IN792: Coresets" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="IN792: Coresets" />
+  <meta name="twitter:title" content="Coresets: 6 Coresets for Gaussian processes (GPs) | IN792: Coresets" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="coresets.html"/>
+<link rel="prev" href="coresets-for-linear-regression.html"/>
+<link rel="next" href="Dsqr.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -187,15 +187,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">IN792: Coresets</h1>
-<p class="author"><em>Zeel B Patel</em></p>
-<p class="date"><em>2021-05-24</em></p>
-</div>
-<div id="preface" class="section level1" number="1">
-<h1><span class="header-section-number">Coresets: 1</span> Preface</h1>
-<p>This report is generated for work done in the IN-792 project with <a href="https://iitgn.ac.in/faculty/cse/anirban">Prof. Anirban Dasgupta</a> in Semester-II of the academic year 2020-2021.</p>
-<p>Please go to <a href="https://github.com/patel-zeel/coreset/discussions">GitHub discussions</a> for any Q&amp;A, suggestions, or error reporting.</p>
+<div id="coresets-for-gaussian-processes-gps" class="section level1" number="6">
+<h1><span class="header-section-number">Coresets: 6</span> Coresets for Gaussian processes (GPs)</h1>
+<p>We know that using feature space, we can generate coresets for linear (polynomial) regression. Gaussian processes are also linear (in parameters) models. If a kernel in a GP can be converted to Feature space, we can use the same algorithm to generate the coresets for GPs.</p>
+<p>We know the following method for calculating “ridge leverage” scores if feature space is known as <span class="math inline">\(X\)</span>.</p>
+<span class="math display">\[\begin{aligned}
+X_* &amp;= \begin{bmatrix}X \\ \lambda I_d\end{bmatrix} \\
+U \Sigma V^T &amp;= X_* \\
+\mathbf{p}(X) &amp;= ||U(0:n, :)||_2^2
+\end{aligned}\]</span>
+<p>Now, Given any covariance matrix <span class="math inline">\(K\)</span> in GPs, <span class="math inline">\(X\)</span> (feature space) can be estimated like the following,</p>
+<p><span class="math display">\[
+XX^T = K
+\]</span>
+Once, <span class="math inline">\(X\)</span> is derived from <span class="math inline">\(K\)</span>, we can easily calculate the ridge leverage scores.</p>
 
 </div>
             </section>
@@ -203,8 +208,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-
-<a href="coresets.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="coresets-for-linear-regression.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="Dsqr.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -235,7 +240,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/patel-zeel/coreset/edit/master/index.Rmd",
+"link": "https://github.com/patel-zeel/coreset/edit/master/Chap-5-Coresets-for-GPs.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -243,7 +248,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/patel-zeel/coreset/blob/master/index.Rmd",
+"link": "https://github.com/patel-zeel/coreset/blob/master/Chap-5-Coresets-for-GPs.Rmd",
 "text": null
 },
 "download": null,

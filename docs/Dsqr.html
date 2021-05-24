@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Coresets: 6 Appendix 1: D\(^2\) Sampling | IN792: Coresets</title>
-  <meta name="description" content="Coresets: 6 Appendix 1: D\(^2\) Sampling | IN792: Coresets" />
+  <title>Coresets: 7 Appendix 1: D\(^2\) Sampling | IN792: Coresets</title>
+  <meta name="description" content="Coresets: 7 Appendix 1: D\(^2\) Sampling | IN792: Coresets" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Coresets: 6 Appendix 1: D\(^2\) Sampling | IN792: Coresets" />
+  <meta property="og:title" content="Coresets: 7 Appendix 1: D\(^2\) Sampling | IN792: Coresets" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Coresets: 6 Appendix 1: D\(^2\) Sampling | IN792: Coresets" />
+  <meta name="twitter:title" content="Coresets: 7 Appendix 1: D\(^2\) Sampling | IN792: Coresets" />
   
   
   
@@ -24,14 +24,14 @@
 <meta name="author" content="Zeel B Patel" />
 
 
-<meta name="date" content="2021-05-08" />
+<meta name="date" content="2021-05-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="coresets-for-linear-regression.html"/>
+<link rel="prev" href="coresets-for-gaussian-processes-gps.html"/>
 <link rel="next" href="future-directions.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -163,10 +163,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3" data-path="coresets-for-linear-regression.html"><a href="coresets-for-linear-regression.html#checking-uncertainty-in-the-fit"><i class="fa fa-check"></i><b>5.3</b> Checking uncertainty in the fit</a></li>
 <li class="chapter" data-level="5.4" data-path="coresets-for-linear-regression.html"><a href="coresets-for-linear-regression.html#questions"><i class="fa fa-check"></i><b>5.4</b> Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="Dsqr.html"><a href="Dsqr.html"><i class="fa fa-check"></i><b>6</b> Appendix 1: D<span class="math inline">\(^2\)</span> Sampling</a></li>
-<li class="chapter" data-level="7" data-path="future-directions.html"><a href="future-directions.html"><i class="fa fa-check"></i><b>7</b> Future Directions</a></li>
-<li class="chapter" data-level="8" data-path="acknowledgement.html"><a href="acknowledgement.html"><i class="fa fa-check"></i><b>8</b> Acknowledgement</a></li>
-<li class="chapter" data-level="9" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>9</b> References</a></li>
+<li class="chapter" data-level="6" data-path="coresets-for-gaussian-processes-gps.html"><a href="coresets-for-gaussian-processes-gps.html"><i class="fa fa-check"></i><b>6</b> Coresets for Gaussian processes (GPs)</a></li>
+<li class="chapter" data-level="7" data-path="Dsqr.html"><a href="Dsqr.html"><i class="fa fa-check"></i><b>7</b> Appendix 1: D<span class="math inline">\(^2\)</span> Sampling</a></li>
+<li class="chapter" data-level="8" data-path="future-directions.html"><a href="future-directions.html"><i class="fa fa-check"></i><b>8</b> Future Directions</a></li>
+<li class="chapter" data-level="9" data-path="acknowledgement.html"><a href="acknowledgement.html"><i class="fa fa-check"></i><b>9</b> Acknowledgement</a></li>
+<li class="chapter" data-level="10" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>10</b> References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -186,8 +187,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Dsqr" class="section level1" number="6">
-<h1><span class="header-section-number">Coresets: 6</span> Appendix 1: D<span class="math inline">\(^2\)</span> Sampling</h1>
+<div id="Dsqr" class="section level1" number="7">
+<h1><span class="header-section-number">Coresets: 7</span> Appendix 1: D<span class="math inline">\(^2\)</span> Sampling</h1>
 <p>The following algorithm is known as D<span class="math inline">\(^2\)</span> sampling. It was proposed by <span class="citation"><a href="references.html#ref-KMeansplusplus" role="doc-biblioref">Arthur and Vassilvitskii</a> (<a href="references.html#ref-KMeansplusplus" role="doc-biblioref">2007</a>)</span> to improve the initialization of KMeans algorithm. We also leverage the same algorithm in coreset construction of KMeans algorithm (Section <a href="KM.html#KM">3</a>-<a href="KMP.html#KMP">4</a>).</p>
 <hr />
 <p><strong>Algorithm 1</strong>: <span class="math inline">\(D^2\)</span> sampling</p>
@@ -202,61 +203,61 @@ sample <span class="math inline">\(x\)</span> from <span class="math inline">\(X
 <hr />
 <p>Intuitively, this algorithm tries to select centers which are far away from the already selected centers.</p>
 <p>Let us try D<span class="math inline">\(^2\)</span> sampling on dummy data.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="Dsqr.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans</span>
-<span id="cb30-2"><a href="Dsqr.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> make_blobs</span>
-<span id="cb30-3"><a href="Dsqr.html#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.spatial.distance <span class="im">import</span> cdist, pdist</span>
-<span id="cb30-4"><a href="Dsqr.html#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb30-5"><a href="Dsqr.html#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb30-6"><a href="Dsqr.html#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb30-7"><a href="Dsqr.html#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> rc</span>
-<span id="cb30-8"><a href="Dsqr.html#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.animation <span class="im">import</span> FuncAnimation</span>
-<span id="cb30-9"><a href="Dsqr.html#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
-<span id="cb30-10"><a href="Dsqr.html#cb30-10" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">&#39;ignore&#39;</span>)</span>
-<span id="cb30-11"><a href="Dsqr.html#cb30-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-12"><a href="Dsqr.html#cb30-12" aria-hidden="true" tabindex="-1"></a>rc(<span class="st">&#39;font&#39;</span>, size<span class="op">=</span><span class="dv">16</span>)</span>
-<span id="cb30-13"><a href="Dsqr.html#cb30-13" aria-hidden="true" tabindex="-1"></a>rc(<span class="st">&#39;text&#39;</span>, usetex<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb30-14"><a href="Dsqr.html#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_essentials(): <span class="co"># essential code for every plot</span></span>
-<span id="cb30-15"><a href="Dsqr.html#cb30-15" aria-hidden="true" tabindex="-1"></a>  hand, labs <span class="op">=</span> plt.gca().get_legend_handles_labels()</span>
-<span id="cb30-16"><a href="Dsqr.html#cb30-16" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="bu">len</span>(hand)<span class="op">&gt;</span><span class="dv">0</span>:</span>
-<span id="cb30-17"><a href="Dsqr.html#cb30-17" aria-hidden="true" tabindex="-1"></a>    plt.legend(hand, labs)<span class="op">;</span></span>
-<span id="cb30-18"><a href="Dsqr.html#cb30-18" aria-hidden="true" tabindex="-1"></a>  plt.tight_layout()<span class="op">;</span></span>
-<span id="cb30-19"><a href="Dsqr.html#cb30-19" aria-hidden="true" tabindex="-1"></a>  plt.show()</span>
-<span id="cb30-20"><a href="Dsqr.html#cb30-20" aria-hidden="true" tabindex="-1"></a>  plt.close()</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="Dsqr.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans</span>
+<span id="cb29-2"><a href="Dsqr.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> make_blobs</span>
+<span id="cb29-3"><a href="Dsqr.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.spatial.distance <span class="im">import</span> cdist, pdist</span>
+<span id="cb29-4"><a href="Dsqr.html#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb29-5"><a href="Dsqr.html#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb29-6"><a href="Dsqr.html#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb29-7"><a href="Dsqr.html#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> rc</span>
+<span id="cb29-8"><a href="Dsqr.html#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.animation <span class="im">import</span> FuncAnimation</span>
+<span id="cb29-9"><a href="Dsqr.html#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<span id="cb29-10"><a href="Dsqr.html#cb29-10" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">&#39;ignore&#39;</span>)</span>
+<span id="cb29-11"><a href="Dsqr.html#cb29-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-12"><a href="Dsqr.html#cb29-12" aria-hidden="true" tabindex="-1"></a>rc(<span class="st">&#39;font&#39;</span>, size<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb29-13"><a href="Dsqr.html#cb29-13" aria-hidden="true" tabindex="-1"></a>rc(<span class="st">&#39;text&#39;</span>, usetex<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb29-14"><a href="Dsqr.html#cb29-14" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_essentials(): <span class="co"># essential code for every plot</span></span>
+<span id="cb29-15"><a href="Dsqr.html#cb29-15" aria-hidden="true" tabindex="-1"></a>  hand, labs <span class="op">=</span> plt.gca().get_legend_handles_labels()</span>
+<span id="cb29-16"><a href="Dsqr.html#cb29-16" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="bu">len</span>(hand)<span class="op">&gt;</span><span class="dv">0</span>:</span>
+<span id="cb29-17"><a href="Dsqr.html#cb29-17" aria-hidden="true" tabindex="-1"></a>    plt.legend(hand, labs)<span class="op">;</span></span>
+<span id="cb29-18"><a href="Dsqr.html#cb29-18" aria-hidden="true" tabindex="-1"></a>  plt.tight_layout()<span class="op">;</span></span>
+<span id="cb29-19"><a href="Dsqr.html#cb29-19" aria-hidden="true" tabindex="-1"></a>  plt.show()</span>
+<span id="cb29-20"><a href="Dsqr.html#cb29-20" aria-hidden="true" tabindex="-1"></a>  plt.close()</span></code></pre></div>
 <p>Genereting pseudo-data,</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="Dsqr.html#cb31-1" aria-hidden="true" tabindex="-1"></a>X, y <span class="op">=</span> make_blobs(n_samples<span class="op">=</span><span class="dv">200</span>, n_features<span class="op">=</span><span class="dv">2</span>, centers<span class="op">=</span><span class="dv">8</span>, random_state<span class="op">=</span><span class="dv">1</span>, cluster_std<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb31-2"><a href="Dsqr.html#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-3"><a href="Dsqr.html#cb31-3" aria-hidden="true" tabindex="-1"></a>plt.scatter(X[:,<span class="dv">0</span>], X[:,<span class="dv">1</span>], c<span class="op">=</span>y)<span class="op">;</span></span>
-<span id="cb31-4"><a href="Dsqr.html#cb31-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;$x_1$&#39;</span>)<span class="op">;</span>plt.ylabel(<span class="st">&#39;$x_2$&#39;</span>)<span class="op">;</span></span>
-<span id="cb31-5"><a href="Dsqr.html#cb31-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&#39;Pseudo-data with 8 clusters&#39;</span>)<span class="op">;</span></span>
-<span id="cb31-6"><a href="Dsqr.html#cb31-6" aria-hidden="true" tabindex="-1"></a>plot_essentials()<span class="op">;</span></span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="Dsqr.html#cb30-1" aria-hidden="true" tabindex="-1"></a>X, y <span class="op">=</span> make_blobs(n_samples<span class="op">=</span><span class="dv">200</span>, n_features<span class="op">=</span><span class="dv">2</span>, centers<span class="op">=</span><span class="dv">8</span>, random_state<span class="op">=</span><span class="dv">1</span>, cluster_std<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb30-2"><a href="Dsqr.html#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="Dsqr.html#cb30-3" aria-hidden="true" tabindex="-1"></a>plt.scatter(X[:,<span class="dv">0</span>], X[:,<span class="dv">1</span>], c<span class="op">=</span>y)<span class="op">;</span></span>
+<span id="cb30-4"><a href="Dsqr.html#cb30-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;$x_1$&#39;</span>)<span class="op">;</span>plt.ylabel(<span class="st">&#39;$x_2$&#39;</span>)<span class="op">;</span></span>
+<span id="cb30-5"><a href="Dsqr.html#cb30-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&#39;Pseudo-data with 8 clusters&#39;</span>)<span class="op">;</span></span>
+<span id="cb30-6"><a href="Dsqr.html#cb30-6" aria-hidden="true" tabindex="-1"></a>plot_essentials()<span class="op">;</span></span></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
 <p>Now we visualize the D<span class="math inline">\(^2\)</span> algorithm,</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="Dsqr.html#cb32-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">0</span>)</span>
-<span id="cb32-2"><a href="Dsqr.html#cb32-2" aria-hidden="true" tabindex="-1"></a>K <span class="op">=</span> <span class="dv">8</span></span>
-<span id="cb32-3"><a href="Dsqr.html#cb32-3" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="bu">len</span>(X)</span>
-<span id="cb32-4"><a href="Dsqr.html#cb32-4" aria-hidden="true" tabindex="-1"></a>first_idx <span class="op">=</span> np.random.choice(N) <span class="co"># Choosing first center randomly</span></span>
-<span id="cb32-5"><a href="Dsqr.html#cb32-5" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> [] <span class="co"># Approximate cluster centers</span></span>
-<span id="cb32-6"><a href="Dsqr.html#cb32-6" aria-hidden="true" tabindex="-1"></a>B.append(X[first_idx])</span>
-<span id="cb32-7"><a href="Dsqr.html#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> choice <span class="kw">in</span> <span class="bu">range</span>(K<span class="op">-</span><span class="dv">1</span>): <span class="co"># Choice of remaining K-1 centers</span></span>
-<span id="cb32-8"><a href="Dsqr.html#cb32-8" aria-hidden="true" tabindex="-1"></a>  proba <span class="op">=</span> np.square(cdist(X, np.array(B))).<span class="bu">min</span>(axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb32-9"><a href="Dsqr.html#cb32-9" aria-hidden="true" tabindex="-1"></a>  norm_proba <span class="op">=</span> proba<span class="op">/</span>np.<span class="bu">sum</span>(proba)</span>
-<span id="cb32-10"><a href="Dsqr.html#cb32-10" aria-hidden="true" tabindex="-1"></a>  idx <span class="op">=</span> np.random.choice(N, p<span class="op">=</span>norm_proba)</span>
-<span id="cb32-11"><a href="Dsqr.html#cb32-11" aria-hidden="true" tabindex="-1"></a>  B.append(X[idx,:])</span>
-<span id="cb32-12"><a href="Dsqr.html#cb32-12" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.array(B)</span>
-<span id="cb32-13"><a href="Dsqr.html#cb32-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-14"><a href="Dsqr.html#cb32-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting</span></span>
-<span id="cb32-15"><a href="Dsqr.html#cb32-15" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()<span class="op">;</span></span>
-<span id="cb32-16"><a href="Dsqr.html#cb32-16" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update(i):</span>
-<span id="cb32-17"><a href="Dsqr.html#cb32-17" aria-hidden="true" tabindex="-1"></a>  ax.cla()<span class="op">;</span></span>
-<span id="cb32-18"><a href="Dsqr.html#cb32-18" aria-hidden="true" tabindex="-1"></a>  ax.scatter(X[:,<span class="dv">0</span>], X[:,<span class="dv">1</span>], c<span class="op">=</span>y, label<span class="op">=</span><span class="st">&#39;Data points&#39;</span>)<span class="op">;</span></span>
-<span id="cb32-19"><a href="Dsqr.html#cb32-19" aria-hidden="true" tabindex="-1"></a>  ax.scatter(B[:i,<span class="dv">0</span>], B[:i,<span class="dv">1</span>], c<span class="op">=</span><span class="st">&#39;r&#39;</span>, marker<span class="op">=</span><span class="st">&#39;*&#39;</span>, s<span class="op">=</span><span class="dv">200</span>, label<span class="op">=</span><span class="st">&#39;Selected centers&#39;</span>)<span class="op">;</span></span>
-<span id="cb32-20"><a href="Dsqr.html#cb32-20" aria-hidden="true" tabindex="-1"></a>  ax.legend()<span class="op">;</span></span>
-<span id="cb32-21"><a href="Dsqr.html#cb32-21" aria-hidden="true" tabindex="-1"></a>  fig.tight_layout()<span class="op">;</span></span>
-<span id="cb32-22"><a href="Dsqr.html#cb32-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-23"><a href="Dsqr.html#cb32-23" aria-hidden="true" tabindex="-1"></a>plt.close()<span class="op">;</span></span>
-<span id="cb32-24"><a href="Dsqr.html#cb32-24" aria-hidden="true" tabindex="-1"></a>anim <span class="op">=</span> FuncAnimation(fig, update, frames<span class="op">=</span><span class="bu">range</span>(<span class="dv">8</span>))<span class="op">;</span></span>
-<span id="cb32-25"><a href="Dsqr.html#cb32-25" aria-hidden="true" tabindex="-1"></a>rc(<span class="st">&#39;animation&#39;</span>, html<span class="op">=</span><span class="st">&#39;html5&#39;</span>)</span>
-<span id="cb32-26"><a href="Dsqr.html#cb32-26" aria-hidden="true" tabindex="-1"></a>anim.save(<span class="st">&#39;Dsqr.gif&#39;</span>, fps<span class="op">=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="Dsqr.html#cb31-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">0</span>)</span>
+<span id="cb31-2"><a href="Dsqr.html#cb31-2" aria-hidden="true" tabindex="-1"></a>K <span class="op">=</span> <span class="dv">8</span></span>
+<span id="cb31-3"><a href="Dsqr.html#cb31-3" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="bu">len</span>(X)</span>
+<span id="cb31-4"><a href="Dsqr.html#cb31-4" aria-hidden="true" tabindex="-1"></a>first_idx <span class="op">=</span> np.random.choice(N) <span class="co"># Choosing first center randomly</span></span>
+<span id="cb31-5"><a href="Dsqr.html#cb31-5" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> [] <span class="co"># Approximate cluster centers</span></span>
+<span id="cb31-6"><a href="Dsqr.html#cb31-6" aria-hidden="true" tabindex="-1"></a>B.append(X[first_idx])</span>
+<span id="cb31-7"><a href="Dsqr.html#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> choice <span class="kw">in</span> <span class="bu">range</span>(K<span class="op">-</span><span class="dv">1</span>): <span class="co"># Choice of remaining K-1 centers</span></span>
+<span id="cb31-8"><a href="Dsqr.html#cb31-8" aria-hidden="true" tabindex="-1"></a>  proba <span class="op">=</span> np.square(cdist(X, np.array(B))).<span class="bu">min</span>(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb31-9"><a href="Dsqr.html#cb31-9" aria-hidden="true" tabindex="-1"></a>  norm_proba <span class="op">=</span> proba<span class="op">/</span>np.<span class="bu">sum</span>(proba)</span>
+<span id="cb31-10"><a href="Dsqr.html#cb31-10" aria-hidden="true" tabindex="-1"></a>  idx <span class="op">=</span> np.random.choice(N, p<span class="op">=</span>norm_proba)</span>
+<span id="cb31-11"><a href="Dsqr.html#cb31-11" aria-hidden="true" tabindex="-1"></a>  B.append(X[idx,:])</span>
+<span id="cb31-12"><a href="Dsqr.html#cb31-12" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.array(B)</span>
+<span id="cb31-13"><a href="Dsqr.html#cb31-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-14"><a href="Dsqr.html#cb31-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting</span></span>
+<span id="cb31-15"><a href="Dsqr.html#cb31-15" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()<span class="op">;</span></span>
+<span id="cb31-16"><a href="Dsqr.html#cb31-16" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update(i):</span>
+<span id="cb31-17"><a href="Dsqr.html#cb31-17" aria-hidden="true" tabindex="-1"></a>  ax.cla()<span class="op">;</span></span>
+<span id="cb31-18"><a href="Dsqr.html#cb31-18" aria-hidden="true" tabindex="-1"></a>  ax.scatter(X[:,<span class="dv">0</span>], X[:,<span class="dv">1</span>], c<span class="op">=</span>y, label<span class="op">=</span><span class="st">&#39;Data points&#39;</span>)<span class="op">;</span></span>
+<span id="cb31-19"><a href="Dsqr.html#cb31-19" aria-hidden="true" tabindex="-1"></a>  ax.scatter(B[:i,<span class="dv">0</span>], B[:i,<span class="dv">1</span>], c<span class="op">=</span><span class="st">&#39;r&#39;</span>, marker<span class="op">=</span><span class="st">&#39;*&#39;</span>, s<span class="op">=</span><span class="dv">200</span>, label<span class="op">=</span><span class="st">&#39;Selected centers&#39;</span>)<span class="op">;</span></span>
+<span id="cb31-20"><a href="Dsqr.html#cb31-20" aria-hidden="true" tabindex="-1"></a>  ax.legend()<span class="op">;</span></span>
+<span id="cb31-21"><a href="Dsqr.html#cb31-21" aria-hidden="true" tabindex="-1"></a>  fig.tight_layout()<span class="op">;</span></span>
+<span id="cb31-22"><a href="Dsqr.html#cb31-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-23"><a href="Dsqr.html#cb31-23" aria-hidden="true" tabindex="-1"></a>plt.close()<span class="op">;</span></span>
+<span id="cb31-24"><a href="Dsqr.html#cb31-24" aria-hidden="true" tabindex="-1"></a>anim <span class="op">=</span> FuncAnimation(fig, update, frames<span class="op">=</span><span class="bu">range</span>(<span class="dv">8</span>))<span class="op">;</span></span>
+<span id="cb31-25"><a href="Dsqr.html#cb31-25" aria-hidden="true" tabindex="-1"></a>rc(<span class="st">&#39;animation&#39;</span>, html<span class="op">=</span><span class="st">&#39;html5&#39;</span>)</span>
+<span id="cb31-26"><a href="Dsqr.html#cb31-26" aria-hidden="true" tabindex="-1"></a>anim.save(<span class="st">&#39;Dsqr.gif&#39;</span>, fps<span class="op">=</span><span class="dv">2</span>)</span></code></pre></div>
 <p><img src="https://raw.githubusercontent.com/patel-zeel/coreset/master/Dsqr.gif" /></p>
 
 </div>
@@ -265,7 +266,7 @@ sample <span class="math inline">\(x\)</span> from <span class="math inline">\(X
           </div>
         </div>
       </div>
-<a href="coresets-for-linear-regression.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="coresets-for-gaussian-processes-gps.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="future-directions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
@@ -297,7 +298,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/patel-zeel/coreset/edit/master/Chap-5-Appendix-Dsquare.Rmd",
+"link": "https://github.com/patel-zeel/coreset/edit/master/ZChap-1-Appendix-Dsquare.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -305,7 +306,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/patel-zeel/coreset/blob/master/Chap-5-Appendix-Dsquare.Rmd",
+"link": "https://github.com/patel-zeel/coreset/blob/master/ZChap-1-Appendix-Dsquare.Rmd",
 "text": null
 },
 "download": null,

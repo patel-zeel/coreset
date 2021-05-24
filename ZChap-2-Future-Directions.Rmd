@@ -1,0 +1,11 @@
+# Future Directions
+
+Several future ideas to work upon are the following,
+
+1. Can we decompose a kernel $K$ into feature matrix $X$ to leverage it into linear regression coreset algorithm? This way we would be creating a coreset for any Gaussian process models in general.
+
+1. Practical comparison (time-complexity, performance, number of coreset points) of coresets created by classical algorithms and active learning strategies. 
+
+# Acknowledgement
+
+I thank [Prof. Anirban Dasgupta](https://iitgn.ac.in/faculty/cse/anirban) for constantly guiding me to explore novel directions of research in coresets during this semester. I also thank my colleague and friend [Jayesh Malaviya](https://www.linkedin.com/in/jayeshmalaviya/) for being a constant companion in the discussions throughout this project. I would like to acknowledge instant help whenever I required from my senior PhD colleagues [Rachit Chhaya](https://scholar.google.com/citations?user=MEnZ_l8AAAAJ&hl=en) and [Supratim Shit](https://sites.google.com/view/supratims/home).

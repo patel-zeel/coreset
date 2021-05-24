@@ -1,0 +1,18 @@
+# Coresets for Gaussian processes (GPs)
+
+We know that using feature space, we can generate coresets for linear (polynomial) regression. Gaussian processes are also linear (in parameters) models. If a kernel in a GP can be converted to Feature space, we can use the same algorithm to generate the coresets for GPs.
+
+We know the following method for calculating "ridge leverage" scores if feature space is known as $X$.
+
+\begin{aligned}
+X_* &= \begin{bmatrix}X \\ \lambda I_d\end{bmatrix} \\
+U \Sigma V^T &= X_* \\
+\mathbf{p}(X) &= ||U(0:n, :)||_2^2
+\end{aligned}
+
+Now, Given any covariance matrix $K$ in GPs, $X$ (feature space) can be estimated like the following,
+
+$$
+XX^T = K
+$$
+Once, $X$ is derived from $K$, we can easily calculate the ridge leverage scores.
